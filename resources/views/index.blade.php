@@ -4,6 +4,15 @@
 
 @section('section')
 	@include('components/carousel')
-	<center><h1>Contenido de Home</h1></center>
+
+	<div class="container">
+		<div class="row">
+			@include('components/categories')
+
+			@include('components/products1')
+
+		</div> {{-- row --}}
+	</div> {{-- container --}}
+
 	@include('components/carousel2')
 @endsection
