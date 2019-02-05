@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md fixed-top" id="navbar-edit">
+<nav class="navbar navbar-expand-md navbar-light fixed-top" id="navbar-edit">
 	<div class="container">
 
 		{{-- Logo --}}
