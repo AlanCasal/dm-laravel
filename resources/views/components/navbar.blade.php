@@ -1,42 +1,48 @@
-<div class='container-fluid' style="margin-bottom: 80px;">
-	<nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom' >
-		<button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbar5'>
-			<span class='navbar-toggler-icon'></span>
-		</button>
-		<a class='navbar-brand' href='/'>
-			<img src="{{ asset('/img/DMHead.png') }}" alt='Logo' style='width: 50px;'>
-		</a>
-		<div class='navbar-collapse collapse justify-content-stretch' id='navbar5'>
-			@php
-			$botones = array(
-				'cart'     => array('/logInToShop', 'fas fa-shopping-cart', '(0)'),
-				'login'    => array('/login', 'fas fa-sign-in-alt', 'Ingreso'),
-				'register' => array('/register', 'fas fa-user-edit', 'Registro'),
-				'faq'      => array('/faq', 'fas fa-question-circle', 'FAQ')
-			);
-			@endphp
+<nav class="navbar navbar-expand-md fixed-top" id="navbar-edit">
+	<div class="container">
 
-			<div style='color: white;'>
-				<ul class='navbar-nav'>
-					@foreach ($botones as $boton => $value)
-						<li class='nav-item'>
-							<a class='nav-link' href="{{$value[0]}}">
-								<i class="{{$value[1]}}"></i> {{$value[2]}}
-							</a>
-						</li>
-					@endforeach
-				</ul>
-			</div>
-			
-			<form class="form-inline" action='/showProducts' style="margin-left: auto;">
-				@csrf
-				<div class="form-group has-buscar">
-					<input class='form-control' type='text' name='txt' placeholder='Buscar productos ...'>
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-						<i class="fas fa-search"></i>
+		{{-- Logo --}}
+		<a class="navbar-brand" href="#">
+			<img src='{{asset("img/DMHead.png")}}' alt='Logo' style='width: 50px;'>
+			<img src='{{asset("img/DMText.png")}}' alt='Logo' style='width: 200px;'>
+		</a>
+
+		{{-- Boton toggler responsive --}}
+		<button type="button" class="navbar-toggler" data-toggle='collapse' data-target='#navbarSupportedContent'>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		{{-- Contenido a colapsar --}}
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+			{{-- Search box --}}
+			<div class="row no-gutters ml-auto col-lg-6">
+				<div class="col">
+					<input class="form-control form-control-no-border border-info border-right-0 rounded-0" type="search" value="" placeholder="Buscar productos...">
+				</div>
+				<div class="col-auto">
+					<button class="btn btn-outline-info border-left-0 rounded-0 rounded-right search-btn noBoxShadow-btn" type="button">
+						<i class="fa fa-search"></i>
 					</button>
 				</div>
-			</form>
+			</div>
+
+			{{-- Botones --}}
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> (0)</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link"><i class="fas fa-user-edit"></i> Registrarse</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link"><i class="fas fa-question-circle"></i> Ayuda</a>
+				</li>
+			</ul>
+
 		</div>
-	</nav>
-</div>
+	</div>
+</nav>
