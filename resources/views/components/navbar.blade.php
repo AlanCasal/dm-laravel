@@ -18,11 +18,11 @@
 			{{-- Search box --}}
 			<div class="row no-gutters ml-auto col-lg-6">
 				<div class="col">
-					<input class="form-control form-control-no-border border-secondary border-right-0 rounded-0" type="search" value="" placeholder="Buscar productos..." id="example-search-input4">
+					<input class="form-control form-control-no-border border-info border-right-0 rounded-0" type="search" value="" placeholder="Buscar productos...">
 				</div>
 				<div class="col-auto">
-					<button class="btn btn-outline-secondary bg-white border-left-0 rounded-0 rounded-right" type="button">
-						<i class="fa fa-search" style="color: grey"></i>
+					<button class="btn btn-outline-info border-left-0 rounded-0 rounded-right search-btn noBoxShadow-btn" type="button">
+						<i class="fa fa-search"></i>
 					</button>
 				</div>
 			</div>

@@ -20,6 +20,20 @@ nav .navbar-nav li a {
     box-shadow: none;
 }
 
+/* el botón de búsqueda */
+.search-btn {
+    color: rgb(0, 169, 186);
+    background-color: white;
+}
+
+.search-btn:hover {
+    background-color: rgb(0, 169, 186);
+}
+
+.noBoxShadow-btn:focus {
+    box-shadow: none;
+}
+
 body {
     background-image: url(../img/bg_dragon.jpg);
     background-repeat: repeat;
@@ -52,12 +66,12 @@ header {
 }
 
 /* .navbar-nav {
-	float: none;
+float: none;
 }
 
 .navbar-nav li {
-	display: inline-block;
-	float: none;
+display: inline-block;
+float: none;
 } */
 /* Le doy formato al espacio y la imágen del usuario */
 .avatar {
