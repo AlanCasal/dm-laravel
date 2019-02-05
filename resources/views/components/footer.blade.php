@@ -2,7 +2,7 @@
     <div class="cajasFooter col-sm-12 col-md-4">
         <div>
             <div class="row">
-                <i class="fas fa-envelope" style="font-size: 1em; margin-right: 10px"></i><h6>ventas@dragonmarket.com.ar</h6>
+                <i class="fas fa-envelope" style    ="font-size: 1em; margin-right: 10px"></i><h6>mailfalso@dragonmarket.com.ar</h6>
             </div>
             <div class="row">
                 <i class="fas fa-phone" style="font-size: 1em; margin-right: 10px"></i><h6>(011) 4666-3333</h6>

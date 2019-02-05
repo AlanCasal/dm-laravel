@@ -3,6 +3,7 @@
 
 <head>
 	@include('components/head')
+
 </head>
 
 <body>

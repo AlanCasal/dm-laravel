@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-md navbar-light fixed-top" id="navbar-edit">
+=======
+{{-- https://stackoverflow.com/questions/42586729/bootstrap-4-change-hamburger-toggler-color --}}
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top" id="navbar-edit">
+>>>>>>> e661149d45e839e71274a7000401731b30eb9166
 	<div class="container">
 
 		{{-- Logo --}}
@@ -8,12 +13,12 @@
 		</a>
 
 		{{-- Boton toggler responsive --}}
-		<button type="button" class="navbar-toggler" data-toggle='collapse' data-target='#navbarSupportedContent'>
+		<button class="navbar-toggler navbar-default" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
 		{{-- Contenido a colapsar --}}
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse" id="navbarMenu">
 
 			{{-- Search box --}}
 			<div class="row no-gutters ml-auto col-lg-6">
@@ -43,6 +48,6 @@
 				</li>
 			</ul>
 
-		</div>
-	</div>
+		</div> {{-- collapse --}}
+	</div> {{-- container --}}
 </nav>
