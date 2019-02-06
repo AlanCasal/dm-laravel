@@ -16,7 +16,7 @@
 		<div class="collapse navbar-collapse" id="navbarMenu">
 
 			{{-- Search box --}}
-			<div class="ml-auto d-none d-lg-inline-block col-lg-6">
+			<div class="ml-auto col-lg-6 d-none d-lg-inline-block">
 				<div class="row no-gutters">
 					<div class="col">
 						<input class="form-control form-control-no-border border-info border-right-0 rounded-0" type="search" value="" placeholder="Buscar productos...">
@@ -31,17 +31,22 @@
 
 			{{-- Botones --}}
 			<ul class="navbar-nav ml-auto flex-row">
-				<li class="nav-item">
+				<li class="nav-item d-inline-block d-lg-none">
+					<a href="#" class="nav-link"><i class="fas fa-search"></i></a>
+				</li>
+				<li class="nav-item ml-auto">
 					<a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> (0)</a>
 				</li>
 				<li class="nav-item ml-auto">
-					<a href="#" class="nav-link"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+					<a href="#" class="nav-link d-none d-lg-inline-block"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+					<a href="#" class="nav-link d-inline-block d-lg-none"><i class="fas fa-sign-in-alt"></i></a>
 				</li>
 				<li class="nav-item ml-auto">
-					<a href="#" class="nav-link"><i class="fas fa-user-edit"></i> Registrarse</a>
+					<a href="#" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user-edit"></i> Registrarse</a>
+					<a href="#" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user-edit"></i></a>
 				</li>
 				<li class="nav-item ml-auto">
-					<a href="#" class="nav-link"><i class="fas fa-question-circle"></i> Ayuda</a>
+					<a href="#" class="nav-link d-inline-block d-lg-none"><i class="fas fa-question-circle"></i></a>
 				</li>
 			</ul>
 
