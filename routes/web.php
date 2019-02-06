@@ -1,7 +1,11 @@
 <?php
 
 Route::get('/', function () {
-	return view('index');
+	return view('home');
+});
+
+Route::get('/ayuda', function () {
+	return view('ayuda');
 });
 
 // Route::get('/user/{id}', function($id) {

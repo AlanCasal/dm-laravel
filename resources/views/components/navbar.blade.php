@@ -2,7 +2,7 @@
 	<div class="container">
 
 		{{-- Logo --}}
-		<a class="navbar-brand" href="#">
+		<a class="navbar-brand" href="/">
 			<img src='{{asset("img/DMHead.png")}}' alt='Logo' style='width: 50px;'>
 			<img class="d-none d-sm-inline-block" src='{{asset("img/DMText.png")}}' alt='Logo' style='width: 200px;'>
 		</a>
@@ -48,7 +48,7 @@
 					<a href="#" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user-edit fa-lg"></i></a>
 				</li>
 				<li class="nav-item ml-auto">
-					<a href="#" class="nav-link d-none d-lg-inline-block"><i class="fas fa-question-circle"></i> Ayuda</a>
+					<a href="/ayuda" class="nav-link d-none d-lg-inline-block"><i class="fas fa-question-circle"></i> Ayuda</a>
 					<a href="#" class="nav-link d-inline-block d-lg-none"><i class="fas fa-question-circle fa-lg"></i></a>
 				</li>
 			</ul>
