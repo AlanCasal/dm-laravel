@@ -127,21 +127,22 @@ footer {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    /* margin-top: 30px; */
+    /* height: 100px; */
     bottom: 0;
     left: 0;
     right: 0;
-	height: 100px;
+}
+
+.cajasFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
     background-color: #173a69;
     background-image: url(../img/bg_dragon.jpg);
     background-repeat: repeat;
     background-blend-mode: color-burn;
-}
-
-/* .cajasFooter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
 }
 
 .cajasFooter>div {
@@ -154,7 +155,7 @@ div.container-fluid {
 
 .redesLogos {
     display: inline-block;
-} */
+}
 
 .card ul li {
     line-height: 90%;
