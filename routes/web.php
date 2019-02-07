@@ -8,6 +8,10 @@ Route::get('/ayuda', function () {
 	return view('ayuda');
 });
 
+Route::get('/sidebar', function () {
+	return view('sidebar');
+});
+
 // Route::get('/user/{id}', function($id) {
 // 	return "Mostrando detalle de user {$id}";
 // })->where('id', '[0-9]+'); // EXPRESIÓN REGULTAR: el parametro que recibe tiene que ser un numero

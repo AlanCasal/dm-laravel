@@ -3,8 +3,8 @@
 @section('title', 'Ayuda - Dragon Market - Equipos y Componentes para Gamers')
 
 @section('section')
-	<div class="container" style="margin-top: 100px; margin-bottom: 100px">
-		<div class="col-8 d-flex justify-content-center">
+	<div class="container" style="margin-top: 150px; margin-bottom: 100px">
+		<div class="container col-8 ">
 
 		<center>
 			<h2><i class="fas fa-question-circle" style="font-size:1em; margin-right: 10px; margin-top: 20px"></i>

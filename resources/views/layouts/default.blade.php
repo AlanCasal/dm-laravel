@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang ="en">
+<html lang="en">
 
 <head>
 	@include('components/head')
 </head>
 
 <body>
-	@include('components/navbar')
+	<div class="page-wrapper chiller-theme toggled">
 
-	@yield('section')
+		@include('components/navbar')
 
-	@include('components/footer')
+		@include('sidebar')
 
-	@include('components/scripts')
+		<main class="page-content">
+			@yield('section')
+
+			@include('components/footer')
+		</main>
+
+		@include('components/scripts')
+	</div> {{-- wrapper --}}
 </body>
 
 </html>

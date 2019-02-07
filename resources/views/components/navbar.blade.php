@@ -1,19 +1,25 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="navbar-edit">
 	<div class="container-fluid d-flex flex-column">
-		<div class="container d-flex flex-row">
+		<div class="container-fluid d-flex flex-row">
+
+			{{-- Boton toggler responsive --}}
+			{{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button> --}}
+
+			{{-- Sidebar button --}}
+			<a id="show-sidebar" class="btn btn-sm btn-light" href="#">
+				<i class="fas fa-bars"></i>
+			</a>
 
 			{{-- Logo --}}
-			<div class="logoImgs">
+			<div class="logoImgs ml-auto">
 				<a class="navbar-brand" href="/">
 					<img src='{{asset("img/DMHead.png")}}' alt='Logo' style='width: 50px;'>
 					<img class="d-none d-sm-inline-block" src='{{asset("img/DMText.png")}}' alt='Logo' style='width: 200px;'>
 				</a>
 			</div>
 
-			{{-- Boton toggler responsive --}}
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
 
 			{{-- Contenido a colapsar --}}
 			<div class="collapse navbar-collapse" id="navbarMenu">
