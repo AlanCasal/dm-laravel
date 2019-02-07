@@ -7,11 +7,8 @@
 
 	<div class="container">
 		<div class="row">
-			@include('components/categories')
-
 			@include('components/products1')
 			@include('components/products2')
-
 		</div> {{-- row --}}
 	</div> {{-- container --}}
 

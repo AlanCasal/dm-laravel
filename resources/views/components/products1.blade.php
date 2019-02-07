@@ -1,6 +1,5 @@
 {{-- 3 Cards grandes - ofertas PCs armadas --}}
-@for ($i=0; $i
-< 3; $i++) @php
+@for ($i=0; $i< 4; $i++) @php
 $pcRandom = rand(49, 54);
 $precioRandom = rand(2000, 8000) * 5;
 @endphp

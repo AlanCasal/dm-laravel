@@ -36,10 +36,10 @@
 
 		</div> {{-- d flex --}}
 		<center>
-		<p class="" style="color: white; font-size: 0.7em;">
+		<p style="color: white; font-size: 0.7em;">
 			Dragon Market S.A. CUIT:30-66667777-0 |
 			Powered by <a href="https://www.mercadoshops.com.ar/" target="_blank" style="color: white"><strong>MercadoShops</strong></a> |
-			Developed by <strong>SteamFox Studios</strong> | ® Copyright 2019 - All rights reserved
+			Developed by <a href="https://youtu.be/GXeec2l-v-s?t=256" target="_blank" style="color: white"><strong>SteamFox Studios</strong></a> | ® Copyright 2019 - All rights reserved
 		</p>
 		</center>
 	</div> {{-- container --}}
