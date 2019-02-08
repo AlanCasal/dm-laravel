@@ -24,6 +24,16 @@
     color: black !important
 }
 
+/* #sticky-nav ul {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+} */
+
 .menuBotones li a {
     color: white !important;
 }
