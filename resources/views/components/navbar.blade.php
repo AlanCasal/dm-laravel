@@ -63,42 +63,42 @@
 	</div> {{-- container --}}
 </div>
 
-<nav class="navbar navbar-expand-sm sticky-top navbar-dark" id="sticky-nav">
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark d-none d-sm-block" id="sticky-nav">
 	<div class="container-fluid">
 		<div class="menuBotones container-fluid">
 
 			<ul class="justify-content-center nav">
 				<li class="nav-item">
 					<img src="{{asset('img/icon_pc.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>PCS ARMADAS</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PCS ARMADAS</strong></a>
 				</li>
 				<li class="nav-item">
 					<img src="{{asset('img/icon_fuente.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>FUENTES</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>FUENTES</strong></a>
 				</li>
 				<li class="nav-item">
 					<img src="{{asset('img/icon_placa.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>PLACAS DE VIDEO</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PLACAS DE VIDEO</strong></a>
 				</li>
 				<li class="nav-item">
 					<img src="{{asset('img/icon_ram.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>MEMORIAS RAM</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MEMORIAS RAM</strong></a>
 				</li>
 				<li class="nav-item">
 					<img src="{{asset('img/icon_mother.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>MOTHERBOARDS</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MOTHERBOARDS</strong></a>
 				</li>
 				<li class="nav-item">
 					<img src="{{asset('img/icon_micro.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>PROCESADORES</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PROCESADORES</strong></a>
 				</li>
 				<li class="nav-item">
 					<img src="{{asset('img/icon_gabinete.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>GABINETES</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>GABINETES</strong></a>
 				</li>
 				<li class="nav-item">
 					<img src="{{asset('img/icon_monitor.png')}}" alt="">
-					<a href="#" class="nav-link d-none d-lg-inline-block" style="font-size: 1.3em"><strong>MONITORES</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MONITORES</strong></a>
 				</li>
 			</ul>
 
