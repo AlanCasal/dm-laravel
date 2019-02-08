@@ -1,4 +1,4 @@
-<div id="carousel" class="carousel slide" data-ride="carousel" style="margin-top: 80px">
+<div id="carousel" class="carousel slide" data-ride="carousel">
 	{{-- Imágenes --}}
 	<div class="carousel-inner">
 		@for ($i=1; $i <= 3; $i++)

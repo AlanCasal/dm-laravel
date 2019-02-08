@@ -6,20 +6,13 @@
 </head>
 
 <body>
-	<div class="page-wrapper chiller-theme toggled">
+	@include('components/navbar')
 
-		@include('components/navbar')
+	@yield('section')
 
-		@include('sidebar')
+	@include('components/footer')
 
-		<main class="page-content">
-			@yield('section')
-
-			@include('components/footer')
-		</main>
-
-		@include('components/scripts')
-	</div> {{-- wrapper --}}
+	@include('components/scripts')
 </body>
 
 </html>
