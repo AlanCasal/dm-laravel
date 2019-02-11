@@ -63,7 +63,7 @@
 	</div> {{-- container --}}
 </div>
 
-<nav class="navbar navbar-expand-sm sticky-top navbar-dark d-none d-sm-block" id="sticky-nav">
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark d-none d-lg-block" id="sticky-nav">
 	<div class="container-fluid">
 		<div class="menuBotones container-fluid">
 

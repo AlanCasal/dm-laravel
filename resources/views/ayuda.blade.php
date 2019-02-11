@@ -3,7 +3,7 @@
 @section('title', 'Ayuda - Dragon Market - Equipos y Componentes para Gamers')
 
 @section('section')
-	<div class="container" style="margin-top: 150px; margin-bottom: 100px">
+	<div class="container" style="margin-bottom: 100px">
 		<div class="container col-8 ">
 
 		<center>
@@ -16,13 +16,13 @@
 			<div class="card">
 				<div class="card-header" id="heading1">
 					<h5 class="mb-0">
-						<button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
 							¿CUÁLES SON LAS FORMAS DE PAGO DISPONIBLES?
 						</button>
 					</h5>
 				</div>
 
-				<div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordion">
+				<div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordion">
 					<div class="card-body">
 						<p><span>Mercado Pago</span>
 							<br> Tarjeta de crédito (Mercado pago)
