@@ -5,7 +5,7 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
-	return 'SOY LA RUTAAAA';
+	return 'SOY LA COSA!';
 });
 
 Route::get('/ayuda', function () {
@@ -15,6 +15,9 @@ Route::get('/ayuda', function () {
 Route::get('/sidebar', function () {
 	return view('sidebar');
 });
+
+Route::ge
+
 
 // Route::get('/user/{id}', function($id) {
 // 	return "Mostrando detalle de user {$id}";
