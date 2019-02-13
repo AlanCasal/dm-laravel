@@ -4,6 +4,10 @@ Route::get('/', function () {
 	return view('home');
 });
 
+Route::get('/users', function () {
+	return 'SOY LA RUTAAAA';
+});
+
 Route::get('/ayuda', function () {
 	return view('ayuda');
 });
