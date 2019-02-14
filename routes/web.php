@@ -16,9 +16,6 @@ Route::get('/sidebar', function () {
 	return view('sidebar');
 });
 
-Route::ge
-
-
 // Route::get('/user/{id}', function($id) {
 // 	return "Mostrando detalle de user {$id}";
 // })->where('id', '[0-9]+'); // EXPRESIÓN REGULTAR: el parametro que recibe tiene que ser un numero
