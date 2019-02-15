@@ -69,35 +69,35 @@
 
 			<ul class="justify-content-center nav">
 				<li class="nav-item">
-					<img src="{{asset('img/icon_pc.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_pc.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PCS ARMADAS</strong></a>
 				</li>
 				<li class="nav-item">
-					<img src="{{asset('img/icon_fuente.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_fuente.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>FUENTES</strong></a>
 				</li>
 				<li class="nav-item">
-					<img src="{{asset('img/icon_placa.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_placa.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PLACAS DE VIDEO</strong></a>
 				</li>
 				<li class="nav-item">
-					<img src="{{asset('img/icon_ram.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_ram.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MEMORIAS RAM</strong></a>
 				</li>
 				<li class="nav-item">
-					<img src="{{asset('img/icon_mother.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_mother.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MOTHERBOARDS</strong></a>
 				</li>
 				<li class="nav-item">
-					<img src="{{asset('img/icon_micro.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_micro.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PROCESADORES</strong></a>
 				</li>
 				<li class="nav-item">
-					<img src="{{asset('img/icon_gabinete.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_gabinete.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>GABINETES</strong></a>
 				</li>
 				<li class="nav-item">
-					<img src="{{asset('img/icon_monitor.png')}}" alt="">
+					{{-- <img src="{{asset('img/icon_monitor.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MONITORES</strong></a>
 				</li>
 			</ul>

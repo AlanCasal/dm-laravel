@@ -1,8 +1,6 @@
 <?php
 
-Route::get('/', function () {
-	return view('home');
-});
+Route::get('/', 'MainController@homeShowProducts');
 
 Route::get('/users', function () {
 	return 'SOY LA COSA!';
