@@ -8,8 +8,7 @@ class MainController extends Controller
 {
     public function homeShowProducts()
     {
-        $activeCategories = CategoryController::showCategories();
-
-        return view('/home', ['activeCategories' => $categories]);
+        // $activeCategories = CategoryController::showCategories();
+        return view('/home');
     }
 }

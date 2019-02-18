@@ -2,16 +2,20 @@
 
 Route::get('/', 'MainController@homeShowProducts');
 
-Route::get('/users', function () {
-	return 'SOY LA COSA!';
-});
-
 Route::get('/ayuda', function () {
 	return view('ayuda');
 });
 
-Route::get('/sidebar', function () {
-	return view('sidebar');
+Route::get('/addUser', function () {
+	return view('addUser');
+});
+
+Route::get('/addCat', function () {
+	return view('addCat');
+});
+
+Route::get('/addProd', function () {
+	return view('addProd');
 });
 
 // Route::get('/user/{id}', function($id) {

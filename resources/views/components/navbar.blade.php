@@ -35,7 +35,7 @@
 
 				{{-- Botones --}}
 				<div class="menuBotones ml-auto">
-					<ul class="navbar-nav flex-row">
+					{{-- <ul class="navbar-nav flex-row">
 						<li class="nav-item d-inline-block d-lg-none">
 							<a href="#" class="nav-link"><i class="fas fa-search fa-lg"></i></a>
 						</li>
@@ -56,6 +56,21 @@
 							<a href="/ayuda" class="nav-link d-none d-lg-inline-block"><i class="fas fa-question-circle"></i> Ayuda</a>
 							<a href="#" class="nav-link d-inline-block d-lg-none"><i class="fas fa-question-circle fa-lg"></i></a>
 						</li>
+					</ul> --}}
+
+					<ul class="navbar-nav flex-row">
+						<li class="nav-item ml-auto">
+							<a href="/addUser" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user"></i> Add User</a>
+							<a href="/addUser" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user fa-lg"></i></a>
+						</li>
+						<li class="nav-item ml-auto">
+							<a href="/addCat" class="nav-link d-none d-lg-inline-block"><i class="fas fa-list-ol"></i> Add Cat</a>
+							<a href="/addCat" class="nav-link d-inline-block d-lg-none"><i class="fas fa-list-ol fa-lg"></i></a>
+						</li>
+						<li class="nav-item ml-auto">
+							<a href="/addProd" class="nav-link d-none d-lg-inline-block"><i class="fas fa-hdd"></i> Add Prod</a>
+							<a href="/addProd" class="nav-link d-inline-block d-lg-none"><i class="fas fa-hdd fa-lg"></i></a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -63,45 +78,37 @@
 	</div> {{-- container --}}
 </div>
 
-<nav class="navbar navbar-expand-sm sticky-top navbar-dark d-none d-lg-block" id="sticky-nav">
+{{-- <nav class="navbar navbar-expand-sm sticky-top navbar-dark d-none d-lg-block" id="sticky-nav">
 	<div class="container-fluid">
 		<div class="menuBotones container-fluid">
 
 			<ul class="justify-content-center nav">
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_pc.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PCS ARMADAS</strong></a>
 				</li>
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_fuente.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>FUENTES</strong></a>
 				</li>
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_placa.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PLACAS DE VIDEO</strong></a>
 				</li>
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_ram.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MEMORIAS RAM</strong></a>
 				</li>
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_mother.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MOTHERBOARDS</strong></a>
 				</li>
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_micro.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PROCESADORES</strong></a>
 				</li>
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_gabinete.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>GABINETES</strong></a>
 				</li>
 				<li class="nav-item">
-					{{-- <img src="{{asset('img/icon_monitor.png')}}" alt=""> --}}
 					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MONITORES</strong></a>
 				</li>
 			</ul>
 
 		</div>
 	</div>
-</nav>
+</nav> --}}
