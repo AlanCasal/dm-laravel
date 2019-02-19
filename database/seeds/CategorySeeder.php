@@ -6,20 +6,20 @@ use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
-    public function run()
-    {
-        foreach ($this->categories as $category)
-            Category::create([ 'name' => $category ]);
-    }
+	public function run()
+	{
+		foreach ($this->categories as $category)
+			Category::create([ 'name' => $category ]);
+	}
 
-    protected $categories = array(
-        'PCS ARMADAS',
-        'FUENTES',
-        'PLACAS DE VIDEO',
-        'MEMORIAS RAM',
-        'MOTHERBOARDS',
-        'PROCESADORES',
-        'GABINETES',
-        'MONITORES'
-    );
+	protected $categories = array(
+		'PCS ARMADAS',
+		'FUENTES',
+		'PLACAS DE VIDEO',
+		'MEMORIAS RAM',
+		'MOTHERBOARDS',
+		'PROCESADORES',
+		'GABINETES',
+		'MONITORES'
+	);
 }
