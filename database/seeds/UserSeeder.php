@@ -5,16 +5,16 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User; // agrego el uso del modelo Category para hacerle consultas
 
 class UserSeeder extends Seeder {
-    public function run() {
-        factory(User::class)->create([ // user prueba admin
-            'first_name' => 'Rodo',
-			'last_name' => 'Rodo',
-            'email' => 'rodo@rodo.com',
-            'password' => bcrypt('123'),
-            'is_admin' => true,
-			// 'avatar' => 'rodo.jpg'
-        ]);
+	public function run() {
+		factory(User::class)->create([ // user prueba admin
+			'first_name' => 'Rodo',
+			'last_name'  => 'Rodo',
+			'email'      => 'rodo@rodo.com',
+			'is_admin'   => true,
 
-		factory(User::class, 24)->create();
-    }
+			// 'avatar'  => 'rodo.jpg'
+		]);
+
+		factory(User::class)->times(24)->create();
+	}
 }

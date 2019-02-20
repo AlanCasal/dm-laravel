@@ -8,12 +8,13 @@ class DatabaseSeeder extends Seeder
 
 	public function run()
 	{
-		$this->truncateTables([ 'categories', 'products', 'users' ]); // agregar acá todas las tablas a truncar
+		// agregar acá todas las tablas a truncar
+		$this->truncateTables([ 'categories', 'products', 'users' ]);
 
 		// agregar acá todas las tablas a llenar con datos
-		$this->call(UserSeeder::class);
+		$this->call(UserSeeder    ::class);
 		$this->call(CategorySeeder::class);
-		$this->call(ProductSeeder::class);
+		$this->call(ProductSeeder ::class);
 	}
 
 	protected function truncateTables(array $tables)
