@@ -1,0 +1,219 @@
+{
+    "products": [{
+        "description": "Memoria Ram Ddr3 4gb 1600mhz Hynix",
+        "category_id": "1",
+        "price": "965.00"
+    }, {
+        "description": "Memoria Kingston Hyperx Fury 8gb Ddr3 1866 Mh",
+        "category_id": "1",
+        "price": "2910.00"
+    }, {
+        "description": "Memoria Pc 4gb Kingston Hyperx Fury Ddr3 1866mhz G",
+        "category_id": "1",
+        "price": "1359.00"
+    }, {
+        "description": "Memoria 4gb Samsung Original Ddr3 1333 Mhz Sodimm",
+        "category_id": "1",
+        "price": "1799.00"
+    }, {
+        "description": "Disco Rigido Western Digital Purple 1tb",
+        "category_id": "3",
+        "price": "2199.00"
+    }, {
+        "description": "Disco Rigido Wd 320gb 7200 3,5 Sata2 8mb",
+        "category_id": "3",
+        "price": "799.00"
+    }, {
+        "description": "Disco Solido Ssd Wd 500gb Blue Sata Western Digital",
+        "category_id": "3",
+        "price": "4999.00"
+    }, {
+        "description": "Disco Externo Wd Elements 1 Tb Usb 3.0 Portatil",
+        "category_id": "3",
+        "price": "2099.00"
+    }, {
+        "description": "Disco Rigido Western Digital Caviar Black 4tb",
+        "category_id": "3",
+        "price": "7399.00"
+    }, {
+        "description": "Fuente Pc Gamer 750w Atx Led Rgb",
+        "category_id": "12",
+        "price": "2563.00"
+    }, {
+        "description": "Fuente Alimentacion Pc Evga 700b 700w 80plus Bronce",
+        "category_id": "12",
+        "price": "3609.00"
+    }, {
+        "description": "Fuente Alimentacion Atx Noga Net 550w 24 Pines 20+4 500w Pc",
+        "category_id": "12",
+        "price": "318.00"
+    }, {
+        "description": "Fuente De Alimentacion De Ordenador Pc 600 Watts Atx 700w Pi",
+        "category_id": "12",
+        "price": "9785.00"
+    }, {
+        "description": "Gabinete Cooler Master Masterbox 5 Msi Edition Usb 3.0",
+        "category_id": "6",
+        "price": "2999.00"
+    }, {
+        "description": "Gabinete Pc Gamer Sentey Carved Usb 3.0 Con Coolers",
+        "category_id": "6",
+        "price": "779.00"
+    }, {
+        "description": "Motherboard Gigabyte Ga-z370 Aorus Gaming 5 ",
+        "category_id": "9",
+        "price": "9199.00"
+    }, {
+        "description": "Mother Gigabyte Ga H110m-h Intel H110 Ddr4 Hdmi Vga",
+        "category_id": "9",
+        "price": "1945.00"
+    }, {
+        "description": "Mother Gigabyte B360m Usb3.1 M.2 Vga Hdmi 8va S1151 B360",
+        "category_id": "9",
+        "price": "2999.00"
+    }, {
+        "description": "Motherboard Gigabyte Ga-z370-hd3 Intel 1151 Ddr4 Z370",
+        "category_id": "9",
+        "price": "4699.00"
+    }, {
+        "description": "Monitor Samsung 22 Ultra Slim Full Hd 1080 Gaming Vga Hdmi",
+        "category_id": "8",
+        "price": "4199.00"
+    }, {
+        "description": "Monitor Samsung 24 Curvo F390 Full Hd 1080 Freesync Hdmi Vga",
+        "category_id": "8",
+        "price": "5598.00"
+    }, {
+        "description": "Monitor Led 24 Samsung F350 Full Hd Hdmi 5ms 60hz",
+        "category_id": "8",
+        "price": "4799.00"
+    }, {
+        "description": "Placa Video Msi Geforce Gtx 1050ti 4gb Gaming X Gtx 1050 Ti",
+        "category_id": "2",
+        "price": "8799.00"
+    }, {
+        "description": "Placa De Video Geforce Gigabyte Gt710 1gb Ddr3 ",
+        "category_id": "2",
+        "price": "1809.00"
+    }, {
+        "description": "Placa Video Geforce Gtx 750 2gb Ddr5 Hdmi Dvi Vga Ex 1050",
+        "category_id": "2",
+        "price": "4399.00"
+    }, {
+        "description": "Placa De Video Asus Nvidia Geforce Gtx 1080 Strix 8gb Fullh4",
+        "category_id": "2",
+        "price": "23739.00"
+    }, {
+        "description": "Micro Procesador Amd Kaveri Apu A6 X2 7400k 3.9ghz Fm2",
+        "category_id": "4",
+        "price": "1409.00"
+    }, {
+        "description": "Micro Procesador Intel Core I5 8400 4.0ghz 6 Core",
+        "category_id": "4",
+        "price": "7839.00"
+    }, {
+        "description": "Micro Procesador Amd Ryzen 7 2700x 4.3ghz Octacore Am4",
+        "category_id": "4",
+        "price": "12789.00"
+    }, {
+        "description": "Micro Procesador Intel Core I7 8700k 4.7ghz Coffee Lake",
+        "category_id": "4",
+        "price": "13589.00"
+    }, {
+        "description": "Mouse Razer Gamer Deathadder Elite Chroma ",
+        "category_id": "11",
+        "price": "2309.00"
+    }, {
+        "description": "Mouse Genius Dx-110 Usb 1000 Dpi",
+        "category_id": "11",
+        "price": "90.00"
+    }, {
+        "description": "Mouse Genius Usb Optico 1000 Dpi Dx 110 Negr",
+        "category_id": "11",
+        "price": "107.00"
+    }, {
+        "description": "Mouse Gamer Genius Gx Gaming Ammox X1 400 3200dpi 1ms",
+        "category_id": "11",
+        "price": "709.00"
+    }, {
+        "description": "Teclado Mecanico Gamer Razer Blackwidow Chroma V2 En Espanol",
+        "category_id": "11",
+        "price": "5689.00"
+    }, {
+        "description": "Combo Kit Gamer Mouse Teclado Auricular C\/mic Retroiluminado",
+        "category_id": "11",
+        "price": "800.00"
+    }, {
+        "description": "Teclado Genius Kb-110x Black Usb Espanol",
+        "category_id": "11",
+        "price": "195.00"
+    }, {
+        "description": "Kit Teclado Mouse Inalambrico",
+        "category_id": "11",
+        "price": "319.00"
+    }, {
+        "description": "Kit Mouse Y Teclado Logitech Mk235 Inalambrico",
+        "category_id": "11",
+        "price": "559.00"
+    }, {
+        "description": "Teclado Genius Kb-125 Usb Black",
+        "category_id": "11",
+        "price": "199.00"
+    }, {
+        "description": "Asus Xonar Dsx 7.1 High Definition Audio Pci-e",
+        "category_id": "10",
+        "price": "2367.00"
+    }, {
+        "description": "Placa De Sonido Pci 4 Canales Directx 6.1 Noga Net",
+        "category_id": "10",
+        "price": "239.00"
+    }, {
+        "description": "Placa De Sonido Asus Xonar Dsx 7.1",
+        "category_id": "10",
+        "price": "1799.00"
+    }, {
+        "description": "Placa De Sonido Pci Netmak Nm-4ch Sonido 4 Canales",
+        "category_id": "10",
+        "price": "260.00"
+    }, {
+        "description": "Windows 10 Pro 32\/64 Bits",
+        "category_id": "5",
+        "price": "4958.00"
+    }, {
+        "description": "Corel Draw X7 32\/64 Bits",
+        "category_id": "5",
+        "price": "6420.00"
+    }, {
+        "description": "Adobe Photoshop Cc 2017 32\/64 Bits",
+        "category_id": "5",
+        "price": "4825.00"
+    }, {
+        "description": "Adobe Ilustrator CC 2017 32\/64 Bits",
+        "category_id": "5",
+        "price": "4975.00"
+    }, {
+        "description": "Pc Gamer Armada Intel Core I7 8700 8va Gen 1tb Disco 8gb Ram",
+        "category_id": "7",
+        "price": "20999.00"
+    }, {
+        "description": "Pc Armada Gamer Amd Ryzen 5 2400g Vega 1tb 8gb",
+        "category_id": "7",
+        "price": "14730.00"
+    }, {
+        "description": "Pc Armada Gamer Amd A8 9600 X10 Nucleos Video R7 Ddr4 Hdmi",
+        "category_id": "7",
+        "price": "8499.00"
+    }, {
+        "description": "Pc Gamer Armada | Cpu Intel I7 | 16gb 1tb Geforce Gtx 1080",
+        "category_id": "7",
+        "price": "59579.00"
+    }, {
+        "description": "Pc Armada Cpu Intel Core I5 7400 7th - 8gb Ddr4 - 1tb - Hdmi",
+        "category_id": "7",
+        "price": "14186.00"
+    }, {
+        "description": "Pc Armada Oficina Hogar Intel Celeron G4920 1tb Disco 4g Ram",
+        "category_id": "7",
+        "price": "8399.00"
+    }]
+}

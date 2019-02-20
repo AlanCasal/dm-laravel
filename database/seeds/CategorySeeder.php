@@ -13,13 +13,17 @@ class CategorySeeder extends Seeder
 	}
 
 	protected $categories = array(
-		'PCS ARMADAS',
-		'FUENTES',
-		'PLACAS DE VIDEO',
-		'MEMORIAS RAM',
-		'MOTHERBOARDS',
-		'PROCESADORES',
-		'GABINETES',
-		'MONITORES'
+		'MEMORIAS',
+        'PLACAS DE VIDEO',
+        'DISCOS RIGIDOS',
+        'MICRO PROCESADORES',
+        'SOFTWARE',
+        'GABINETES',
+        'EQUIPO ARMADO',
+        'MONITORES',
+        'MOTHERBOARD',
+        'PLACAS DE SONIDO',
+        'MOUSE / TECLADOS',
+        'FUENTES DE ALIMENTACION'
 	);
 }
