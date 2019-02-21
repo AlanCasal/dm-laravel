@@ -9,4 +9,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class UsersModuleTest extends TestCase
 {
 
+	/** @test */
+	public function homeTest()
+	{
+		$this->get('/')
+			->assertStatus(200);
+	}
 }
