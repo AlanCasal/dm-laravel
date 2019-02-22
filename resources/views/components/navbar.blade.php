@@ -78,37 +78,18 @@
 	</div> {{-- container --}}
 </div>
 
-{{-- <nav class="navbar navbar-expand-sm sticky-top navbar-dark d-none d-lg-block" id="sticky-nav">
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark d-none d-lg-block" id="sticky-nav">
 	<div class="container-fluid">
 		<div class="menuBotones container-fluid">
 
 			<ul class="justify-content-center nav">
+				@foreach ($activeCategories as $category)
 				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PCS ARMADAS</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>{{ $category->name }}</strong></a>
 				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>FUENTES</strong></a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PLACAS DE VIDEO</strong></a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MEMORIAS RAM</strong></a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MOTHERBOARDS</strong></a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PROCESADORES</strong></a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>GABINETES</strong></a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>MONITORES</strong></a>
-				</li>
+				@endforeach
 			</ul>
 
 		</div>
 	</div>
-</nav> --}}
+</nav>
