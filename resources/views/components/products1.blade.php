@@ -1,13 +1,13 @@
 {{-- 3 Cards grandes - ofertas PCs armadas --}}
-@foreach ($pcs as $pc)
+@foreach ($pcs as $pc) {{-- vienen del MainController --}}
 	<div class="card text-center col-sm-12 col-md-6 col-lg-3 shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 10px;">
-		<a href=""><img class="card-img-top" src='{{ asset("img/$pc->id.jpg") }}' alt=""></a>
+		<a href=""><img class="card-img-top" src='{{ asset("img/{$pc->id}.jpg") }}' alt=""></a>
 
 		<div class="card-body hover"></div>
 
 		<div class="card-footer bg-transparent">
 			<li>{{ $pc->description }}</li>
-			<h4 class="card-title">$ {{$pc->price}},00 ARS</h4>
+			<h4 class="card-title">$ {{ $pc->price }} ARS</h4>
 			<label><strong>Agregar al Carrito</strong></label>
 			<div class="d-flex justify-content-center">
 				<input class="col-4 form-control form-control-no-border border-info border-right-0 rounded-0" name="quantity" type="number" value="1">
