@@ -3,32 +3,31 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 
 class UsersModuleTest extends TestCase
 {
-	// migra la DB y ejecuta los tests dentro de una transacción de la DB. Para usar una DB alterna a la original al hacer Tests
-//	use RefreshDatabase;
+//	 migra la DB y ejecuta los tests dentro de una transacción de la DB. Para usar una DB alterna a la original al hacer Tests
+	use RefreshDatabase;
 	
 	/** @test */
 	public function homeTest()
 	{
 		
-		$this->truncateTables([ 'categories', 'products']);
+//		$this->truncateTables([ 'categories', 'products']);
 		
 		foreach ($this->categories as $category)
 			factory(Category::class)->create(['name' => $category]);
 		
-		foreach ($this->productsList($this->i) as $product => $column) { // foreacheo el array asociativo que traigo decodeado del json
-			factory(Product::class)->create([ // inserto la data usando eloquent (protip: eloquent usa los timestamps, otros métodos no)
+		foreach ($this->productsList($this->i) as $product => $column) { // foreacheo del array asociativo que traigo decodeado del json
+			factory(Product::class)->create([
 				'description' => $column['description'],
 				'category_id' => $column['category_id'],
 				'price'       => $column['price']
 			]);
 		}
-		
 		
 		$this->get('/')
 			->assertStatus(200);
