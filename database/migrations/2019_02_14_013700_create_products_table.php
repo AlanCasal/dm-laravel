@@ -23,8 +23,8 @@ class CreateProductsTable extends Migration
 			$table->string('description', 75); // hasta 75 caracteres
 			$table->decimal('price', 8, 2); // 8 enteros, 2 decimales
 
-//	        $table->integer('category_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa
-//			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); // establezco la relación de la clave foranea
+	        $table->integer('category_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa
+			$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); // establezco la relación de la clave foranea
 		});
 	}
 	
