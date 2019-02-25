@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
 	protected $categories = array(
 		'MEMORIAS',
         'PLACAS DE VIDEO',
-        'DISCOS RIGIDOS',
+        'DISCOS RÍGIDOS',
         'MICRO PROCESADORES',
         'SOFTWARE',
         'GABINETES',
@@ -24,6 +24,6 @@ class CategorySeeder extends Seeder
         'MOTHERBOARD',
         'PLACAS DE SONIDO',
         'MOUSE / TECLADOS',
-        'FUENTES DE ALIMENTACION'
+        'FUENTES DE ALIMENTACIÓN'
 	);
 }

@@ -7,7 +7,7 @@ use App\Models\Product; // agrego el uso del modelo Product para hacerle consult
 class ProductSeeder extends Seeder {
     private $i = 'products'; // el indice adentro del cual están los productos
 
-    public function productsList($i) { // json[produtos]
+    public function productsList($i) { // json[productos]
         $archivo = storage_path() . '/products.json'; // busco el json con los datos de los productos. storage_path() se para en la carpeta storage
         $products = json_decode(file_get_contents($archivo), true); // decodeo y convierto en array asociativo
         return $products[$i]; // devuelvo array asociativo
