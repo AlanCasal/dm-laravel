@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.layout')
 
 @section('title', 'Ayuda - Dragon Market - Equipos y Componentes para Gamers')
 

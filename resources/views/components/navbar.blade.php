@@ -68,8 +68,8 @@
 							<a href="/addCat" class="nav-link d-inline-block d-lg-none"><i class="fas fa-list-ol fa-lg"></i></a>
 						</li>
 						<li class="nav-item ml-auto">
-							<a href="/addProd" class="nav-link d-none d-lg-inline-block"><i class="fas fa-hdd"></i> Add Prod</a>
-							<a href="/addProd" class="nav-link d-inline-block d-lg-none"><i class="fas fa-hdd fa-lg"></i></a>
+							<a href="/admin-products" class="nav-link d-none d-lg-inline-block"><i class="fas fa-hdd"></i> Add Prod</a>
+							<a href="/admin-products" class="nav-link d-inline-block d-lg-none"><i class="fas fa-hdd fa-lg"></i></a>
 						</li>
 					</ul>
 				</div>

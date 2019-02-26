@@ -2,9 +2,11 @@
 
 Route::get('/', 'MainController@homeShowProducts');
 
-Route::get('/ayuda', function () {
-	return view('ayuda');
-});
+//Route::get('/ayuda', function () {
+//	return view('ayuda');
+//});
+
+Route::view('/ayuda', 'user.ayuda');
 
 Route::get('/addUser', function () {
 	return view('addUser');
@@ -14,8 +16,8 @@ Route::get('/addCat', function () {
 	return view('addCat');
 });
 
-Route::get('/addProd', function () {
-	return view('addProd');
+Route::get('/admin-products', function () {
+	return view('admin.admin-products');
 });
 
 // Route::get('/user/{id}', function($id) {

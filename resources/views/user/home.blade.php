@@ -3,7 +3,9 @@
 @section('title', 'HOME - Dragon Market - Equipos y Componentes para Gamers')
 
 @section('section')
-	@include('components/carousel1')
+    @include('components/navbar')
+
+    @include('components/carousel1')
 
 	<div class="container">
 		<div class="row">
