@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="888ab85d-b751-4c63-9919-b60ccab9841e" name="Default Changelist" comment="test sin">
+    <list default="true" id="888ab85d-b751-4c63-9919-b60ccab9841e" name="Default Changelist" comment="problema con el test...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/UsersModuleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UsersModuleTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,21 +18,7 @@
     <favorites_list name="dm-laravel" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/Feature/UsersModuleTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-              <folding>
-                <element signature="e#32#56#0#PHP" expanded="true" />
-                <element signature="e#1718#1939#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -216,7 +201,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -291,7 +276,8 @@
       <workItem from="1550942135779" duration="6875000" />
       <workItem from="1550949137391" duration="473000" />
       <workItem from="1551021122574" duration="5171000" />
-      <workItem from="1551064745143" duration="317000" />
+      <workItem from="1551064745143" duration="481000" />
+      <workItem from="1551139079883" duration="361000" />
     </task>
     <task id="LOCAL-00001" summary="probando git phpStorm">
       <created>1550868154395</created>
@@ -307,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550949501788</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="problema con el test...">
+      <created>1551065113368</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1551065113368</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -319,7 +312,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51003000" />
+    <option name="totallyTimeSpent" value="51528000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -332,7 +325,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1041" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24962178" />
       <window_info id="npm" order="1" side_tool="true" />
@@ -364,7 +356,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="probando git phpStorm" />
     <MESSAGE value="2da prueba git PhpStorm" />
-    <option name="LAST_COMMIT_MESSAGE" value="2da prueba git PhpStorm" />
+    <MESSAGE value="problema con el test..." />
+    <option name="LAST_COMMIT_MESSAGE" value="problema con el test..." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php">
@@ -600,7 +593,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Feature/UsersModuleTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
+        <state relative-caret-position="-155">
           <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
           <folding>
             <element signature="e#32#56#0#PHP" expanded="true" />
