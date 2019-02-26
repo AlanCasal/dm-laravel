@@ -11,13 +11,11 @@ class UsersModuleTest extends TestCase
 {
 //	 migra la DB y ejecuta los tests dentro de una transacción de la DB. Para usar una DB alterna a la original al hacer Tests
 	use RefreshDatabase;
-	
+
 	/** @test */
 	public function homeTest()
 	{
-		
-//		$this->truncateTables([ 'categories', 'products']);
-		
+		$this->truncateTables([ 'categories', 'products']);
 		foreach ($this->categories as $category)
 			factory(Category::class)->create(['name' => $category]);
 		
@@ -31,7 +29,6 @@ class UsersModuleTest extends TestCase
 		
 		$this->get('/')
 			->assertStatus(200);
-//			->assertSee('acá se estaría mostrando todo, no?');
 	}
 	
 	protected $categories = array(
