@@ -2,11 +2,9 @@
 
 Route::get('/', 'MainController@homeShowProducts');
 
-//Route::get('/ayuda', function () {
-//	return view('ayuda');
-//});
+Route::view('/ayuda', 'ayuda');
 
-Route::view('/ayuda', 'user.ayuda');
+Route::get('/admin-products', 'AdminProductController@index');
 
 Route::get('/addUser', function () {
 	return view('addUser');
@@ -14,10 +12,6 @@ Route::get('/addUser', function () {
 
 Route::get('/addCat', function () {
 	return view('addCat');
-});
-
-Route::get('/admin-products', function () {
-	return view('admin.admin-products');
 });
 
 // Route::get('/user/{id}', function($id) {

@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	@include('components/navbar')
+    @include('components/header')
 
 	@yield('section')
 
