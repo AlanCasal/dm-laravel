@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-	@include('components/head')
+	@include('components.head')
 </head>
 
 <body>
-    @include('components/header')
+    @include('components.header')
 
 	@yield('section')
 
-	@include('components/footer')
+	@include('components.footer')
 
-	@include('components/scripts')
+	@include('components.scripts')
 </body>
 
 </html>
