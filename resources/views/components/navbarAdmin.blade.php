@@ -5,6 +5,7 @@
             <ul class="justify-content-center nav">
                 <li class="nav-item">
                     <a href="admin-products" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>VER PRODS</strong></a>
+                    <a href="admin-products" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>VER USERS</strong></a>
                 </li>
             </ul>
 

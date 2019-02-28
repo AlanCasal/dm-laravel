@@ -4,7 +4,7 @@ Route::get('/', 'MainController@homeShowProducts');
 
 Route::view('/ayuda', 'ayuda');
 
-Route::get('/admin-products', 'AdminProductController@index');
+Route::get('/users', 'adminUsersController@index');
 
 Route::get('/addUser', function () {
 	return view('addUser');

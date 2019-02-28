@@ -60,8 +60,8 @@
 
                     <ul class="navbar-nav flex-row">
                         <li class="nav-item ml-auto">
-                            <a href="/addUser" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user"></i> Add User</a>
-                            <a href="/addUser" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user fa-lg"></i></a>
+                            <a href="/users" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user"></i> Add User</a>
+                            <a href="/users" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user fa-lg"></i></a>
                         </li>
                         <li class="nav-item ml-auto">
                             <a href="/addCat" class="nav-link d-none d-lg-inline-block"><i class="fas fa-list-ol"></i> Add Cat</a>
