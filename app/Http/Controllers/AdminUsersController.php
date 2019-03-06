@@ -47,7 +47,8 @@ class AdminUsersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('users')
+            ->with(['user' => User::find($id)]);
     }
 
     /**

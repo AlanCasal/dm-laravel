@@ -4,7 +4,7 @@
 
             {{-- Logo --}}
             <div class="logoImg">
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <img src='{{asset("img/DMHead.png")}}' alt='Logo' style='width: 50px;'>
                     <img class="d-none d-sm-inline-block" src='{{asset("img/DMText.png")}}' alt='Logo' style='width: 200px;'>
                 </a>
@@ -60,15 +60,15 @@
 
                     <ul class="navbar-nav flex-row">
                         <li class="nav-item ml-auto">
-                            <a href="/users" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user"></i> Add User</a>
-                            <a href="/users" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user fa-lg"></i></a>
+                            <a href="{{ route('users.index') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user"></i> Users</a>
+                            <a href="{{ route('users.index') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user fa-lg"></i></a>
                         </li>
                         <li class="nav-item ml-auto">
-                            <a href="/addCat" class="nav-link d-none d-lg-inline-block"><i class="fas fa-list-ol"></i> Add Cat</a>
+                            <a href="/addCat" class="nav-link d-none d-lg-inline-block"><i class="fas fa-list-ol"></i> Categories</a>
                             <a href="/addCat" class="nav-link d-inline-block d-lg-none"><i class="fas fa-list-ol fa-lg"></i></a>
                         </li>
                         <li class="nav-item ml-auto">
-                            <a href="/admin-products" class="nav-link d-none d-lg-inline-block"><i class="fas fa-hdd"></i> Add Prod</a>
+                            <a href="/admin-products" class="nav-link d-none d-lg-inline-block"><i class="fas fa-hdd"></i> Products</a>
                             <a href="/admin-products" class="nav-link d-inline-block d-lg-none"><i class="fas fa-hdd fa-lg"></i></a>
                         </li>
                     </ul>

@@ -1,10 +1,17 @@
 <?php
 
-Route::get('/', 'MainController@homeShowProducts');
+Route::get('/', 'MainController@homeShowProducts')
+    ->name('home');
 
-Route::view('/ayuda', 'ayuda');
+Route::view('/ayuda', 'ayuda')
+    ->name('help');
 
-Route::get('/users', 'adminUsersController@index');
+Route::get('/users', 'adminUsersController@index')
+    ->name('users.index');
+
+Route::get('/users/{id}', 'AdminUsersController@show')
+    ->where('id', '[0-9]+')
+    ->name('users.show');
 
 Route::get('/addUser', function () {
 	return view('addUser');
@@ -16,9 +23,9 @@ Route::get('/addCat', function () {
 
 // Route::get('/user/{id}', function($id) {
 // 	return "Mostrando detalle de user {$id}";
-// })->where('id', '[0-9]+'); // EXPRESIÓN REGULTAR: el parametro que recibe tiene que ser un numero
+// })->where('id', '[0-9]+'); // EXPRESIÓN REGULAR: el parámetro que recibe tiene que ser un numero
 //
-// Route::get('/user/nuevo', function() { // el parametro que recibe tiene que ser el string 'nuevo'
+// Route::get('/user/nuevo', function() { // el parámetro que recibe tiene que ser el string 'nuevo'
 // 	return 'Crear user nuevo';
 // });
 //
