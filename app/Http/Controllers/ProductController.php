@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class AdminProductController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,16 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        return view('admin-products')
-            ->with(['products' => Product::all()]);
+        $navbarItems = array(
+            'VER TODOS LOS PRODUCTOS',
+            'AGREGAR UN PRODUCTO',
+            'EDITAR UN PRODUCTO',
+            'ELIMINAR UN PRODUCTO'
+        );
+        
+        return view('products')
+            ->with(['products' => Product::orderBy('category_id')->paginate(20)])
+            ->with(['navbarItems' => $navbarItems]);
     }
 
     /**

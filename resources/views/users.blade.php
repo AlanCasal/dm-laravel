@@ -1,19 +1,19 @@
 @extends('layouts.layout')
 
-@section('title', 'users list')
+@section('title', 'Usuarios')
 
 @section('section')
-    @include('components.navbarAdmin')
-
+    @include('components.navbar')
     <ul>
-        @if (isset($users))
-            @forelse ($users as $user)
-                <li>{{ $user->first_name }} {{ $user->last_name }}, {{ $user->email }} -
-                    <a href="{{ route('users.show', ['id' => $user->id]) }}">Ver Detalle</a>
-                </li>
-            @empty
-                <li>No hay usuarios registrados. :(</li>
-            @endforelse
+        @if(isset($users))
+            @foreach ($users as $user)
+                <br/>
+                {{ $user->id }}. {{ $user->first_name }} {{ $user->last_name }}, {{ $user->email }} -
+                <a href="{{ route('users.show', ['id' => $user->id]) }}">Ver Detalle</a>
+            @endforeach
+
+            <br/><br/>
+            {{ $users->links() }}
 
         @elseif(isset($user))
             <li>Nombre: {{ $user->first_name }}</li>
@@ -25,13 +25,11 @@
                 @endif
             </li>
             <a href="{{ url()->previous() }}">Volver</a>
-        @endif
 
-        {{--@foreach ($users as $user)--}}
-            {{--<li>{{ $user->first_name }} {{ $user->last_name }}, {{ $user->email }} ---}}
-                {{--<a href="{{ url("/users/{$user->id}") }}">Ver Detalle</a>--}}
-            {{--</li>--}}
-        {{--@endforeach--}}
+        @else
+            No hay usuarios registrados. :(
+
+        @endif
     </ul>
 
     {{--<div class="container">--}}

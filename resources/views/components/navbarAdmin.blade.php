@@ -4,8 +4,9 @@
 
             <ul class="justify-content-center nav">
                 <li class="nav-item">
-                    <a href="admin-products" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PRODUCTS</strong></a>
-                    <a href="{{ route('users.index') }}" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>USERS</strong></a>
+                    <a href="{{ route('users.index') }}" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>USUARIOS</strong></a>
+                    <a href="{{ route('categories.index') }}" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>CATEGORÍAS</strong></a>
+                    <a href="{{ route('products.index') }}" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>PRODUCTOS</strong></a>
                 </li>
             </ul>
 

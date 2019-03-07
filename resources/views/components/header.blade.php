@@ -60,16 +60,16 @@
 
                     <ul class="navbar-nav flex-row">
                         <li class="nav-item ml-auto">
-                            <a href="{{ route('users.index') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user"></i> Users</a>
+                            <a href="{{ route('users.index') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-user"></i> Usuarios</a>
                             <a href="{{ route('users.index') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-user fa-lg"></i></a>
                         </li>
                         <li class="nav-item ml-auto">
-                            <a href="/addCat" class="nav-link d-none d-lg-inline-block"><i class="fas fa-list-ol"></i> Categories</a>
-                            <a href="/addCat" class="nav-link d-inline-block d-lg-none"><i class="fas fa-list-ol fa-lg"></i></a>
+                            <a href="{{ route('categories.index') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-list-ol"></i> Categorías</a>
+                            <a href="{{ route('categories.index') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-list-ol fa-lg"></i></a>
                         </li>
                         <li class="nav-item ml-auto">
-                            <a href="/admin-products" class="nav-link d-none d-lg-inline-block"><i class="fas fa-hdd"></i> Products</a>
-                            <a href="/admin-products" class="nav-link d-inline-block d-lg-none"><i class="fas fa-hdd fa-lg"></i></a>
+                            <a href="{{ route('products.index') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-hdd"></i> Productos</a>
+                            <a href="{{ route('products.index') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-hdd fa-lg"></i></a>
                         </li>
                     </ul>
                 </div>

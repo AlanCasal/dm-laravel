@@ -10,8 +10,10 @@ class MainController extends Controller
 	
 	public function homeShowProducts()
 	{
-		return view('home')
-				->with(['activeCategories' => Category::all()->where('active','=', true)])
+        $navbarItems = Category::where('active', '=', true)->orderBy('name')->pluck('name');
+        
+        return view('home')
+				->with(['navbarItems'      => $navbarItems])
 				->with(['pcs'              => Product ::all()->where('category_id', '=', 7)->random(4)])
 				->with(['products'         => Product ::all()->where('category_id','!=', 7)->random(6)]);
 	}

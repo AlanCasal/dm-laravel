@@ -6,12 +6,21 @@ Route::get('/', 'MainController@homeShowProducts')
 Route::view('/ayuda', 'ayuda')
     ->name('help');
 
-Route::get('/users', 'adminUsersController@index')
+// Users
+Route::get('/users', 'UserController@index')
     ->name('users.index');
 
-Route::get('/users/{id}', 'AdminUsersController@show')
+Route::get('/users/{id}', 'UserController@show')
     ->where('id', '[0-9]+')
     ->name('users.show');
+
+// Categories
+Route::get('categories', 'CategoryController@index')
+    ->name('categories.index');
+
+// Products
+Route::get('products', 'ProductController@index')
+    ->name('products.index');
 
 Route::get('/addUser', function () {
 	return view('addUser');
