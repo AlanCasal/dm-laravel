@@ -23,7 +23,7 @@ class UserController extends Controller
         );
         
         return view('users')
-            ->with(['users' => User::paginate(15)])
+            ->with(['users' => User::paginate(30)])
             ->with(['navbarItems' => $navbarItems]);
     }
 

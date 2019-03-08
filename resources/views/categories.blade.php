@@ -8,10 +8,11 @@
     <br/>
     <ul>
         @forelse($categories as $category)
-            <li>
-                {{ $category }}
-            </li>
+            <li> {{ $category }} </li>
+
         @empty
+            <li>No se encontraron categorías en la base de datos.</li>
+
         @endforelse
     </ul>
 

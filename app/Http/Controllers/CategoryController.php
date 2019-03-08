@@ -21,7 +21,7 @@ class CategoryController extends Controller
         );
         
         return view('categories')
-            ->with(['categories' => Category::all()->where('active', '=', true)->orderBy('name')->pluck('name')])
+            ->with(['categories'  => Category::where('active', true)->orderBy('name')->pluck('name')])
             ->with(['navbarItems' => $navbarItems]);
     }
 

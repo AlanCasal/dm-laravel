@@ -20,9 +20,9 @@ class ProductController extends Controller
             'EDITAR UN PRODUCTO',
             'ELIMINAR UN PRODUCTO'
         );
-        
+
         return view('products')
-            ->with(['products' => Product::orderBy('category_id')->paginate(20)])
+            ->with(['products'    => Product::orderBy('category_id')->paginate(30)])
             ->with(['navbarItems' => $navbarItems]);
     }
 
