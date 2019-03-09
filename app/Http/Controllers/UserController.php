@@ -57,7 +57,7 @@ class UserController extends Controller
     public function show($id)
     {
         return view('users')
-            ->with(['user' => User::find($id)]);
+            ->with(['user' => User::findOrFail($id)]);
     }
 
     /**

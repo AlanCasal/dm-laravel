@@ -62,4 +62,12 @@ class UsersModuleTest extends TestCase
 		$this->get('/')
 			->assertStatus(200);
 	}
+
+	/** @test */
+	public function error_404_findorfail()
+	{
+		$this->get('/users/999')
+			->assertStatus(404)
+			->assertSee('Página no encontrada');
+	}
 }
