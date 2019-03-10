@@ -1,17 +1,28 @@
 <?php
 
+/**
+ * Users
+ */
 Route::get('/', 'MainController@homeShowProducts')
     ->name('home');
 
-Route::view('/ayuda', 'ayuda')
+Route::view('/help', 'users.help')
     ->name('help');
 
+Route::get('/users/create', 'UserController@create')
+	->name('users.create');
+
+Route::post('/users/create', 'UserController@store');
+
+/**
+ * Admin
+ */
 // Users
 Route::get('/users', 'UserController@index')
     ->name('users.index');
 
-Route::get('/users/{id}', 'UserController@show')
-    ->where('id', '[0-9]+')
+Route::get('/users/{user}', 'UserController@show')
+    ->where('user', '[0-9]+')
     ->name('users.show');
 
 // Categories
