@@ -7,6 +7,6 @@
 
 	<form action="{{ url('users/create') }}" method="POST">
 		@csrf
-		<button type="submit">Crear Usuario</button>
+		<center><button type="submit">Crear Usuario</button></center>
 	</form>
 @endsection

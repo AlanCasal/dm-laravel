@@ -45,13 +45,22 @@ class UserController extends Controller
      */
     public function store()
     {
-        return 'Procesando info';
+//        $data = request()->all();
+        
+//        User::create([
+//            'first_name' => $data['first_name'],
+//            'last_name' => $data['last_name'],
+//            'email' => $data['email'],
+//            'password' => bcrypt($data['password'])
+//        ]);
+        
+        return redirect()->route('users.index');
     }
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param \App\Models\User $user
+	 redirect()->$this->route()'users.index;
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
     public function show(User $user)
