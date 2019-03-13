@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
 use Tests\TestCase;
@@ -29,9 +28,9 @@ class UsersModuleTest extends TestCase
     );
     
     private $i = 'products'; // el índice adentro del cual están los productos
-    
     public function productsList($i)
-    { // json[productos]
+    {
+    	// json[productos]
         $archivo = storage_path() . '/products.json'; // busco el json con los datos de los productos. storage_path() se para en la carpeta storage
         $products = json_decode(file_get_contents($archivo), true); // decodeo y convierto en array asociativo
         return $products[$i]; // devuelvo array asociativo
@@ -87,12 +86,12 @@ class UsersModuleTest extends TestCase
     {
         $this->withoutExceptionHandling();
     
-        User::create([
-            'first_name' => 'Naty',
-            'last_name' => 'The Starfish',
-            'email' => 'naty@thestarfish.com',
-            'password' => bcrypt(123456),
-        ]);
+        //User::create([
+        //    'first_name' => 'Naty',
+        //    'last_name' => 'The Starfish',
+        //    'email' => 'naty@thestarfish.com',
+        //    'password' => bcrypt(123456),
+        //]);
         
         $this->post('/users/create', [
             'first_name' => 'Naty',
