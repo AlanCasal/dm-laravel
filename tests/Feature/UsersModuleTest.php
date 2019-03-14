@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -86,13 +87,6 @@ class UsersModuleTest extends TestCase
     {
         $this->withoutExceptionHandling();
     
-        //User::create([
-        //    'first_name' => 'Naty',
-        //    'last_name' => 'The Starfish',
-        //    'email' => 'naty@thestarfish.com',
-        //    'password' => bcrypt(123456),
-        //]);
-        
         $this->post('/users/create', [
             'first_name' => 'Naty',
             'last_name' => 'The Starfish',
@@ -108,4 +102,135 @@ class UsersModuleTest extends TestCase
             'avatar' => 'public/img/default.jpg'
         ]);
     }
+
+	/** @test */
+	public function name_is_required()
+	{
+		//$this->withoutExceptionHandling();
+
+		$this->from(route('users.create'))
+			->post(route('users.create'), [
+				'first_name' => '',
+				'last_name' => 'Rodo',
+				'email' => 'rodo@rodo.com',
+				'password' => 123456,
+			])
+			->assertRedirect(route('users.create'))
+			->assertSessionHasErrors([ 'first_name' => 'Por favor ingresá tu nombre'
+			]); // error al no recibir nombre
+
+		//$this->assertEquals(0, User::count()); // espera 0 users creados, cuenta los users en la db
+		//$this->assertDatabaseMissing('users', [
+		//	'email' => 'rodo@rodo.com'
+		//]);
+	}
+
+	/** @test */
+	public function email_is_required()
+	{
+		//$this->withoutExceptionHandling();
+
+		$this->from(route('users.create'))
+			->post(route('users.create'), [
+				'first_name' => 'Rodo',
+				'last_name' => 'Rodo',
+				'email' => '',
+				'password' => 123456,
+			])
+			->assertRedirect(route('users.create'))
+			->assertSessionHasErrors([ 'email' ]); // error al no recibir email
+
+			$this->assertEquals(0, User::count()); // espera 0 users creados, cuenta los users en la db
+		//$this->assertDatabaseMissing('users', [
+		//	'email' => 'rodo@rodo.com'
+		//]);
+	}
+
+	/** @test */
+	public function email_invalid()
+	{
+		//$this->withoutExceptionHandling();
+
+		$this->from(route('users.create'))
+			->post(route('users.create'), [
+				'first_name' => 'Rodo',
+				'last_name' => 'Rodo',
+				'email' => 'emailinvalido',
+				'password' => 123456,
+			])
+			->assertRedirect(route('users.create'))
+			->assertSessionHasErrors([ 'email' ]); // error al no recibir email
+
+		$this->assertEquals(0, User::count()); // espera 0 users creados, cuenta los users en la db
+		//$this->assertDatabaseMissing('users', [
+		//	'email' => 'rodo@rodo.com'
+		//]);
+	}
+
+	/** @test */
+	public function email_unique()
+	{
+		//$this->withoutExceptionHandling();
+
+		factory(User::class)->create([
+			'email' => 'rodo@rodo.com'
+		]);
+
+		$this->from(route('users.create'))
+			->post(route('users.create'), [
+				'first_name' => 'Rodo',
+				'last_name' => 'Rodo',
+				'email' => 'rodo@rodo.com',
+				'password' => 123456,
+			])
+			->assertRedirect(route('users.create'))
+			->assertSessionHasErrors([ 'email' ]); // error al no recibir email
+
+		$this->assertEquals(1, User::count()); // espera 0 users creados, cuenta los users en la db
+		//$this->assertDatabaseMissing('users', [
+		//	'email' => 'rodo@rodo.com'
+		//]);
+	}
+
+	/** @test */
+	public function password_is_required()
+	{
+		//$this->withoutExceptionHandling();
+
+		$this->from(route('users.create'))
+			->post(route('users.create'), [
+				'first_name' => 'Rodo',
+				'last_name' => 'Rodo',
+				'email' => 'foxy.adc@gmail.com',
+				'password' => '',
+			])
+			->assertRedirect(route('users.create'))
+			->assertSessionHasErrors([ 'password' ]); // error al no recibir email
+
+		$this->assertEquals(0, User::count()); // espera 0 users creados, cuenta los users en la db
+		//$this->assertDatabaseMissing('users', [
+		//	'email' => 'rodo@rodo.com'
+		//]);
+	}
+
+	/** @test */
+	public function password_length()
+	{
+		//$this->withoutExceptionHandling();
+
+		$this->from(route('users.create'))
+			->post(route('users.create'), [
+				'first_name' => 'Rodo',
+				'last_name' => 'Rodo',
+				'email' => 'foxy.adc@gmail.com',
+				'password' => '12345',
+			])
+			->assertRedirect(route('users.create'))
+			->assertSessionHasErrors([ 'password' ]); // error al no recibir email
+
+		$this->assertEquals(0, User::count()); // espera 0 users creados, cuenta los users en la db
+		//$this->assertDatabaseMissing('users', [
+		//	'email' => 'rodo@rodo.com'
+		//]);
+	}
 }
