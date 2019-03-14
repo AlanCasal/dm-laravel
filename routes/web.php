@@ -14,6 +14,11 @@ Route::get('/users/create', 'UserController@create')
 
 Route::post('/users/create', 'UserController@store');
 
+Route::get('/users/{user}/edit', 'UserController@edit')
+    ->name('users.edit');
+
+Route::put('/users/{user}', 'UserController@update');
+
 /**
  * Admin
  */

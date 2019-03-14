@@ -233,4 +233,27 @@ class UsersModuleTest extends TestCase
 		//	'email' => 'rodo@rodo.com'
 		//]);
 	}
+    
+    /** @test */
+    public function update_user()
+    {
+        $this->withoutExceptionHandling();
+        
+        $user = factory(User::class)->create();
+        
+        $this->put("/users/{$user->id}", [
+            'first_name' => 'Naty',
+            'last_name' => 'The Starfish',
+            'email' => 'naty@thestarfish.com',
+            'password' => 123456,
+        ])->assertRedirect(route('users.index'));
+        
+        $this->assertCredentials([
+            'first_name' => 'Naty',
+            'last_name' => 'The Starfish',
+            'email' => 'naty@thestarfish.com',
+            'password' => 123456,
+//            'avatar' => 'public/img/default.jpg'
+        ]);
+    }
 }
