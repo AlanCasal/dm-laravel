@@ -99,19 +99,21 @@ class UserController extends Controller
 	 */
     public function update(User $user)
     {
+//        $data = request()->all();
 	    $data = request()->validate([
 		    'first_name' => 'required',
 		    'last_name' => 'required',
-		    'email' => ['required', 'email', 'unique:users,email'],
+		    'email' => ['required', 'email'],
 		    'password' => ['required', 'min:6', 'max:20']
 	    ], [
 		    'first_name.required' => 'Por favor ingresá tu nombre'
 	    ]);
+     
 	    $data['password'] = bcrypt($data['password']);
 
     	$user->update($data);
 
-    	return redirect()->route('users.show', ['user' => $user]); // Laravel toma automáticamente el id
+    	return redirect()->route('users.show', ['user' => $user]);
     }
 
     /**

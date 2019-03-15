@@ -11,8 +11,9 @@
 			</div>
 		@endif
 
-		<form action="{{ url('users/create') }}" method="POST">
-			@csrf
+		<form action="{{ url("users/{$user->id}") }}" method="POST">
+			@method('PUT')
+            @csrf
 			<label for="first_name">Nombre </label><br/>
 			<input type="text" name="first_name" id="first_name" placeholder="Ingresá tu nombre" value="{{ old('first_name', $user->first_name) }}"><br/><br/>
 			@if($errors->has('first_name')) <p>{{ $errors->first('first_name') }}</p> @endif
@@ -29,7 +30,7 @@
 			<input type="password" name="password" id="password" placeholder="Ingresá una contraseña"><br/><br/><br/>
 			@if($errors->has('password')) <p>{{ $errors->first('password') }}</p> @endif
 
-			<button type="submit" class="btn btn-primary">Crear Usuario</button>
+			<button type="submit" class="btn btn-primary">Actualizar datos</button>
 		</form>
 	</center>
 @endsection
