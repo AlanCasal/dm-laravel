@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         return view('users.create');
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -65,7 +65,7 @@ class UserController extends Controller
         
         return redirect()->route('users.index');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -77,7 +77,7 @@ class UserController extends Controller
         return view('users')
             ->with(['user' => $user]);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      * @param User $user
@@ -90,19 +90,30 @@ class UserController extends Controller
         return view('users.edit')
             ->with(['user' => $user]);
     }
-    
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param \App\Models\User $user
+	 * @return \Illuminate\Http\Response
+	 */
+    public function update(User $user)
     {
-        //
+	    $data = request()->validate([
+		    'first_name' => 'required',
+		    'last_name' => 'required',
+		    'email' => ['required', 'email', 'unique:users,email'],
+		    'password' => ['required', 'min:6', 'max:20']
+	    ], [
+		    'first_name.required' => 'Por favor ingresá tu nombre'
+	    ]);
+	    $data['password'] = bcrypt($data['password']);
+
+    	$user->update($data);
+
+    	return redirect()->route('users.show', ['user' => $user]); // Laravel toma automáticamente el id
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
