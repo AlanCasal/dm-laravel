@@ -1,2 +1,2 @@
 # dm-laravel
-e-commerce con laravel
+e-commerce con laravel + jquery (en desarrollo)
