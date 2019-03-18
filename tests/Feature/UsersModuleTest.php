@@ -374,11 +374,14 @@ class UsersModuleTest extends TestCase
 	}
 
 	/** @test */
-	public function password_is_required_when_updating()
+	public function password_optional_when_updating()
 	{
 		//$this->withoutExceptionHandling();
-
-		$user = factory(User::class)->create();
+        
+        $oldPass = 'clave_anterior';
+        $user = factory(User::class)->create([
+		    'password' => bcrypt($oldPass)
+        ]);
 
 		$this->from("/users/{$user->id}/edit")
 			->put("/users/{$user->id}", [
@@ -387,17 +390,22 @@ class UsersModuleTest extends TestCase
 				'email' => 'rodo@rodo.com',
 				'password' => '',
 			])
-			->assertRedirect("/users/{$user->id}/edit")
-			->assertSessionHasErrors(['password']);
+			->assertRedirect("/users/{$user->id}");
 
-		$this->assertDatabaseMissing('users', ['email' => 'rodo@rodo.com']);
+		$this->assertCredentials([
+            'first_name' => 'Rodo',
+		    'email' => 'rodo@rodo.com',
+            'password' => $oldPass
+        ]);
 	}
 
 	/** @test */
 	public function password_length_when_updating()
 	{
 		//$this->withoutExceptionHandling();
-
+        self::markTestIncomplete();
+        return;
+        
 		$user = factory(User::class)->create();
 
 		$this->from("/users/{$user->id}/edit")
@@ -412,4 +420,48 @@ class UsersModuleTest extends TestCase
 
 		$this->assertDatabaseMissing('users', ['email' => 'rodo@rodo.com']);
 	}
+    
+    /** @test */
+    public function same_email_when_updating()
+    {
+//        $this->withoutExceptionHandling();
+    
+        $existingEmail = 'existing.email@example.com';
+        factory(User::class)->create([
+            'email' => $existingEmail
+        ]);
+    
+        $newEmail = 'new.email@example.com';
+        $newUser = factory(User::class)->create([
+            'email' => $newEmail
+        ]);
+        
+        $this->from("/users/{$newUser->id}/edit")
+            ->put("/users/{$newUser->id}", [
+                'first_name' => 'Rodo',
+                'last_name' => 'Rodo',
+                'email' => $existingEmail,
+                'password' => '123123123',
+            ])
+            ->assertSessionHasErrors(['email'])
+            ->assertRedirect("/users/{$newUser->id}/edit");
+        
+    }
+    
+    /** @test */
+    public function delete_user()
+    {
+        $this->withoutExceptionHandling();
+        
+        $user = factory(User::class)->create();
+        
+        $this->delete("users/{$user->id}")
+            ->assertRedirect(route('users.index'));
+        
+        $this->assertDatabaseMissing('users', [
+            'id' => $user->id
+        ]);
+        
+//        $this->assertSame(0, User::count());
+    }
 }

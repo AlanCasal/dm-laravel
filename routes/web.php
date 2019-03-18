@@ -20,6 +20,8 @@ Route::get('/users/{user}/edit', 'UserController@edit')
 Route::put('/users/{user}', 'UserController@update')
     ->name('users.update');
 
+Route::delete('users/{user}', 'UserController@destroy');
+
 /**
  * Admin
  */
@@ -29,7 +31,7 @@ Route::get('/users', 'UserController@index')
 
 Route::get('/users/{user}', 'UserController@show')
     ->where('user', '[0-9]+')
-    ->name('users.show');
+    ->name('user.show');
 
 // Categories
 Route::get('categories', 'CategoryController@index')

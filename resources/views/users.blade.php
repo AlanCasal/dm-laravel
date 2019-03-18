@@ -9,7 +9,7 @@
             @foreach ($users as $user)
                 <br/>
                 {{ $user->id }}. {{ $user->first_name }} {{ $user->last_name }}, {{ $user->email }} -
-                <a href="{{ route('users.show', ['id' => $user->id]) }}">Ver Detalle</a>
+                <a href="{{ route('user.show', ['id' => $user->id]) }}">Ver Detalle</a>
             @endforeach
 
             <br/><br/>
@@ -24,7 +24,8 @@
                 @else Usuario
                 @endif
             </li>
-            <a href="{{ url()->previous() }}">Volver</a>
+            <a href="{{ route('users.edit', ['user' => $user->id]) }}">Editar</a><br/>
+            <a href="{{ route('users.index') }}">Volver al listado de usuarios</a>
 
         @else
             No hay usuarios registrados. :(
