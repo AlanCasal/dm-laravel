@@ -2,7 +2,7 @@
 
 @section('title', 'Usuarios')
 
-@section('section')
+@section('content')
     @include('components.navbar')
     <ul>
         <br/>
@@ -34,7 +34,7 @@
             <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                 @method('DELETE')
                 @csrf
-                <button type="submit" class="btn btn-danger">Borrar usuario</button>
+                <button type="submit" class="btn btn-link" style="font-size: 1em">Borrar usuario</button>
             </form>
             <a href="{{ route('users.index') }}">Volver al listado de usuarios</a>
 

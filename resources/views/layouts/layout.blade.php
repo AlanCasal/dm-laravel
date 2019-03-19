@@ -8,7 +8,7 @@
 <body>
     @include('components.header')
 
-	@yield('section')
+	@yield('content')
 
 	@include('components.footer')
 

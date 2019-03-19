@@ -2,7 +2,7 @@
 
 @section('title', 'Editar Usuario - Dragon Market - Equipos y Componentes para Gamers')
 
-@section('section')
+@section('content')
 	<center><h1>Editar Usuario</h1>
 
 		@if($errors->any())

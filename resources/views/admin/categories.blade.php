@@ -2,7 +2,7 @@
 
 @section('title', 'Admin - Categorías')
 
-@section('section')
+@section('content')
     @include('components.navbar')
 
     <br/>

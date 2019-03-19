@@ -2,7 +2,7 @@
 
 @section('title', 'HOME - Dragon Market - Equipos y Componentes para Gamers')
 
-@section('section')
+@section('content')
     @include('components.navbar')
     @include('components.carousel1')
 

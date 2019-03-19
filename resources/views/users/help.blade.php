@@ -2,7 +2,7 @@
 
 @section('title', 'Ayuda - Dragon Market - Equipos y Componentes para Gamers')
 
-@section('section')
+@section('content')
 	<div class="container" style="margin-bottom: 100px">
 		<div class="container col-8 ">
 
