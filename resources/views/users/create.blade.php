@@ -11,7 +11,7 @@
 		</div>
 	@endif
 
-	<form action="{{ url('users/create') }}" method="POST">
+	<form action="{{ route('users.store') }}" method="POST">
 		@csrf
 		<label for="first_name">Nombre </label><br/>
 		<input type="text" name="first_name" id="first_name" placeholder="Ingresá tu nombre" value="{{ old('first_name') }}"><br/><br/>

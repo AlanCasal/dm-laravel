@@ -52,19 +52,18 @@ class UserController extends Controller
             'last_name' => 'required',
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'min:6', 'max:20']
-            ], [
-                'first_name.required' => 'Por favor ingresá tu nombre'
             ]
+	        //['first_name.required' => 'Por favor ingresá tu nombre']
         );
         
-        User::create([
+        $newUser = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
         
-        return redirect()->route('users.index');
+        return redirect()->route('users.show', $newUser->id);
     }
 
     /**
@@ -109,13 +108,19 @@ class UserController extends Controller
 	        ] // , ['first_name.required' => 'Por favor ingresá tu nombre']
         );
 	    
-	    if ($data['password'] != null)
-    	    $data['password'] = bcrypt($data['password']);
+	    if ($data['password'] != null) {
+	    	if (strlen($data['password']) < 6
+		    || strlen($data['password']) > 20)
+	    	    return back()->withErrors(['password' => 'La pass debe tener entre 6 y 20 caracteres']);
+
+	    	else $data['password'] = bcrypt($data['password']);
+	    }
+
 	    else unset($data['password']);
-	    
+
     	$user->update($data);
 
-    	return redirect()->route('user.show', ['user' => $user]);
+    	return redirect()->route('users.show', ['user' => $user]);
     }
 
     /**
@@ -127,7 +132,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        
-        return redirect(route('users.index'));
+
+        return redirect()->route('users.index');
     }
 }

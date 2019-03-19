@@ -352,28 +352,6 @@ class UsersModuleTest extends TestCase
 	}
 
 	/** @test */
-	public function email_unique_when_updating()
-	{
-		self::markTestIncomplete();
-		return;
-		//$this->withoutExceptionHandling();
-
-		$user = factory(User::class)->create(['email' => 'rodo@rodo.com']);
-
-		$this->from("/users/{$user->id}/edit")
-			->put("/users/{$user->id}", [
-				'first_name' => 'Rodo',
-				'last_name' => 'Rodo',
-				'email' => 'rodo@rodo.com',
-				'password' => 123456,
-			])
-			->assertSessionHasErrors(['email'])
-			->assertRedirect("/users/{$user->id}/edit");
-
-		$this->assertEquals(1, User::count()); // espera 1 user creado, cuenta los users en la db
-	}
-
-	/** @test */
 	public function password_optional_when_updating()
 	{
 		//$this->withoutExceptionHandling();
@@ -402,21 +380,20 @@ class UsersModuleTest extends TestCase
 	/** @test */
 	public function password_length_when_updating()
 	{
+		self::markTestIncomplete();
+		return;
 		//$this->withoutExceptionHandling();
-        self::markTestIncomplete();
-        return;
-        
+
 		$user = factory(User::class)->create();
 
 		$this->from("/users/{$user->id}/edit")
 			->put("/users/{$user->id}", [
 				'first_name' => 'Rodo',
-				'last_name' => 'Rodo',
 				'email' => 'rodo@rodo.com',
-				'password' => 12345,
+				'password' => 321,
 			])
-			->assertRedirect("/users/{$user->id}/edit")
-			->assertSessionHasErrors(['password']);
+			->assertSessionHasErrors(['password'])
+			->assertRedirect("/users/{$user->id}/edit");
 
 		$this->assertDatabaseMissing('users', ['email' => 'rodo@rodo.com']);
 	}

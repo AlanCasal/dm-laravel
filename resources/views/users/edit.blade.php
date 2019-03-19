@@ -11,7 +11,7 @@
 			</div>
 		@endif
 
-		<form action="{{ url("users/{$user->id}") }}" method="POST">
+		<form action="{{ route('users.show', $user->id) }}" method="POST">
 			@method('PUT')
             @csrf
 			<label for="first_name">Nombre </label><br/>
@@ -32,5 +32,11 @@
 
 			<button type="submit" class="btn btn-primary">Actualizar datos</button>
 		</form>
+		<br/>
+
+
+		<br/>
+		<a href="{{ url()->previous() }}">Cancelar</a>
+		<br/><br/>
 	</center>
 @endsection
