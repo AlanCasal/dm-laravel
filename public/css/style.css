@@ -3,24 +3,18 @@
 }
 
 #navbar-edit {
-    background-image: url(../img/wallpaper/1.jpg);
-    background-color: #2b2626;
-    background-repeat: repeat;
-    background-blend-mode: color-burn;
+    background-color: rgba(0,0,0,0.8);
 }
 
 #navbar-edit .nav-link:hover {
-    /* background: rgba(0, 0, 0, 0.25); */
     color: red !important;
 }
 
 #sticky-nav {
-    /* background-color: #1b1b1b; */
     background-color: #c11808;
 }
 
 #sticky-nav .nav-link:hover {
-    /* background-color: rgba(0, 0, 0, 0.25); */
     color: black !important
 }
 
@@ -58,8 +52,11 @@
 }
 
 body {
-    background-image: url(../img/wallpaper/1.jpg);
-    background-repeat: repeat;
+    background: url(../img/wallpaper/1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     font-size: 1rem;
     justify-content: center;
     /* padding-top: 20px; */
@@ -102,10 +99,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #2b2626;
-    background-image: url(../img/wallpaper/1.jpg);
-    background-repeat: repeat;
-    background-blend-mode: color-burn;
+    background-color: rgba(0,0,0,0.8);
 }
 
 .card ul li {
@@ -170,90 +164,71 @@ p.card-text {
 
 /*login*/
 
-@import url('https://fonts.googleapis.com/css?family=Numans');
+/*html, body {*/
+    /*height: 100%;*/
+/*}*/
 
-html,body{
-    background-image: url(../img/wallpaper/1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+.big-container {
     height: 100%;
-    font-family: 'Numans', sans-serif;
 }
 
-.container{
-    height: 100%;
-    align-content: center;
-}
-
-.card{
+.login_card {
     height: 370px;
     margin-top: auto;
     margin-bottom: auto;
     width: 400px;
-    background-color: rgba(0,0,0,0.8) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
-.social_icon span{
+.login_social_icon span {
     font-size: 60px;
     margin-left: 10px;
     color: #FFC312;
 }
 
-.social_icon span:hover{
+.login_social_icon span:hover {
     color: white;
     cursor: pointer;
 }
 
-.card-header h3{
+.card-header-login h3 {
     color: white;
 }
 
-.social_icon{
+.login_social_icon {
     position: absolute;
     right: 20px;
     top: -45px;
 }
 
-.input-group-prepend span{
+.login-igp span {
     width: 50px;
     background-color: #FFC312;
     color: black;
-    border:0 !important;
+    border: 0 !important;
 }
 
-input:focus{
-    outline: 0 0 0 0  !important;
+input:focus {
+    outline: 0 0 0 0 !important;
     box-shadow: 0 0 0 0 !important;
 
 }
 
-.remember{
-    color: white;
-}
-
-.remember input
-{
-    width: 20px;
-    height: 20px;
-    margin-left: 15px;
-    margin-right: 5px;
-}
-
-.login_btn{
+.login_btn {
     color: black;
     background-color: #FFC312;
     width: 100px;
 }
 
-.login_btn:hover{
+.login_btn:hover {
     color: black;
     background-color: white;
 }
 
-.links{
+.login-links {
     color: white;
 }
 
-.links a{
+.login-links a {
     margin-left: 4px;
 }

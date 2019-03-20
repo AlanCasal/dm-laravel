@@ -23,7 +23,7 @@ class UserController extends Controller
             'ELIMINAR ADMINISTRADOR'
         );
         
-        return view('users')
+        return view('admin.users')
             ->with(['users' => User::paginate(30)])
             ->with(['navbarItems' => $navbarItems]);
     }
@@ -35,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('auth.register');
     }
 
     /**
@@ -74,7 +74,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users')
+        return view('admin.users')
             ->with(['user' => $user]);
     }
 

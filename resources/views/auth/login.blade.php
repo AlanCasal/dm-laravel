@@ -1,14 +1,14 @@
 @extends('layouts.layout')
 
-@section('title', 'Editar Usuario - Dragon Market - Equipos y Componentes para Gamers')
+@section('title', 'Ingresar - Dragon Market - Equipos y Componentes para Gamers')
 
 @section('content')
-    <div class="container">
+    <div class="container big-container">
         <div class="d-flex justify-content-center h-100">
-            <div class="card">
-                <div class="card-header">
+            <div class="login_card card">
+                <div class="card-header card-header-login">
                     <h3>Ingresar</h3>
-                    <div class="d-flex justify-content-end social_icon">
+                    <div class="d-flex justify-content-end login_social_icon">
                         <span><i class="fab fa-facebook-square"></i></span>
                         <span><i class="fab fa-google-plus-square"></i></span>
                         <span><i class="fab fa-twitter-square"></i></span>
@@ -19,8 +19,8 @@
                     @csrf
                         <div class="input-group form-group">
                             {{--<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <div class="input-group-prepend login-igp">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
                             </div>
                             <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Ingresá tu email" required autofocus>
                             @if ($errors->has('email'))
@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="input-group form-group">
-                            <div class="input-group-prepend">
+                            <div class="input-group-prepend login-igp">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
 
@@ -62,14 +62,15 @@
                 </div>
 
                 <div class="card-footer">
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center login-links">
                         @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                Olvidé mi contraseña
+                            Si olvidaste tu contraseña
+                            <a href="{{ route('password.request') }}">
+                                Ingresá acá
                             </a>
                         @endif
                     </div>
-                    <div class="d-flex justify-content-center links">
+                    <div class="d-flex justify-content-center login-links">
                         Si no tenés una cuenta<a href="{{ route('users.create') }}">Registrate acá</a>
                     </div>
                 </div>
