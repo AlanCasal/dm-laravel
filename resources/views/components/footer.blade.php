@@ -18,6 +18,13 @@
 					<i class="fas fa-clock" style="font-size: 1em; margin-right: 10px"></i>
 					<h6>Lunes a Viernes 10-13 / 14-18:30 | Sábados 10-15 hs.</h6>
 				</div>
+                <div class="row">
+                    <a href="{{ url('login') }}" style="font-weight: bold; color: white">
+                        <i class="fas fa-network-wired" style="font-size: 1em; margin-right: 10px"></i>
+                        DRAGON MARKET INTRANET
+                    </a>
+                </div>
+
 			</div>
 
 			{{-- <a class="navbar-brand align-self-center" href="#">

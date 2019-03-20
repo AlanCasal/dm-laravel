@@ -18,8 +18,6 @@ class CreateUsersTable extends Migration {
       $table->boolean('is_admin')->default(false);
 
 	  // datos a completar
-	  $table->string('first_name');
-      $table->string('last_name');
       $table->string('email')->unique();
       $table->string('password');
       

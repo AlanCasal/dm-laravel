@@ -5,7 +5,7 @@
 @section('content')
 	<div class="container big-container">
 		<div class="d-flex justify-content-center h-100">
-			<div class="login_card card">
+			<div class="login_card card col-5">
 				<div class="card-header card-header-login">
 					<h3>Crear cuenta</h3>
 					<div class="d-flex justify-content-end login_social_icon">

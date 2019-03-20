@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 
-@section('title', 'Ingresar - Dragon Market - Equipos y Componentes para Gamers')
+@section('title', 'INTRANET - Dragon Market)
 
 @section('content')
     <div class="container big-container">
         <div class="d-flex justify-content-center h-100">
-            <div class="login_card card">
+            <div class="login_card card col-5">
                 <div class="card-header card-header-login">
                     <h3>Ingresar</h3>
                     <div class="d-flex justify-content-end login_social_icon">
@@ -22,7 +22,7 @@
                             <div class="input-group-prepend login-igp">
                                 <span class="input-group-text"><i class="fas fa-at"></i></span>
                             </div>
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Ingresá tu email" required autofocus>
+                            <input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Ingresá tu email" autofocus>
                             @if ($errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -35,7 +35,7 @@
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
 
-                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Ingresá tu contraseña" required>
+                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Ingresá tu contraseña">
                             @if ($errors->has('password'))
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
