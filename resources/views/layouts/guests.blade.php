@@ -6,11 +6,11 @@
 </head>
 
 <body>
-    @include('components.header')
+    @include('components.guests.header')
 
 	@yield('content')
 
-	@include('components.footer')
+	@include('components.guests.footer')
 
 	@include('components.scripts')
 </body>

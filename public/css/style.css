@@ -3,10 +3,10 @@
 }
 
 #navbar-edit {
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.5);
 }
 
-#navbar-edit .nav-link:hover {
+#navbar-edit .logout:hover {
     color: red !important;
 }
 
@@ -52,7 +52,7 @@
 }
 
 body {
-    background: url(../img/wallpaper/1.jpg) no-repeat center center fixed;
+    background: url(../img/wallpapers/2.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -99,7 +99,7 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.5);
 }
 
 .card ul li {

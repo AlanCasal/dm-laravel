@@ -20,7 +20,7 @@ class CategoryController extends Controller
             'VER TODAS LAS CATEGORÍAS'
         );
         
-        return view('categories')
+        return view('admin.categories')
             ->with(['categories'  => Category::where('active', true)->orderBy('name')->pluck('name')])
             ->with(['navbarItems' => $navbarItems]);
     }

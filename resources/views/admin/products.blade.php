@@ -1,16 +1,8 @@
-@extends('layouts.users')
-
-@section('title', 'Admin - Productos')
+@extends('layouts.admin')
 
 @section('content')
-    @include('components.navbar')
-    <br/>
-
-    <div>
-
-    </div>
-
-    <ul>
+    <ul style="color: white">
+        <h3>Productos</h3>
         @if(isset($products))
             @foreach($products as $product)
                 <li>{{ $product->category->name }} - {{ $product->description }} - $ {{ $product->price }} -

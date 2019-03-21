@@ -1,4 +1,4 @@
-@extends('layouts.users')
+@extends('layouts.guests')
 
 @section('title', 'Error 404')
 

@@ -1,4 +1,4 @@
-@extends('layouts.users')
+@extends('layouts.guests')
 
 @section('content')
 	<div class="container big-container">
@@ -6,16 +6,23 @@
 			<div class="login_card card col-5">
 				<div class="card-header card-header-login">
 					<h3>Crear cuenta</h3>
-					<div class="d-flex justify-content-end login_social_icon">
-						<span><i class="fab fa-facebook-square"></i></span>
-						<span><i class="fab fa-google-plus-square"></i></span>
-						<span><i class="fab fa-twitter-square"></i></span>
-					</div>
 				</div>
 				<div class="card-body">
 					<form method="POST" action="{{ route('users.store') }}">
 						@csrf
-						<div class="input-group form-group">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend login-igp">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Ingresá tu nuevo usuario" required autofocus>
+                            @if ($errors->has('username'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+
+                        <div class="input-group form-group">
 							{{--<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
 							<div class="input-group-prepend login-igp">
 								<span class="input-group-text"><i class="fas fa-at"></i></span>

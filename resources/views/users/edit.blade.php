@@ -1,40 +1,76 @@
-@extends('layouts.users')
+@extends('layouts.admin')
 
 @section('content')
-	<center><h1>Editar Usuario</h1>
+    <div class="container big-container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="login_card card col-5">
+                <div class="card-header card-header-login">
+                    <h3>Editar usuario</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('users.show', $user->id) }}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend login-igp">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Ingresá tu nuevo usuario" required autofocus>
+                            @if ($errors->has('username'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
 
-		@if($errors->any())
-			<div class="alert alert-danger">
-				<h5>Por favor corregí los errores</h5>
-			</div>
-		@endif
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend login-igp">
+                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                            </div>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Ingresá tu email" required autofocus>
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
 
-		<form action="{{ route('users.show', $user->id) }}" method="POST">
-			@method('PUT')
-            @csrf
-			<label for="first_name">Nombre </label><br/>
-			<input type="text" name="first_name" id="first_name" placeholder="Ingresá tu nombre" value="{{ old('first_name', $user->first_name) }}"><br/><br/>
-			@if($errors->has('first_name')) <p>{{ $errors->first('first_name') }}</p> @endif
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend login-igp">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
 
-			<label for="last_name">Apellido </label><br/>
-			<input type="text" name="last_name" id="last_name" placeholder="Ingresá tu apellido" value="{{ old('last_name', $user->last_name) }}"><br/><br/>
-			@if($errors->has('last_name')) <p>{{ $errors->first('last_name') }}</p> @endif
+                            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Ingresá tu nueva clave" required>
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-			<label for="email">Email </label><br/>
-			<input type="email" name="email" id="email" placeholder="Ingresá tu email" value="{{ old('email', $user->email) }}"><br/><br/>
-			@if($errors->has('email')) <p>{{ $errors->first('email') }}</p> @endif
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend login-igp">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
 
-			<label for="password">Contraseña </label><br/>
-			<input type="password" name="password" id="password" placeholder="Ingresá una contraseña"><br/><br/><br/>
-			@if($errors->has('password')) <p>{{ $errors->first('password') }}</p> @endif
+                            <input id="password-confirm" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation" placeholder="Confirmá tu clave" required>
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
 
-			<button type="submit" class="btn btn-primary">Actualizar datos</button>
-		</form>
-		<br/>
+                        <div class="form-group">
+                            <input type="submit" value="Actualizar" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
 
-
-		<br/>
-		<a href="{{ url()->previous() }}">Cancelar</a>
-		<br/><br/>
-	</center>
+                <div class="d-flex justify-content-center login-links mb-4">
+                    <a href="{{ url()->previous() }}">Cancelar y volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

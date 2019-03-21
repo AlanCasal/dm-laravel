@@ -1,16 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <div class="d-flex justify-content-center">
             <div class="login_card card col-5">
                 <div class="card-header card-header-login">
                     <h3>Ingresar a Intranet</h3>
-                    {{--<div class="d-flex justify-content-end login_social_icon">--}}
-                        {{--<span><i class="fab fa-facebook-square"></i></span>--}}
-                        {{--<span><i class="fab fa-google-plus-square"></i></span>--}}
-                        {{--<span><i class="fab fa-twitter-square"></i></span>--}}
-                    {{--</div>--}}
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -68,6 +63,15 @@
                             </a>
                         @endif
                     </div>
+                </div>
+            </div>
+
+            <div class="container mt-5">
+                <div class="d-flex justify-content-center">
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        <center><img src='{{asset("img/DMHead.png")}}' alt='Logo' style='width: 150px;'></center><br>
+                        <img class="d-none d-sm-inline-block" src='{{asset("img/DMText.png")}}' alt='Logo' style='width: 400px;'>
+                    </a>
                 </div>
             </div>
         </div>

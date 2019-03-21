@@ -1,4 +1,4 @@
-@extends('layouts.users')
+@extends('layouts.guests')
 
 @section('content')
 	<div class="container" style="margin-bottom: 100px">

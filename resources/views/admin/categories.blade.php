@@ -1,12 +1,9 @@
-@extends('layouts.users')
-
-@section('title', 'Admin - Categorías')
+@extends('layouts.admin')
 
 @section('content')
-    @include('components.navbar')
-
     <br/>
-    <ul>
+    <ul style="color: white">
+        <h3>Categorías</h3>
         @forelse($categories as $category)
             <li> {{ $category }} </li>
 

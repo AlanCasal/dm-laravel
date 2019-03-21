@@ -21,7 +21,7 @@ class ProductController extends Controller
             'ELIMINAR UN PRODUCTO'
         );
 
-        return view('products')
+        return view('admin.products')
             ->with(['products'    => Product::orderBy('category_id')->paginate(30)])
             ->with(['navbarItems' => $navbarItems]);
     }

@@ -11,6 +11,8 @@ Route::get('/', 'MainController@homeShowProducts')
 Route::view('/help', 'users.help')
     ->name('help');
 
+Route::view('/menu', 'admin.menu');
+
 /*****************************
  * En proceso
  *****************************/
@@ -25,5 +27,3 @@ Route::get('products', 'ProductController@index')
     ->name('products.index');
 
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
