@@ -1,6 +1,4 @@
-@extends('layouts.layout')
-
-@section('title', 'Ayuda - Dragon Market - Equipos y Componentes para Gamers')
+@extends('layouts.users')
 
 @section('content')
 	<div class="container" style="margin-bottom: 100px">

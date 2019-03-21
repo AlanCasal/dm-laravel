@@ -15,12 +15,14 @@ use App\Models\User;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
+	$userName = $faker->unique()->userName;
 	return [
+		'username'       => strtolower($userName),
 		'email'          => $faker->unique()->safeEmail,
 		'password'       => bcrypt('123'),
 		'remember_token' => str_random(10),
 
-		// 'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
 		// 'email_verified_at' => now(),
 	];
 });

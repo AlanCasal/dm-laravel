@@ -1,6 +1,4 @@
-@extends('layouts.layout')
-
-@section('title', 'HOME - Dragon Market - Equipos y Componentes para Gamers')
+@extends('layouts.users')
 
 @section('content')
     @include('components.navbar')

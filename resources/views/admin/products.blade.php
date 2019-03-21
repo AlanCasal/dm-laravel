@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.users')
 
 @section('title', 'Admin - Productos')
 

@@ -1,6 +1,4 @@
-@extends('layouts.layout')
-
-@section('title', 'Editar Usuario - Dragon Market - Equipos y Componentes para Gamers')
+@extends('layouts.users')
 
 @section('content')
 	<center><h1>Editar Usuario</h1>

@@ -99,7 +99,6 @@ class UsersModuleTest extends TestCase
             'last_name' => 'The Starfish',
             'email' => 'naty@thestarfish.com',
             'password' => 123456,
-            'avatar' => 'public/img/default.jpg'
         ]);
     }
 
@@ -265,7 +264,6 @@ class UsersModuleTest extends TestCase
 			'last_name' => 'The Starfish',
 			'email' => 'naty@thestarfish.com',
 			'password' => 123456,
-			//            'avatar' => 'public/img/default.jpg'
 		]);
         
         $this->assertEquals(1, User::count()); // espera 1 user creado, cuenta los users en la db

@@ -168,14 +168,10 @@ p.card-text {
     /*height: 100%;*/
 /*}*/
 
-.big-container {
-    height: 100%;
-}
-
 .login_card {
-    margin-top: auto;
+    margin-top: 3em;
     margin-bottom: auto;
-    background-color: rgba(0, 0, 0, 0.8) !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .login_social_icon span {
@@ -209,7 +205,6 @@ p.card-text {
 input:focus {
     outline: 0 0 0 0 !important;
     box-shadow: 0 0 0 0 !important;
-
 }
 
 .login_btn {

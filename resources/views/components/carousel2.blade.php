@@ -3,7 +3,7 @@
 	<div class="carousel-inner">
 		@for ($i=1; $i <= 4; $i++)
 			@php echo $i == 1 ? "<div class='carousel-item active'>" : "<div class='carousel-item'>" @endphp
-				<img src='{{ asset("img/c2_{$i}.jpg")}}' alt="slide{{$i}}" style="width:100%;">
+				<img src='{{ asset("img/carousel2/{$i}.jpg")}}' alt="slide{{$i}}" style="width:100%;">
 			</div>
 		@endfor
 	</div>

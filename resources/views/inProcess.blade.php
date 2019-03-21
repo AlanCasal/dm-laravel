@@ -1,6 +1,4 @@
-@extends('layouts.layout')
-
-@section('title', 'Pagina en proceso')
+@extends('layouts.users')
 
 @section('content')
     @include('components.navbar')

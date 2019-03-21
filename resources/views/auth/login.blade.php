@@ -1,31 +1,29 @@
-@extends('layouts.layout')
-
-@section('title', 'INTRANET - Dragon Market)
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container big-container">
-        <div class="d-flex justify-content-center h-100">
+    <div class="container">
+        <div class="d-flex justify-content-center">
             <div class="login_card card col-5">
                 <div class="card-header card-header-login">
-                    <h3>Ingresar</h3>
-                    <div class="d-flex justify-content-end login_social_icon">
-                        <span><i class="fab fa-facebook-square"></i></span>
-                        <span><i class="fab fa-google-plus-square"></i></span>
-                        <span><i class="fab fa-twitter-square"></i></span>
-                    </div>
+                    <h3>Ingresar a Intranet</h3>
+                    {{--<div class="d-flex justify-content-end login_social_icon">--}}
+                        {{--<span><i class="fab fa-facebook-square"></i></span>--}}
+                        {{--<span><i class="fab fa-google-plus-square"></i></span>--}}
+                        {{--<span><i class="fab fa-twitter-square"></i></span>--}}
+                    {{--</div>--}}
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                     @csrf
                         <div class="input-group form-group">
-                            {{--<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
+                            {{--<label for="username" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
                             <div class="input-group-prepend login-igp">
-                                <span class="input-group-text"><i class="fas fa-at"></i></span>
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Ingresá tu email" autofocus>
-                            @if ($errors->has('email'))
+                            <input id="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Ingresá tu usuario" autofocus>
+                            @if ($errors->has('username'))
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                             @endif
                         </div>
@@ -69,9 +67,6 @@
                                 Ingresá acá
                             </a>
                         @endif
-                    </div>
-                    <div class="d-flex justify-content-center login-links">
-                        Si no tenés una cuenta<a href="{{ route('users.create') }}">Registrate acá</a>
                     </div>
                 </div>
             </div>

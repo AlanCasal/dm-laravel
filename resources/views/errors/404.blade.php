@@ -1,6 +1,6 @@
-@extends('layouts.layout')
+@extends('layouts.users')
 
-@section('title', 'Página no encontrada')
+@section('title', 'Error 404')
 
 @section('content')
 	<h1><center>404<br/>Página no encontrada</center></h1>

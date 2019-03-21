@@ -13,6 +13,5 @@
 
 {{-- CSS propio --}}
 <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/sidebar.css') }}">
 
-<title> @yield('title') </title>
+<title>DRAGON MARKET</title>

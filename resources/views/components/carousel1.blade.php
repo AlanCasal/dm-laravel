@@ -5,7 +5,7 @@
 			@php echo $i === 1 ? "<div class='carousel-item active'>"
 							   : "<div class='carousel-item'>"
 			@endphp
-			<img src='{{ asset("/img/c1_{$i}.jpg") }}' alt="slide{{$i}}" style="width:100%;">
+			<img src='{{ asset("/img/carousel1/{$i}.jpg") }}' alt="slide{{$i}}" style="width:100%;">
 		</div>
 		@endfor
 	</div>

@@ -1,11 +1,11 @@
 @foreach ($products as $product)
 	<div class="card text-center col-sm-6 col-md-4 col-lg-2 shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem; margin-top: 10px;">
-		<a href=""><img src='{{asset("img/{$product->id}.jpg")}}' class="img06" alt="Video01"></a>
+		<a href=""><img src='{{asset("img/products/{$product->id}.jpg")}}' class="img06" alt="Video01"></a>
 
 		<div class="card-body hover"></div>
 
 		<div class="card-footer bg-transparent">
-			<li class="card-text">{{ $product->description }}</li>
+			<ul><li class="card-text">{{ $product->description }}</li></ul>
 			<h5 class="card-title">$ {{ $product->price }} ARS</h5>
 			<label><strong>Agregar al Carrito</strong></label>
 			<div class="d-flex justify-content-center">
