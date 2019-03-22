@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
 	
-	public function homeShowProducts()
+	public function mainPage()
 	{
         $navbarItems = Category::where('active', '=', true)->orderBy('name')->pluck('name');
         
@@ -17,8 +17,4 @@ class MainController extends Controller
 				->with(['pcs'         => Product ::all()->where('category_id', '=', 7)->random(4)])
 				->with(['products'    => Product ::all()->where('category_id','!=', 7)->random(6)]);
 	}
-	
-	public function adminMenu() {
-	    //...
-    }
 }

@@ -6,9 +6,7 @@
 </head>
 
 <body>
-    @if (auth()->user())
-        @include('components.users.header')
-    @endif
+    @include('components.users.header')
 
 	@yield('content')
 

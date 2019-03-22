@@ -15,14 +15,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-
+            @if (auth()->user())
             {{-- Contenido a colapsar --}}
             <div class="collapse navbar-collapse" id="navbarMenu">
-
                 {{-- Botones --}}
-                @if(auth()->user())
                 <div class="menuBotones ml-auto">
-                     <ul class="navbar-nav flex-row mt-4">
+                    <ul class="navbar-nav flex-row mt-4">
                         <li class="nav-item ml-auto">
                             <p class="nav-link d-none d-lg-inline-block" style="color: white"><i class="fas fa-user"></i> {{auth()->user()->username}}</p>
                             <p class="nav-link d-inline-block d-lg-none"><i class="fas fa-user"></i>{{auth()->user()->username}}</p>
@@ -36,8 +34,8 @@
                         </li>
                     </ul>
                 </div>
-                @endif
             </div>
+            @endif
         </div> {{-- collapse --}}
     </div> {{-- container --}}
 </div>
