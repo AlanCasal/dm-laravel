@@ -12,7 +12,7 @@ class MainController extends Controller
 	{
         $navbarItems = Category::where('active', '=', true)->orderBy('name')->pluck('name');
         
-        return view('guests.home')
+        return view('customers.home')
 				->with(['navbarItems' => $navbarItems])
 				->with(['pcs'         => Product ::all()->where('category_id', '=', 7)->random(4)])
 				->with(['products'    => Product ::all()->where('category_id','!=', 7)->random(6)]);

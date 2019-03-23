@@ -6,7 +6,7 @@
     background-color: rgba(0,0,0,0.5);
 }
 
-#navbar-edit .logout:hover {
+#navbar-edit .activeLink:hover {
     color: red !important;
 }
 
@@ -174,30 +174,20 @@ p.card-text {
     background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
-.login_social_icon span {
-    font-size: 60px;
-    margin-left: 10px;
-    color: #FFC312;
-}
-
-.login_social_icon span:hover {
-    color: white;
-    cursor: pointer;
-}
-
 .card-header-login h3 {
     color: white;
-}
-
-.login_social_icon {
-    position: absolute;
-    right: 20px;
-    top: -45px;
 }
 
 .login-igp span {
     width: 50px;
     background-color: #FFC312;
+    color: black;
+    border: 0 !important;
+}
+
+.login-igp-disabled span {
+    width: 50px;
+    background-color: grey;
     color: black;
     border: 0 !important;
 }

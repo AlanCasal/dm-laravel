@@ -48,17 +48,15 @@ class UserController extends Controller
     {
         //$data = request()->all();
         $data = request()->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'username' => ['required', 'min:4'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'min:6', 'max:20']
+            'password' => ['required', 'confirmed','min:6', 'max:20']
             ]
 	        //['first_name.required' => 'Por favor ingresá tu nombre']
         );
         
         $newUser = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password'])
         ]);
@@ -99,24 +97,22 @@ class UserController extends Controller
 	 */
     public function update(User $user)
     {
-//        $data = request()->all();
-	    $data = request()->validate([
-		    'first_name' => 'required',
-		    'last_name' => 'required',
-		    'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
-		    'password' => ''
-	        ] // , ['first_name.required' => 'Por favor ingresá tu nombre']
-        );
-	    
 	    if ($data['password'] != null) {
 	    	if (strlen($data['password']) < 6
 		    || strlen($data['password']) > 20)
-	    	    return back()->withErrors(['password' => 'La pass debe tener entre 6 y 20 caracteres']);
+	    	    return back()->withErrors(['password' => 'La contraseña debe tener entre 6 y 20 caracteres']);
 
 	    	else $data['password'] = bcrypt($data['password']);
 	    }
 
 	    else unset($data['password']);
+	    
+	    $data = request()->validate([
+		    'username' => ['required', 'min:4'],
+		    'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+		    'password' => 'confirmed'
+	        ] // , ['first_name.required' => 'Por favor ingresá tu nombre']
+        );
 
     	$user->update($data);
 

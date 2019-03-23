@@ -43,20 +43,6 @@
                             <a href="{{ route('inProcess') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
                             <a href="{{ route('inProcess') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
                         </li>
-
-                        @if (auth()->user())
-                        <li class="nav-item ml-auto mt-2">
-                            <p class="nav-link d-none d-lg-inline-block" style="color: white"><i class="fas fa-user"></i> {{auth()->user()->username}}</p>
-                            <p class="nav-link d-inline-block d-lg-none"><i class="fas fa-user"></i>{{auth()->user()->username}}</p>
-                        </li>
-                        <li class="nav-item ml-auto mt-2">
-                            <a href="{{ route('logout')}}" class="nav-link d-none d-lg-inline-block logout" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Salir</a>
-                            <a href="{{ route('logout') }}" class="nav-link d-inline-block d-lg-none logout" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i></a>
-                            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                             @csrf
-                            </form>
-                        </li>
-                        @endif
                     </ul>
                 </div>
             </div>
