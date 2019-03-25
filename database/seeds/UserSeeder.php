@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
 	{
 		factory(User::class)->create([
 			'username' => 'adcasal',
-			'email'    => 'admin@admin.com',
+			'email'    => 'adcasal@dragonmarket.com.ar',
 			'password' => bcrypt('123123'),
 			'is_admin' => true,
 		]);

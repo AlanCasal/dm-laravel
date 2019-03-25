@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -14,15 +15,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $navbarItems = array(
-            'AGREGAR UNA CATEGORÍA',
-            'ELIMINAR UNA CATEGORÍA',
-            'VER TODAS LAS CATEGORÍAS'
-        );
-        
-        return view('admin.categories')
-            ->with(['categories'  => Category::where('active', true)->orderBy('name')->pluck('name')])
-            ->with(['navbarItems' => $navbarItems]);
+        return view('admin.categories.index')
+            ->with(['categories' => Category::
+                where('active', true)
+	            ->orderBy('name')
+	            ->pluck('name')]);
     }
 
     /**
@@ -32,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -41,9 +38,19 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+	    $data = request()->validate([
+			    'name' => ['required', Rule::unique('categories'), 'alpha_num'],
+		    ]
+	    );
+
+	    $category= strtoupper($data['name']);
+	    Category::create([
+		    'name' => $category,
+	    ]);
+
+	    return redirect()->route('categories.index');
     }
 
     /**

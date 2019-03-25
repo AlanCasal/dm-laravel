@@ -16,13 +16,13 @@ use App\Models\User;
 
 $factory->define(User::class, function (Faker $faker) {
 
-	$userName = $faker->unique()->userName;
-	return [
-		'username'       => strtolower($userName),
-		'email'          => $faker->unique()->safeEmail,
-		'password'       => bcrypt('123'),
-		'remember_token' => str_random(10),
+	$username = strtolower($faker->username);
+	$email = "{$username}@dragonmarket.com.ar";
 
+	return [
+		'username'       => $username,
+		'email'          => $email,
+		'password'       => bcrypt('123123'),
 		// 'email_verified_at' => now(),
 	];
 });

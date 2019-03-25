@@ -53,7 +53,7 @@
                     </form>
                 </div>
 
-                <div class="card-footer">
+                <div class="card-footer border-light">
                     <div class="d-flex justify-content-center login-links">
                         @if (Route::has('password.request'))
                             Si olvidaste tu contraseña

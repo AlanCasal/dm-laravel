@@ -6,7 +6,7 @@
     background-color: rgba(0,0,0,0.5);
 }
 
-#navbar-edit .activeLink:hover {
+#navbar-edit .dropdown-item:hover {
     color: red !important;
 }
 
@@ -18,12 +18,20 @@
     color: black !important
 }
 
-.menuBotones li a {
+/*.menuBotones li a {*/
+    /*color: white !important;*/
+/*}*/
+
+/*.menuBotones img {*/
+    /*height: 1.5em;*/
+/*}*/
+
+#navbarMenu .activeLink {
     color: white !important;
 }
 
-.menuBotones img {
-    height: 1.5em;
+#navbarMenu .activeLink:hover {
+    color: red !important;
 }
 
 .navbar-toggler {

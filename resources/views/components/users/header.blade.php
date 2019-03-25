@@ -21,25 +21,48 @@
                 {{-- Botones --}}
                 <div class="menuBotones ml-auto">
                     <ul class="navbar-nav flex-row mt-4">
+	                    <li class="nav-item ml-auto">
+		                    {{--<span class="navbar-brand mb-0 h1">Navbar</span>--}}
+		                    <span class="navbar-brand h1 nav-link d-none d-lg-inline-block" style="color: #FFC312"><i class="fas fa-user"></i> {{auth()->user()->username}}</span>
+		                    {{--<span class="navbar-brand mb-0 h1 nav-link d-inline-block d-lg-none"><i class="fas fa-user"></i>{{auth()->user()->username}}</span>--}}
+	                    </li>
+	                    <li class="nav-item dropdown activeLink">
+		                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                    Usuarios
+		                    </a>
+		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			                    <a class="dropdown-item" href="{{route('users.index')}}">Ver usuarios</a>
+			                    <a class="dropdown-item" href="{{route('users.create')}}">Agregar un usuario</a>
+		                    </div>
+	                    </li>
+	                    <li class="nav-item dropdown">
+		                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                    Categorías
+		                    </a>
+		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			                    <a class="dropdown-item" href="{{route('categories.index')}}">Ver categorías</a>
+			                    <a class="dropdown-item" href="{{route('categories.create')}}">Agregar una categoría</a>
+		                    </div>
+	                    </li>
+	                    <li class="nav-item dropdown">
+		                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                    Productos
+		                    </a>
+		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			                    <a class="dropdown-item" href="#">Ver productos</a>
+			                    <a class="dropdown-item" href="#">Agregar un producto</a>
+		                    </div>
+	                    </li>
+	                    <li>
+	                        <a href="{{ route('menu') }}" class="nav-link d-inline-block d-lg-none activeLink"><i class="fas fa-list"></i></a>
+	                    </li>
+	                    <li>
+	                        <a href="{{ route('logout')}}" class="nav-link d-none d-lg-inline-block activeLink" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Salir</a>
+	                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+		                        @csrf
+	                        </form>
+	                    </li>
 
-                        <li class="nav-item ml-auto">
-                            <p class="nav-link d-none d-lg-inline-block" style="color: white"><i class="fas fa-user"></i> {{auth()->user()->username}}</p>
-                            <p class="nav-link d-inline-block d-lg-none"><i class="fas fa-user"></i>{{auth()->user()->username}}</p>
-                        </li>
-                        <li class="nav-item ml-auto">
-                            <a href="{{ route('menu')}}" class="nav-link d-none d-lg-inline-block activeLink"><i class="fas fa-list"></i> Menú principal</a>
-                            <a href="{{ route('menu') }}" class="nav-link d-inline-block d-lg-none activeLink"><i class="fas fa-list"></i></a>
-                            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
-                        <li class="nav-item ml-auto">
-                            <a href="{{ route('logout')}}" class="nav-link d-none d-lg-inline-block activeLink" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
-                            <a href="{{ route('logout') }}" class="nav-link d-inline-block d-lg-none activeLink" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i></a>
-                            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </li>
                     </ul>
                 </div>
             </div>

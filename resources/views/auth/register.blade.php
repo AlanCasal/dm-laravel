@@ -27,7 +27,7 @@
 							<div class="input-group-prepend login-igp-disabled">
 								<span class="input-group-text"><i class="fas fa-envelope"></i></span>
 							</div>
-							<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="" disabled>
+							<input id="email" type="text" class="form-control" name="email" value="{{ old('username') }}" placeholder="" disabled>
                             <div class="input-group-append">
                                 <span class="input-group-text" id="basic-addon2">@dragonmarket.com.ar</span>
                             </div>
@@ -70,9 +70,16 @@
 					</form>
 				</div>
 
-				<div class="d-flex justify-content-center login-links mb-4">
-					Si ya tenés una cuenta<a href="{{ url('login') }}">Ingresá acá</a>
+				<div class="card-footer border-light">
+					<div class="d-flex justify-content-center login-links">
+						<a href="{{url()->previous()}}">
+							<button type="button" class="btn btn-outline-warning btn-sm">
+								<i class="fas fa-undo-alt"></i> Volver
+							</button>
+						</a>
+					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>

@@ -14,16 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $navbarItems = array(
-            'VER TODOS LOS PRODUCTOS',
-            'AGREGAR UN PRODUCTO',
-            'EDITAR UN PRODUCTO',
-            'ELIMINAR UN PRODUCTO'
-        );
-
-        return view('admin.products')
-            ->with(['products'    => Product::orderBy('category_id')->paginate(30)])
-            ->with(['navbarItems' => $navbarItems]);
+        return view('admin.products');
+            //->with(['products' => Product::orderBy('category_id')->paginate(30)]);
     }
 
     /**

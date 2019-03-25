@@ -17,9 +17,11 @@ Route::middleware('auth')->group(function () {
 	Route::view('/menu', 'admin.menu')
 		->name('menu');
 
-	Route::resource('users', 'UserController');
+	Route::resource('users', 'UserController')
+		->only('index' ,'create', 'store', 'destroy');
 
-	Route::resource('categories', 'CategoryController');
+	Route::resource('categories', 'CategoryController')
+		->only('index', 'create', 'store');
 
 	Route::get('products', 'ProductController@index')
 		->name('products.index');
