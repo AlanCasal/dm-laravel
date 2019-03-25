@@ -109,12 +109,13 @@ class UserController extends Controller
 		//
     	//return redirect()->route('users.show', ['user' => $user]);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param User $user
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(User $user)
     {

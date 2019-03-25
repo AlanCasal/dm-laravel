@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 		->only('index' ,'create', 'store', 'destroy');
 
 	Route::resource('categories', 'CategoryController')
-		->only('index', 'create', 'store');
+		->only('index', 'create', 'store', 'destroy');
 
 	Route::get('products', 'ProductController@index')
 		->name('products.index');

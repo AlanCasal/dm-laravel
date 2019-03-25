@@ -10,16 +10,24 @@ class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
+        if (request()->keys() != null) {
+            $newCategory = str_replace('_', ' ', request()->keys());
+            $newCategory = $newCategory[0];
+        } else {
+            $newCategory = null;
+            $newCategoryMessage = null;
+        };
+        
         return view('admin.categories.index')
+            ->with(['newCategory' => $newCategory])
             ->with(['categories' => Category::
                 where('active', true)
 	            ->orderBy('name')
-	            ->pluck('name')]);
+	            ->pluck('name', 'id')]);
     }
 
     /**
@@ -31,26 +39,27 @@ class CategoryController extends Controller
     {
         return view('admin.categories.create');
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
 	    $data = request()->validate([
-			    'name' => ['required', Rule::unique('categories'), 'alpha_num'],
+			    'name' => ['required', Rule::unique('categories')],
 		    ]
 	    );
 
-	    $category= strtoupper($data['name']);
+	    $newCategory = strtoupper($data['name']);
+	    
+//	    dd($newCategory);
 	    Category::create([
-		    'name' => $category,
+		    'name' => $newCategory,
 	    ]);
 
-	    return redirect()->route('categories.index');
+	    return redirect()->route('categories.index', $newCategory);
     }
 
     /**
@@ -86,15 +95,18 @@ class CategoryController extends Controller
     {
         //
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+    
+        return redirect()->route('categories.index');
     }
 }
