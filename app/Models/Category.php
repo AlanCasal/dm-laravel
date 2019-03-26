@@ -10,7 +10,7 @@ class Category extends Model
     // public $timestaps = false; en caso de no querer usar los timestamps
     protected $fillable = [ 'name', 'active' ];
 
-    public function products()
+	public function products()
     {
         return $this->hasMany(Product::class);
     }
