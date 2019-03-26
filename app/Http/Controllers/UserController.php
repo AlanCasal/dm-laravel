@@ -30,12 +30,11 @@ class UserController extends Controller
         return view('auth.register');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
     public function store()
     {
         $data = request()->validate([
@@ -55,12 +54,14 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * redirect()->$this->route()'users.index;
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
+	/**
+	 * Display the specified resource.
+	 *
+	 * redirect()->$this->route()'users.index;
+	 *
+	 * @param \App\Models\User $user
+	 * @return void
+	 */
     public function show(User $user)
     {
         //return view('admin.users')

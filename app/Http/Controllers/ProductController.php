@@ -14,8 +14,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products');
-            //->with(['products' => Product::orderBy('category_id')->paginate(30)]);
+        return view('admin.products.index')
+		    //->with(['data' => str_replace('_', ' ', request()->query())])
+		    ->with(['products' => Product::
+		    orderBy('category_id')
+			    ->paginate(30)
+			    ->where('active', true)
+		    ]);
     }
 
     /**

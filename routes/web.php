@@ -1,10 +1,16 @@
 <?php
 
+/**
+ * rutas globales
+ */
 Auth::routes();
 
 Route::view('/inProcess', 'inProcess')
     ->name('inProcess');
 
+/**
+ * rutas Guest
+ */
 Route::middleware('guest')->group(function () {
     Route::get('/', 'MainController@mainPage')
         ->name('home');
@@ -13,6 +19,9 @@ Route::middleware('guest')->group(function () {
         ->name('help');
 });
 
+/**
+ * rutas Auth
+ */
 Route::middleware('auth')->group(function () {
 	Route::view('/menu', 'admin.menu')
 		->name('menu');
@@ -20,9 +29,8 @@ Route::middleware('auth')->group(function () {
 	Route::resource('users', 'UserController')
 		->only('index' ,'create', 'store', 'destroy');
 
-	Route::resource('categories', 'CategoryController');
+	Route::resource('categories', 'CategoryController')
+		->except('show');
 
-	Route::get('products', 'ProductController@index')
-		->name('products.index');
+	Route::resource('products', 'ProductController');
 });
-

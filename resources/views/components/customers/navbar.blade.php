@@ -6,7 +6,7 @@
 			<ul class="justify-content-center nav">
 				@foreach($navbarItems as $navbarItem)
 				<li class="nav-item">
-					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>{{ $navbarItem }}</strong></a>
+					<a href="#" class="nav-link d-inline-block" style="font-size: 1.3em"><strong>{{$navbarItem}}</strong></a>
 				</li>
 				@endforeach
 			</ul>

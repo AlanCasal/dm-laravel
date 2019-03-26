@@ -16,7 +16,7 @@ class CategoryController extends Controller
 	public function index()
 	{
 		return view('admin.categories.index')
-			->with(['storeOrDestroy' => str_replace('_', ' ', request()->query())])
+			->with(['data' => str_replace('_', ' ', request()->query())])
 			->with(['categories' => Category::
 				orderBy('name')
 				->paginate(30)
@@ -84,14 +84,20 @@ class CategoryController extends Controller
      */
 	public function update(Category $category)
 	{
-        $data = request()->validate([
+        $newName = request()->validate([
             'name' => [Rule::unique('categories')->ignore($category->name)],
             ] // , ['first_name.required' => 'Por favor ingresá tu nombre']
         );
-        
-        $category->update($data);
-        
-        return redirect()->route('categories.index', $data['name']);
+		$newName['name'] = strtoupper($newName['name']);
+
+		$data['update'] = array(
+			$category->name, //old
+			$newName['name'] //new
+		);
+
+        $category->update($newName);
+
+        return redirect()->route('categories.index', $data);
 	}
 
 	/**

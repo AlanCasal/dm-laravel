@@ -49,7 +49,7 @@
 			                    Productos
 		                    </a>
 		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			                    <a class="dropdown-item" href="#">Ver productos</a>
+			                    <a class="dropdown-item" href="{{route('products.index')}}">Ver productos</a>
 			                    <a class="dropdown-item" href="#">Agregar un producto</a>
 		                    </div>
 	                    </li>
