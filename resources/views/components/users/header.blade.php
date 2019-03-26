@@ -57,7 +57,7 @@
 	                        <a href="{{ route('menu') }}" class="nav-link d-inline-block d-lg-none activeLink"><i class="fas fa-list"></i></a>
 	                    </li>
 	                    <li>
-	                        <a href="{{ route('logout')}}" class="nav-link d-none d-lg-inline-block activeLink" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Salir</a>
+	                        <a href="" class="nav-link d-none d-lg-inline-block activeLink" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Salir</a>
 	                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
 		                        @csrf
 	                        </form>

@@ -29,8 +29,4 @@
             No hay usuarios registrados. :(
         @endif
     </ul>
-
-    {{--<div class="container">--}}
-    {{--<div class="row"></div>--}}
-    {{--</div>--}}
 @endsection

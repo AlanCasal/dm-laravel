@@ -64,28 +64,34 @@ class CategoryController extends Controller
 	{
 		//
 	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int $id
-	 * @return void
-	 */
-	public function edit($id)
+    
+    /**
+     * Show the form for editing the specified resource.
+     * @param Category $category
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+	public function edit(Category $category)
 	{
-		//
+        return view('admin.categories.edit')
+            ->with(['category' => $category]);
 	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  int $id
-	 * @return void
-	 */
-	public function update(Request $request, $id)
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
+     */
+	public function update(Category $category)
 	{
-		//
+        $data = request()->validate([
+            'name' => [Rule::unique('categories')->ignore($category->name)],
+            ] // , ['first_name.required' => 'Por favor ingresá tu nombre']
+        );
+        
+        $category->update($data);
+        
+        return redirect()->route('categories.index', $data['name']);
 	}
 
 	/**

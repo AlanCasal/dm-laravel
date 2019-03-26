@@ -66,26 +66,24 @@ class UserController extends Controller
         //return view('admin.users')
         //    ->with(['user' => $user]);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      * @param User $user
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return void
      */
     public function edit(User $user)
     {
         //return view('users.edit')
         //    ->with(['user' => $user]);
     }
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param \App\Models\User $user
-	 * @return \Illuminate\Http\Response
-	 */
+    
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \App\Models\User $user
+     * @return void
+     */
     public function update(User $user)
     {
 	    //if ($data['password'] != null) {
