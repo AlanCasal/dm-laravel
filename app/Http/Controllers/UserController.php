@@ -39,7 +39,7 @@ class UserController extends Controller
     public function store()
     {
         $request = request()->validate([
-            'username' => ['required', 'min:4', 'alpha_num'],
+            'username' => ['required', Rule::unique('users'), 'min:4', 'alpha_num'],
             'password' => ['required', 'confirmed','min:6', 'max:20']
             ]
 	        //['first_name.required' => 'Por favor ingresá tu nombre']

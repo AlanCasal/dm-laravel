@@ -32,7 +32,7 @@
 			@endif
 
 			<hr style="border-color: #FFC312"/>
-			<a href="{{route('auth')}}">
+			<a href="{{route('users.create')}}">
 				<button class="btn btn-outline-warning">
 					Agregar un usuario
 				</button>

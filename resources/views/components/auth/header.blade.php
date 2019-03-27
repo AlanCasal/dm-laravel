@@ -31,8 +31,8 @@
 			                    Usuarios
 		                    </a>
 		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			                    <a class="dropdown-item" href="{{route('auth.index')}}">Ver usuarios</a>
-			                    <a class="dropdown-item" href="{{route('auth.create')}}">Agregar un usuario</a>
+			                    <a class="dropdown-item" href="{{route('users.index')}}">Ver usuarios</a>
+			                    <a class="dropdown-item" href="{{route('users.create')}}">Agregar un usuario</a>
 		                    </div>
 	                    </li>
 	                    <li class="nav-item dropdown">

@@ -23,10 +23,10 @@
                 <div class="searchBox ml-auto col-lg-8 d-none d-lg-inline-block">
                     <div class="row no-gutters">
                         <div class="col">
-                            <input class="form-control form-control-no-border border-info border-right-0 rounded-0" type="search" value="" placeholder="Buscar productos...">
+                            <input class="form-control form-control-no-border border-warning border-right-0 rounded-0" type="search" value="" placeholder="Buscar productos...">
                         </div>
                         <div class="col-auto">
-                            <button class="btn btn-outline-info border-left-0 rounded-0 rounded-right search-btn noBoxShadow-btn" type="button">
+                            <button class="btn btn-outline-warning border-left-0 rounded-0 rounded-right search-btn noBoxShadow-btn" type="button">
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
@@ -40,7 +40,7 @@
                             <a href="#" class="nav-link"><i class="fas fa-search fa-lg"></i></a>
                         </li>
                         <li class="nav-item ml-auto" style="font-size: 1.5em">
-                            <a href="{{ route('inProcess') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
+                            <a href="{{ route('inProcess') }}" class="nav-link d-none d-lg-inline-block text-light"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
                             <a href="{{ route('inProcess') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
                         </li>
                     </ul>
