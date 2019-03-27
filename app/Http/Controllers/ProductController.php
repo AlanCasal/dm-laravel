@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -15,11 +16,12 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.products.index')
-		    //->with(['data' => str_replace('_', ' ', request()->query())])
+		    ->with(['data' => request()->query()])
 		    ->with(['products' => Product::
-		    orderBy('category_id')
-			    ->paginate(30)
-			    ->where('active', true)
+	        orderBy('category_id')
+		    ->orderBy('id', 'asc')
+		    ->paginate(30)
+		    ->where('active', true)
 		    ]);
     }
 
@@ -55,15 +57,19 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param \App\Models\Product $product
+	 * @return \Illuminate\Http\Response
+	 */
+    public function edit(Product $product)
     {
-        //
+    	//dd(Category::all()->first());
+
+        return view('admin.products.edit')
+	        ->with(['product' => $product])
+	        ->with(['categories' => Category::all()]);
     }
 
     /**
@@ -78,14 +84,18 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param \App\Models\Product $product
+	 * @return \Illuminate\Http\RedirectResponse
+	 * @throws \Exception
+	 */
+    public function destroy(Product $product)
     {
-        //
+        $data['destroy'] = $product->description;
+        $product->delete();
+
+        return redirect()->route('products.index', $data);
     }
 }

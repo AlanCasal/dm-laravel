@@ -17,6 +17,7 @@ class UserController extends Controller
     public function index()
     {
         return view('admin.users.index')
+	        ->with(['data' => request()->query()])
             ->with(['users' => User::paginate(30)]);
     }
     
@@ -37,21 +38,22 @@ class UserController extends Controller
 	 */
     public function store()
     {
-        $data = request()->validate([
+        $request = request()->validate([
             'username' => ['required', 'min:4', 'alpha_num'],
             'password' => ['required', 'confirmed','min:6', 'max:20']
             ]
 	        //['first_name.required' => 'Por favor ingresá tu nombre']
         );
 
-        $username = strtolower($data['username']);
+        $username = strtolower($request['username']);
         User::create([
             'username' => $username,
             'email'    => "{$username}@dragonmarket.com.ar",
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($request['password'])
         ]);
-        
-        return redirect()->route('users.index');
+
+        $data['store'] = $username;
+        return redirect()->route('users.index', $data);
     }
 
 	/**
@@ -118,8 +120,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+    	$data['destroy'] = $user->username;
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index', $data);
     }
 }

@@ -5,6 +5,7 @@
     <ul style="color: white">
         <h3>CATEGORÍAS</h3>
 
+	    {{--ALERTAS--}}
         @if(isset($data['store']))
             <div class="alert alert-success alert-dismissible text-success fade show col-md-4 offset-md-4 text-center" role="alert">
                 <h5>
@@ -40,6 +41,7 @@
             </div>
         @endif
 
+	    {{--CONTENIDO--}}
         <hr style="border-color: #FFC312"/>
 
         <a href="{{route('categories.create')}}">
@@ -62,10 +64,10 @@
                 <a href="{{route('categories.edit', $category)}}" class="">
                     Editar
                 </a>,
-                <a href="" class="" onclick="event.preventDefault(); document.getElementById('frm-destroy').submit();">
+                <a href="" class="" onclick="event.preventDefault(); document.getElementById('frm-destroy{{$category->id}}').submit();">
                     Eliminar
                 </a>
-                <form id="frm-destroy" action="{{ route('categories.destroy', $category) }}" method="POST" style="display: none;">
+                <form id="frm-destroy{{$category->id}}" action="{{ route('categories.destroy', $category) }}" method="POST" style="display: none;">
                     @csrf @method('DELETE')
                 </form>
             </li>
