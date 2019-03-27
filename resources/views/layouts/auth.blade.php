@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 	@include('components.head')
 </head>
 
 <body>
-    @include('components.users.header')
+    @include('components.auth.header')
 
 	@yield('content')
 

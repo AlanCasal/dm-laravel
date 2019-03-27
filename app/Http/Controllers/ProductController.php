@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index')
+        return view('auth.products.index')
 		    ->with(['data' => request()->query()])
 		    ->with(['products' => Product::
 	        orderBy('category_id')
@@ -67,7 +67,7 @@ class ProductController extends Controller
     {
     	//dd(Category::all()->first());
 
-        return view('admin.products.edit')
+        return view('auth.products.edit')
 	        ->with(['product' => $product])
 	        ->with(['categories' => Category::all()]);
     }

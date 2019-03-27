@@ -15,7 +15,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/', 'MainController@mainPage')
         ->name('home');
     
-    Route::view('/help', 'customers.help')
+    Route::view('/help', 'guest.help')
         ->name('help');
 });
 
@@ -23,7 +23,7 @@ Route::middleware('guest')->group(function () {
  * rutas Auth
  */
 Route::middleware('auth')->group(function () {
-	Route::view('/menu', 'admin.menu')
+	Route::view('/menu', 'auth.menu')
 		->name('menu');
 
 	Route::resource('users', 'UserController')

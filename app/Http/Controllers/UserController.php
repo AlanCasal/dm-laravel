@@ -16,7 +16,7 @@ class UserController extends Controller
     
     public function index()
     {
-        return view('admin.users.index')
+        return view('auth.users.index')
 	        ->with(['data' => request()->query()])
             ->with(['users' => User::paginate(30)]);
     }
@@ -66,7 +66,7 @@ class UserController extends Controller
 	 */
     public function show(User $user)
     {
-        //return view('admin.users')
+        //return view('auth.users')
         //    ->with(['user' => $user]);
     }
     

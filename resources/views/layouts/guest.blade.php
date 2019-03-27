@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
 	@include('components.head')
 </head>
 
 <body>
-    @include('components.customers.header')
+    @include('components.guest.header')
 
 	@yield('content')
 
-	@include('components.customers.footer')
+	@include('components.guest.footer')
 
 	@include('components.scripts')
 </body>

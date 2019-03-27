@@ -15,7 +15,7 @@ class CategoryController extends Controller
 	 */
 	public function index()
 	{
-		return view('admin.categories.index')
+		return view('auth.categories.index')
 			->with(['data' => str_replace('_', ' ', request()->query())])
 			->with(['categories' => Category::
 				orderBy('name')
@@ -31,7 +31,7 @@ class CategoryController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.categories.create');
+		return view('auth.categories.create');
 	}
 
 	/**
@@ -72,7 +72,7 @@ class CategoryController extends Controller
      */
 	public function edit(Category $category)
 	{
-        return view('admin.categories.edit')
+        return view('auth.categories.edit')
             ->with(['category' => $category]);
 	}
     

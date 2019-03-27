@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.auth')
 
 @section('content')
 	<ul style="color: white;">
@@ -32,7 +32,7 @@
 			@endif
 
 			<hr style="border-color: #FFC312"/>
-			<a href="{{route('users.create')}}">
+			<a href="{{route('auth')}}">
 				<button class="btn btn-outline-warning">
 					Agregar un usuario
 				</button>
