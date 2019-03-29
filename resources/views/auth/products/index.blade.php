@@ -54,13 +54,13 @@
 
         @forelse($products as $product)
             <li
-                    {{--@if(isset($data['store']) && $product->description == $data['store'])--}}
+                    {{--@if(isset($data['store']) && $product->name == $data['store'])--}}
                     {{--class="font-weight-bold font-italic text-success"--}}
-                    {{--@elseif(isset($data['update'][1]) && $product->description == $data['update'][1])--}}
+                    {{--@elseif(isset($data['update'][1]) && $product->name == $data['update'][1])--}}
                     {{--class="font-weight-bold font-italic text-primary"--}}
                     {{--@endif--}}
             >
-                {{$product->id}}. {{$product->category->name}} - {{$product->description}},
+                {{$product->id}}. {{$product->category->name}} - {{$product->name}},
                 <a href="{{route('products.edit', $product)}}" class="">
                     Editar
                 </a>,

@@ -6,8 +6,26 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#navbar-edit .dropdown-menu {
+    background-color: #FFC312;
+    color: black !important;
+}
+
+#navbar-edit .dropdown-item {
+    color: black !important;
+}
 #navbar-edit .dropdown-item:hover {
-    color: red !important;
+    color: #e0424e !important;
+    background-color: black;
+    font-weight: bold;
+}
+
+#navbar-edit .menuBotones .cart a:hover{
+    color: #FFC312 !important;
+}
+
+.menuBotones li a {
+    color: white !important;
 }
 
 #sticky-nav {
@@ -18,16 +36,12 @@
     color: black !important
 }
 
-nav .menuBotones li a {
-    color: white !important;
-}
-
 #navbarMenu .activeLink {
     color: white !important;
 }
 
 #navbarMenu .activeLink:hover {
-    color: red !important;
+    color: #e0424e !important;
 }
 
 .navbar-toggler {
@@ -88,6 +102,10 @@ footer {
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+footer a:hover{
+    color: #FFC312 !important;
 }
 
 .card ul li {

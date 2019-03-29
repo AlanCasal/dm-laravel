@@ -39,9 +39,9 @@
                         <li class="nav-item d-inline-block d-lg-none">
                             <a href="#" class="nav-link"><i class="fas fa-search fa-lg"></i></a>
                         </li>
-                        <li class="nav-item ml-auto" style="font-size: 1.5em">
-                            <a href="{{ route('inProcess') }}" class="nav-link d-none d-lg-inline-block text-light"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
-                            <a href="{{ route('inProcess') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
+                        <li class="nav-item ml-auto cart" style="font-size: 1.5em">
+                            <a href="{{ route('inProcess') }}" class="nav-link d-none d-lg-inline-block"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>
+{{--                            <a href="{{ route('inProcess') }}" class="nav-link d-inline-block d-lg-none"><i class="fas fa-shopping-cart"></i> (0) | $ 0</a>--}}
                         </li>
                     </ul>
                 </div>

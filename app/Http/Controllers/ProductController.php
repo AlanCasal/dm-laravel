@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -18,10 +18,10 @@ class ProductController extends Controller
         return view('auth.products.index')
 		    ->with(['data' => request()->query()])
 		    ->with(['products' => Product::
-	        orderBy('category_id')
-		    ->orderBy('id', 'asc')
-		    ->paginate(30)
-		    ->where('active', true)
+		        orderBy('category_id')
+			    ->orderBy('id', 'asc')
+			    ->paginate(30)
+			    ->where('active', true)
 		    ]);
     }
 
@@ -65,23 +65,34 @@ class ProductController extends Controller
 	 */
     public function edit(Product $product)
     {
-    	//dd(Category::all()->first());
+    	//dd(product::all()->first());
 
         return view('auth.products.edit')
 	        ->with(['product' => $product])
-	        ->with(['categories' => Category::all()]);
+	        ->with(['products' => product::all()]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param \App\Models\Product $product
+	 * @return \Illuminate\Http\Response
+	 */
+    public function update(Product $product)
     {
-        //
+	    $updates = request()->validate([
+		    'name' => [Rule::unique('products')->ignore($product->name)],
+	        ] // , ['first_name.required' => 'Por favor ingresá un nombre']
+	    );
+
+	    $data['update'] = array(
+		    $product->name, //old
+		    $updates['name'] //new
+	    );
+		//dd($updates['name']);
+	    $product->update($updates);
+
+	    return redirect()->route('products.index', $data);
     }
 
 	/**
@@ -93,7 +104,7 @@ class ProductController extends Controller
 	 */
     public function destroy(Product $product)
     {
-        $data['destroy'] = $product->description;
+        $data['destroy'] = $product->name;
         $product->delete();
 
         return redirect()->route('products.index', $data);

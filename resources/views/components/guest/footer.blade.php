@@ -24,13 +24,7 @@
                         DRAGON MARKET INTRANET
                     </a>
                 </div>
-
 			</div>
-
-			{{-- <a class="navbar-brand align-self-center" href="#">
-			<img src='{{asset("img/DMHead.png")}}' alt='Logo' style='width: 50px;'>
-			<img class="d-none d-sm-inline-block" src='{{asset("img/DMText.png")}}' alt='Logo' style='width: 200px;'>
-			</a> --}}
 
 			<div class="align-items-center" style="color: white">
 				<h6>Encontranos en</h6>
