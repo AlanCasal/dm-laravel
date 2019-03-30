@@ -16,7 +16,7 @@
                             <div class="input-group-prepend login-igp">
                                 <span class="input-group-text"><i class="fas fa-edit"></i></span>
                             </div>
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="{{$category->name}}" autofocus>
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', $category->name) }}" placeholder="{{$category->name}}" autofocus>
                             @if ($errors->has('name'))
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('name') }}</strong>

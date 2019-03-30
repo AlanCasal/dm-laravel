@@ -16,9 +16,9 @@ class ProductSeeder extends Seeder {
     public function run() {
         foreach ($this->productsList($this->i) as $product => $column) { // foreacheo el array asociativo que traigo decodeado del json
             Product::create([ // inserto la data usando eloquent (protip: eloquent usa los timestamps, otros métodos no)
-                'name'        => $column['description'],
-                'category_id' => $column['category_id'],
-                'price'       => $column['price']
+                'name'        => strtoupper($column['name']),
+                'category_id' => strtoupper($column['category_id']),
+                'price'       => strtoupper($column['price'])
             ]);
         }
     }
