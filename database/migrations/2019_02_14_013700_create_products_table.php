@@ -16,8 +16,8 @@ class CreateProductsTable extends Migration
 		Schema::create('products', function (Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->boolean('active')->default(true);
-			$table->boolean('stock')->default(true);
+			$table->string('active')->default('NO');
+			$table->integer('stock')->default(0);
 			
 			// $table->string('image', 50); // hasta 50 caracteres
 			$table->string('name', 75); // hasta 75 caracteres

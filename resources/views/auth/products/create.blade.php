@@ -4,11 +4,11 @@
 	<div class="row justify-content-center">
 		<div class="login_card card col-md-4">
 			<div class="card-header card-header-login">
-				<h3>Editar producto</h3>
+				<h3>Agregar un producto</h3>
 			</div>
 			<div class="card-body">
-				<form method="POST" action="{{ route('products.update', $product) }}" class="">
-					@csrf @method('PUT')
+				<form method="POST" action="{{ route('products.store') }}" class="">
+					@csrf
 
 					{{--nombre--}}
 					<div class="input-group form-group">
@@ -16,8 +16,7 @@
 							<span class="input-group-text"><i class="fas fa-edit"></i></span>
 						</div>
 						<input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-						       name="name" value="{{ old('name', $product->name) }}"
-						       placeholder="{{old('name', $product->name)}}" type="text" autofocus>
+						       name="name" value="" placeholder="{{old('name', 'Nombre del producto')}}" type="text" autofocus>
 						@if ($errors->has('name'))
 							<span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -31,8 +30,7 @@
 							<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
 						</div>
 						<input id="price" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
-						       name="price" value="{{ old('price', $product->price) }}"
-						       placeholder="{{old('price', $product->price)}}">
+						       name="price" value="" placeholder="{{old('price', 'Precio')}}">
 						@if ($errors->has('price'))
 							<span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('price') }}</strong>
@@ -46,8 +44,9 @@
 							<span class="input-group-text"><i class="fas fa-tag"></i></span>
 						</div>
 						<select class="custom-select" name="category_id">
+							<option value="">Seleccioná una categoría...</option>
 							@foreach($categories as $category)
-								<option value="{{$category->id}}" {{($product->category_id == $category->id ? "selected" : "")}}>{{$category->name}}</option>
+								<option value="{{$category->id}}">{{$category->name}}</option>
 							@endforeach
 						</select>
 						@if ($errors->has('category_id'))
@@ -58,20 +57,20 @@
 					</div>
 
 					{{--imagen--}}
-{{--					<div class="input-group form-group">--}}
-{{--						<div class="input-group-prepend login-igp">--}}
-{{--							<span class="input-group-text"><i class="fas fa-image"></i></span>--}}
-{{--						</div>--}}
-{{--						<div class="custom-file">--}}
-{{--							<input type="file" class="custom-file-input" id="customFileLang" lang="es" disabled>--}}
-{{--							<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>--}}
-{{--						</div>--}}
-{{--						@if ($errors->has('price'))--}}
-{{--							<span class="invalid-feedback" role="alert">--}}
-{{--								<strong>{{ $errors->first('price') }}</strong>--}}
-{{--							</span>--}}
-{{--						@endif--}}
-{{--					</div>--}}
+					{{--					<div class="input-group form-group">--}}
+					{{--						<div class="input-group-prepend login-igp">--}}
+					{{--							<span class="input-group-text"><i class="fas fa-image"></i></span>--}}
+					{{--						</div>--}}
+					{{--						<div class="custom-file">--}}
+					{{--							<input type="file" class="custom-file-input" id="customFileLang" lang="es" disabled>--}}
+					{{--							<label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>--}}
+					{{--						</div>--}}
+					{{--						@if ($errors->has('price'))--}}
+					{{--							<span class="invalid-feedback" role="alert">--}}
+					{{--								<strong>{{ $errors->first('price') }}</strong>--}}
+					{{--							</span>--}}
+					{{--						@endif--}}
+					{{--					</div>--}}
 
 					{{--cant en stock--}}
 					<div class="form-row">
@@ -80,8 +79,9 @@
 								<span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
 							</div>
 							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="stock">
+								<option value="">Cantidad...</option>
 								@for ($i = 0; $i < 100; $i++)
-									<option value="{{$i}}" {{($i == $product->stock ? "selected" : "")}}>{{$i}}</option>
+									<option value="{{$i}}">{{$i}}</option>
 								@endfor
 							</select>
 						</div>
@@ -89,13 +89,12 @@
 						{{--activo o inactivo--}}
 						<div class="custom-control custom-radio custom-control-inline offset-md-1 align-items-center">
 							<input type="radio" id="activeRadio1" name="active"
-								   class="custom-control-input" value="SI"
-								   checked>
+							       class="custom-control-input" value="SI">
 							<label class="custom-control-label text-light" for="activeRadio1">Activo</label>
 						</div>
 						<div class="custom-control custom-radio custom-control-inline align-items-center">
 							<input type="radio" id="activeRadio2" name="active"
-								   class="custom-control-input" value="NO">
+							       class="custom-control-input" value="NO" checked>
 							<label class="custom-control-label text-light" for="activeRadio2">Inactivo</label>
 						</div>
 					</div>
@@ -118,10 +117,6 @@
 					</a>
 				</div>
 			</div>{{--card footer--}}
-
-		</div>{{--row--}}
-
-
-	</div>
-{{--	</div>--}}
+		</div>{{--login card--}}
+	</div> {{--row--}}
 @endsection

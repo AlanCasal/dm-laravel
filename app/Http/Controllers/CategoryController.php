@@ -89,7 +89,7 @@ class CategoryController extends Controller
 	public function update(Category $category)
 	{
         $newName = request()->validate([
-            'name' => [Rule::unique('categories')->ignore($category->name)],
+            'name' => [Rule::unique('categories')->ignore($category->id)],
             ] // , ['first_name.required' => 'Por favor ingresá tu nombre']
         );
 		$newName['name'] = strtoupper($newName['name']);

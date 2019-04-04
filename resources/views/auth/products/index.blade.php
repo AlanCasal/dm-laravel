@@ -12,7 +12,7 @@
                     <i class="fas fa-check-circle"></i> PRODUCTO AGREGADO
                 </h5>
                 <hr/>
-                <p>LA PRODUCTO <strong>{{$data['store']}}</strong> HA SIDO AGREGADO.</p>
+                <p>EL PRODUCTO <strong>{{$data['store']}}</strong> HA SIDO AGREGADO.</p>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -34,7 +34,13 @@
                     <i class="fas fa-sync-alt"></i> PRODUCTO ACTUALIZADO
                 </h5>
                 <hr/>
-                <p>EL PRODUCTO <strong>{{$data['update'][0]}}</strong> HA CAMBIADO SU DESCRIPCIÓN A <strong>{{$data['update'][1]}}</strong>.</p>
+                <ul>
+                    <li>NOMBRE: {{$data['update'][0]}} > <strong>{{$data['update'][1]}}</strong></li>
+                    <li>PRECIO: ${{$data['update'][2]}} > <strong>${{$data['update'][3]}}</strong></li>
+                    <li>CATEGORÍA: {{$data['update'][4]}} > <strong>{{$data['update'][5]}}</strong></li>
+                    <li>STOCK: {{$data['update'][6]}} > <strong>{{$data['update'][7]}}</strong></li>
+                    <li>ACTIVO: {{$data['update'][8]}} > <strong>{{$data['update'][9]}}</strong></li>
+                </ul>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -54,13 +60,13 @@
 
         @forelse($products as $product)
             <li
-                    {{--@if(isset($data['store']) && $product->name == $data['store'])--}}
-                    {{--class="font-weight-bold font-italic text-success"--}}
-                    {{--@elseif(isset($data['update'][1]) && $product->name == $data['update'][1])--}}
-                    {{--class="font-weight-bold font-italic text-primary"--}}
-                    {{--@endif--}}
+                @if(isset($data['store']) && $product->name == $data['store'])
+                    class="font-weight-bold font-italic text-success"
+                @elseif(isset($data['update'][1]) && $product->name == $data['update'][1])
+                    class="font-weight-bold font-italic text-primary"
+                @endif
             >
-                {{$product->id}}. {{$product->category->name}} - {{$product->name}},
+                {{$product->id}}. {{$product->category->name}} - {{$product->name}} - ${{$product->price}} -
                 <a href="{{route('products.edit', $product)}}" class="">
                     Editar
                 </a>,
@@ -72,7 +78,7 @@
                 </form>
             </li>
         @empty
-            <li>No se encontraron PRODUCTOs en la base de datos.</li>
+            <li>No se encontraron productos en la base de datos.</li>
         @endforelse
     </ul>
 @endsection

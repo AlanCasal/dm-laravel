@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use function Composer\Autoload\includeFile;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,7 +37,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.products.create')
+	        ->with(['categories' => Category::all()]);
     }
 
     /**
@@ -46,7 +49,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    	//dd(request()->category_id);
+	    $request->validate([
+		    'name' => [Rule::unique('products')],
+		    'price' => [/*Rule::unique('products')->ignore($product->id), 'regex:/\b\d{1,3}(?:,?\d{3})*(?:\.\d{2})?\b/'*/],
+		    //'category_id' => [],
+		    //'stock' => [],
+		    //'active' => [],
+	    ]);
+
+	    Product::create([
+		    'name' => strtoupper($request['name']),
+		    'price' => $request['price'],
+		    'category_id' => $request['category_id'],
+	    ]);
+
+	    $data['store'] = strtoupper($request['name']);
+	    return redirect()->route('products.index', $data);
     }
 
     /**
@@ -71,8 +90,9 @@ class ProductController extends Controller
     	//dd(product::all()->first());
 
         return view('auth.products.edit')
-	        ->with(['product' => $product])
-	        ->with(['products' => product::all()]);
+	        ->with(['product'    => $product])
+	        ->with(['products'   => Product::all()])
+	        ->with(['categories' => Category::all()]);
     }
 
 	/**
@@ -83,18 +103,34 @@ class ProductController extends Controller
 	 */
     public function update(Product $product)
     {
-	    dd(request(['name']));
     	$updates = request()->validate([
-		    'name' => [Rule::unique('products')->ignore($product->name)],
-	        ] // , ['first_name.required' => 'Por favor ingresá un nombre']
-	    );
+		    'name' => [Rule::unique('products')->ignore($product->id)],
+		    'price' => [/*Rule::unique('products')->ignore($product->id), 'regex:/\b\d{1,3}(?:,?\d{3})*(?:\.\d{2})?\b/'*/],
+		    'category_id' => [],
+		    'stock' => [],
+		    'active' => [],
+        ]);
+
 	    $updates['name'] = strtoupper($updates['name']);
 
 	    $data['update'] = array(
 	        $product->name, //old
-		    $updates['name'] //new
+		    $updates['name'], //new
+
+	        $product->price,
+	        $updates['price'],
+
+	        $product->category->name,
+	        Category::where('id', $updates['category_id'])->first()->name,
+
+	        $product->stock,
+	        $updates['stock'],
+
+	        $product->active,
+	        $updates['active'],
 	    );
-		
+		//dd($data['update'][9]);
+
 	    $product->update($updates);
 		
 	    return redirect()->route('products.index', $data);
