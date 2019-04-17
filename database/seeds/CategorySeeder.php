@@ -8,22 +8,27 @@ class CategorySeeder extends Seeder
 {
 	public function run()
 	{
-		foreach ($this->categories as $category)
-			Category::create([ 'name' => $category ]);
+		foreach ($this->categories as $category) {
+			Category::create([
+				'name'   => $category,
+				'active' => 'SI',
+			]);
+		}
 	}
 
-	protected $categories = array(
+	protected $categories = [
 		'MEMORIAS',
-        'PLACAS DE VIDEO',
-        'DISCOS RÍGIDOS',
-        'MICRO PROCESADORES',
-        'SOFTWARE',
-        'GABINETES',
-        'EQUIPO ARMADO',
-        'MONITORES',
-        'MOTHERBOARD',
-        'PLACAS DE SONIDO',
-        'MOUSE / TECLADOS',
-        'FUENTES DE ALIMENTACIÓN'
-	);
+		'PLACAS DE VIDEO',
+		'DISCOS RÍGIDOS',
+		'MICRO PROCESADORES',
+		'SOFTWARE',
+		'GABINETES',
+		'EQUIPO ARMADO',
+		'MONITORES',
+		'MOTHERBOARD',
+		'PLACAS DE SONIDO',
+		'MOUSE / TECLADOS',
+		'FUENTES DE ALIMENTACIÓN',
+		'SIN CATEGORIA',
+	];
 }

@@ -5,7 +5,7 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="login_card card col-5">
 				<div class="card-header card-header-login">
-					<h3>Crear cuenta</h3>
+					<h3>Crear nuevo usuario</h3>
 				</div>
 				<div class="card-body">
 					<form method="POST" action="{{ route('users.store') }}">
@@ -65,7 +65,7 @@
 						</div>
 
 						<div class="form-group">
-							<input type="submit" value="Registrar" class="btn float-right login_btn">
+							<input id="submit" type="submit" value="Registrar" class="btn float-right login_btn">
 						</div>
 					</form>
 				</div>

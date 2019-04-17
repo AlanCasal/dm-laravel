@@ -117,11 +117,7 @@ footer a:hover{
     height: auto;
 }
 
-h5.card-title {
-    font-size: 1em;
-}
-
-p.card-text {
+h5.card-title, p.card-text {
     font-size: 1em;
 }
 
@@ -142,7 +138,7 @@ p.card-text {
     background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
-.card-header-login h3 {
+.card-header-login h3, .login-links {
     color: white;
 }
 
@@ -176,10 +172,18 @@ input:focus {
     background-color: white;
 }
 
-.login-links {
-    color: white;
-}
-
 .login-links a {
     margin-left: 4px;
+}
+
+.products-table thead, .categories-table thead, .users-table thead {
+    color: #FFC312;
+}
+
+.products-table tbody, .categories-table tbody, .users-table tbody {
+    color: #c5b79d;
+}
+
+.products-table tbody tr:hover, .categories-table tbody tr:hover, .users-table tbody tr:hover {
+    color: white;
 }

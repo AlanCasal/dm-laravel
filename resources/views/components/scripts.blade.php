@@ -11,6 +11,5 @@
 
 {{--misc--}}
 {{--<script type="text/javascript" src='{{asset("js/sidebar.js")}}'></script>--}}
-<script type="text/javascript" src='{{asset("js/misc.js")}}'></script>
 
 

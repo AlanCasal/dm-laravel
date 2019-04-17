@@ -16,7 +16,7 @@
 							<span class="input-group-text"><i class="fas fa-edit"></i></span>
 						</div>
 						<input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-						       name="name" value="" placeholder="{{old('name', 'Nombre del producto')}}" type="text" autofocus>
+						       name="name" value="{{old('name')}}" placeholder="{{old('name', 'NOMBRE DEL PRODUCTO ...')}}" type="text" autofocus>
 						@if ($errors->has('name'))
 							<span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('name') }}</strong>
@@ -30,7 +30,7 @@
 							<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
 						</div>
 						<input id="price" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
-						       name="price" value="" placeholder="{{old('price', 'Precio')}}">
+						       name="price" value="{{old('price')}}" placeholder="{{old('price', 'PRECIO ...')}}">
 						@if ($errors->has('price'))
 							<span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('price') }}</strong>
@@ -43,10 +43,10 @@
 						<div class="input-group-prepend login-igp">
 							<span class="input-group-text"><i class="fas fa-tag"></i></span>
 						</div>
-						<select class="custom-select" name="category_id">
-							<option value="">Seleccioná una categoría...</option>
+						<select class="form-control{{ $errors->has('category_id') ? ' is-invalid' : ''}}" name="category_id">
+							<option value="">SELECCIONÁ UNA CATEGORÍA ...</option>
 							@foreach($categories as $category)
-								<option value="{{$category->id}}">{{$category->name}}</option>
+								<option value="{{$category->id}}" {{old('category_id') == $category->id ? "selected" : ''}}>{{$category->name}}</option>
 							@endforeach
 						</select>
 						@if ($errors->has('category_id'))
@@ -72,30 +72,38 @@
 					{{--						@endif--}}
 					{{--					</div>--}}
 
+					{{--activo o inactivo--}}
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="activeRadio1" name="active" class="custom-control-input" value="SI" {{old('active') == 'SI' ? "checked" : ''}}>
+						<label class="custom-control-label text-light" for="activeRadio1">Activo</label>
+					</div>
+					<div class="custom-control custom-radio custom-control-inline">
+						<input type="radio" id="activeRadio2" name="active" class="custom-control-input {{$errors->has('active')? ' is-invalid': ''}}" value="NO" {{old('active') == 'NO' ? "checked" : ''}}>
+						<label class="custom-control-label text-light" for="activeRadio2">Inactivo</label>
+						@if ($errors->has('active'))
+							<span class="invalid-feedback custom-control" role="alert">
+								<strong>{{ $errors->first('active') }}</strong>
+							</span>
+						@endif
+					</div>
+
 					{{--cant en stock--}}
 					<div class="form-row">
-						<div class="col-md-4 my-1 input-group form-group">
+						<div class="{{$errors->has('stock')? "col-md-5": "col-md-4"}} my-1 input-group form-group">
 							<div class="input-group-prepend login-igp">
 								<span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
 							</div>
-							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="stock">
-								<option value="">Cantidad...</option>
-								@for ($i = 0; $i < 100; $i++)
-									<option value="{{$i}}">{{$i}}</option>
+							<select class="mr-sm-2 form-control{{ $errors->has('stock') ? ' is-invalid' : ''}}" id="inlineFormCustomSelect" name="stock">
+								<option value="">CANTIDAD...</option>
+								@for ($i = 1; $i < 101; $i++)
+									<option value="{{$i}}" {{old('stock') == $i ? "selected" : ''}}>{{$i}}</option>
 								@endfor
 							</select>
-						</div>
-
-						{{--activo o inactivo--}}
-						<div class="custom-control custom-radio custom-control-inline offset-md-1 align-items-center">
-							<input type="radio" id="activeRadio1" name="active"
-							       class="custom-control-input" value="SI">
-							<label class="custom-control-label text-light" for="activeRadio1">Activo</label>
-						</div>
-						<div class="custom-control custom-radio custom-control-inline align-items-center">
-							<input type="radio" id="activeRadio2" name="active"
-							       class="custom-control-input" value="NO" checked>
-							<label class="custom-control-label text-light" for="activeRadio2">Inactivo</label>
+							@if ($errors->has('category_id'))
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $errors->first('stock') }}</strong>
+								</span>
+							@endif
 						</div>
 					</div>
 

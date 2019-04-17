@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static create(array $array)
+ */
 class Category extends Model
 {
     // protected $table = 'categories'; en caso de no usar la convención singular/plural en inglés de Laravel

@@ -4,7 +4,7 @@
 
             {{-- Logo --}}
             <div class="logoImg">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{route('home')}}">
                     <img src='{{asset("img/DMHead.png")}}' alt='Logo' style='width: 50px;'>
                     <img class="d-none d-sm-inline-block" src='{{asset("img/DMText.png")}}' alt='Logo' style='width: 200px;'>
                 </a>
@@ -26,15 +26,17 @@
 		                    <span class="navbar-brand h1 nav-link d-none d-lg-inline-block" style="color: #FFC312"><i class="fas fa-user"></i> {{auth()->user()->username}}</span>
 		                    {{--<span class="navbar-brand mb-0 h1 nav-link d-inline-block d-lg-none"><i class="fas fa-user"></i>{{auth()->user()->username}}</span>--}}
 	                    </li>
-	                    <li class="nav-item dropdown activeLink">
-		                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                    Usuarios
-		                    </a>
-		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			                    <a class="dropdown-item" href="{{route('users.index')}}">Ver usuarios</a>
-			                    <a class="dropdown-item" href="{{route('users.create')}}">Agregar un usuario</a>
-		                    </div>
-	                    </li>
+	                    @if(auth()->user()->is_admin)
+		                    <li class="nav-item dropdown activeLink">
+			                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				                    Usuarios
+			                    </a>
+				                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					                    <a class="dropdown-item" href="{{route('users.index')}}">Ver usuarios</a>
+					                        <a class="dropdown-item" href="{{route('users.create')}}">Agregar un usuario</a>
+				                    </div>
+		                    </li>
+						@endif
 	                    <li class="nav-item dropdown">
 		                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			                    Categorías
@@ -50,7 +52,7 @@
 		                    </a>
 		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 			                    <a class="dropdown-item" href="{{route('products.index')}}">Ver productos</a>
-			                    <a class="dropdown-item" href="#">Agregar un producto</a>
+			                    <a class="dropdown-item" href="{{route('products.create')}}">Agregar un producto</a>
 		                    </div>
 	                    </li>
 	                    <li>

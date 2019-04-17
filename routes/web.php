@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 		->name('menu');
 
 	Route::resource('users', 'UserController')
-		->only('index' ,'create', 'store', 'destroy');
+		->only('index', 'create', 'store', 'destroy');
 
 	Route::resource('categories', 'CategoryController')
 		->except('show');
