@@ -65,7 +65,7 @@
 						</div>
 
 						<div class="form-group">
-							<input id="submit" type="submit" value="Registrar" class="btn float-right login_btn">
+							<input id="submit" type="submit" value="Registrar" class="btn float-right btn-save">
 						</div>
 					</form>
 				</div>

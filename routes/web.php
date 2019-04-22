@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 		->only('index', 'create', 'store', 'destroy');
 
 	Route::resource('categories', 'CategoryController')
-		->except('show');
+		->except('show', 'edit');
 
 	Route::resource('products', 'ProductController');
 });

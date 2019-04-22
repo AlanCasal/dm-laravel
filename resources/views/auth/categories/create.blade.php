@@ -22,7 +22,7 @@
                                 </span>
 							@endif
 							<div class="input-group-append">
-								<input type="submit" value="Agregar" class="btn float-right login_btn">
+								<input type="submit" value="Agregar" class="btn float-right btn-save">
 							</div>
 						</div>
 					</form>

@@ -52,7 +52,7 @@
 					</div>
 
 					<div class="form-group">
-						<input type="submit" value="Ingresar" class="btn float-right login_btn">
+						<input type="submit" value="Ingresar" class="btn float-right btn-save">
 					</div>
 				</form>
 			</div>

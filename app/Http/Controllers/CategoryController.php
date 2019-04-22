@@ -19,9 +19,9 @@ class CategoryController extends Controller
 	 */
 	public function index()
 	{
-		return view('auth.categories.index')->with(['data' => str_replace('_', ' ', request()->query())])->with([
-			'categories' => Category::
-			orderBy('id')->paginate(30)->where('active', true),
+		return view('auth.categories.index')
+			->with(['data'       => str_replace('_', ' ', request()->query())])
+			->with(['categories' => Category::orderBy('id')->paginate(30)
 		]);
 	}
 
@@ -74,25 +74,22 @@ class CategoryController extends Controller
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param Category $category
-	 * @return View
+	 * @return void
 	 */
 	public function edit(Category $category)
 	{
-		return view('auth.categories.edit')->with(['category' => $category]);
+		//return view('auth.categories.edit')->with(['category' => $category]);
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param $value
+	 * @param $id
 	 * @return void
 	 */
-	public function update($value)
+	public function update($id)
 	{
-		return response(['message' => request()->category_active]);
-		$category = Category::find(request()->category_id);
-		$oldName = $category->name;
-		$newName = strtoupper($value);
+		//return response(['message' => $category->name]);
 
 		/*$value->validate([
 			'name' => [Rule::unique('categories')->ignore($category->id)],
@@ -105,34 +102,34 @@ class CategoryController extends Controller
 			$newName['name'] //new
 		];*/
 
-		$category->update(['name' => $newName]);
-		if (request()->ajax())
-			return response(['message' => "La categoría {$oldName} ahora se llama {$newName}."]);
+		$category = Category::find($id);
+		$oldName = $category->name;
+		$newName = strtoupper(request()->name);
 
+		$category->update(['name' => $newName]);
+
+		if (request()->ajax())
+			return response(['message' => "La categoría {$oldName} ha sido modificada."]);
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param Category $category
+	 * @param $id
 	 * @return void
-	 * @throws \Exception
 	 */
-	public function destroy(Category $category)
+	public function destroy($id)
 	{
-		$products = Product::where('category_id', $category->id)->get();
 		$sinCategoria = Category::where('name', 'SIN CATEGORIA')->first();
+		$products = Product::where('category_id', $id)->get();
 
-		foreach ($products as $product)
+		foreach ($products as $product) // los productos pasan a estar sin categoría
 			$product->update(['category_id' => $sinCategoria->id]);
 
-		//$data['destroy'] = $category->name;
-
+		$category = Category::find($id);
 		$category->delete();
 
 		if (request()->ajax())
-			return response()->json(['message' => 'La categoría '.$category->name.' ha sido eliminada.']);
-
-		//return redirect()->route('categories.index', $data);
+			return response(['message' => 'La categoría ' . $category->name . ' ha sido eliminada.']);
 	}
 }

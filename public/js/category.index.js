@@ -1,97 +1,99 @@
 (function () {
     $(document).ready(function () {
 
-        $('.btn-edit').click(function (e) {
+        // UPDATE
+        $('.btn-modal-update').click(function (e) {
             e.preventDefault();
+
+            $('#modal-edit').modal('show'); // frm-edit
 
             var row = $(this).parents('tr');
             var id = row.data('id');
+            var name = row.data('name');
 
-            var tdName = $('#categoryName' + id);
-            var oldName = tdName.text();
-            var tdActive = $('#categoryActive' + id);
-
-            if (!row.find('.btn-edit').hasClass("d-none")) {
-                row.find('.btn-edit').addClass("d-none");
-                row.find('.btn-cancel').removeClass("d-none");
-                row.find('.btn-update').removeClass("d-none");
-
-                tdName.html("<input class='form-control' id='categoryEdit" + id + "' name='name' type='text' value='" + oldName + "' placeholder='INGRESÁ UN NOMBRE ...' autofocus>");
-                tdActive.html("<select class='form-control' id='selectActive"+id+"' name='active'><option value='SI'>SÍ</option><option value='NO'>NO</option></select>");
-            }
+            $('#edit_id').val(id); // le paso el id al hidden input
+            $('#frm-name').val(name); // al input name le pongo el nombre de la categoría
+            $('.modal-title-update').text('EDITAR CATEGORÍA '+ name); // el título del modal edit
         });
 
-        $('.btn-update').click(function (e) {
+        $('#btn-update').click(function (e) {
             e.preventDefault();
 
-            var row = $(this).parents('tr');
-            var id = row.data('id');
-            var form = $('#frm-update' + id);
-
-            var inputValue = $('#categoryEdit' + id).val();
-            var url = form.attr('action').replace(':CATEGORY_NAME', inputValue);
-            var data = form.serialize();
-
-            var tdName = $('#categoryName' + id);
-            // var tdActive = $('#categoryActive' + id);
-
-            $('#frm_active'+id).val($('#selectActive'+id).val());
-
+            var id = $('#edit_id').val();
+            var url = $('#frm-edit').attr('action').replace(':ID', id);
+            var data = $('#frm-edit').serialize();
 
             $.post(url, data, function (result) {
-                alert(result.message);
-                if (row.find('.btn-edit').hasClass('d-none')) {
-                    row.find('.btn-edit').removeClass('d-none');
-                    row.find('.btn-cancel').addClass("d-none");
-                    row.find('.btn-update').addClass("d-none");
+                $('.alert-success').text(result.message);
+                $('.alert-success').show();
 
-                    tdName.html(inputValue);
-                    // tdActive.html();
-                }
+                $('.update-hint').hide();
+                $('#frm-edit').hide();
+                $('.modal-title-update').hide();
+                $('#btn-update').hide();
+
+                $('.btn-cancel').text('Cerrar')
             }).fail(function () {
                 alert('La categoría no pudo ser actualizada. Vuelva a intentarlo');
             });
+
         });
 
-        $('.btn-cancel').click(function (e) {
+        // DESTROY
+        $('.btn-modal-destroy').click(function (e) {
             e.preventDefault();
+
+            $('#modal-destroy').modal('show'); // frm-destroy
 
             var row = $(this).parents('tr');
             var id = row.data('id');
+            var name = row.data('name');
 
-            var tdName = $('#categoryName' + id);
-            var tdActive = $('#categoryActive' + id);
-            var oldName = row.data('name');
-            var oldActive = row.data('active');
-
-            if (row.find('.btn-edit').hasClass('d-none')) {
-                row.find('.btn-edit').removeClass('d-none');
-                row.find('.btn-cancel').addClass("d-none");
-                row.find('.btn-update').addClass("d-none");
-
-                tdName.html(oldName);
-                tdActive.html(oldActive);
-            }
+            $('#destroy_id').val(id); // le paso el id al hidden input
+            $('.modal-title-destroy').text('DESEA ELIMINAR LA CATEGORÍA '+ name + ' ?'); // el título del modal edit
         });
 
-        $('.btn-destroy').click(function (e) {
+        $('#btn-destroy').click(function (e) {
             e.preventDefault();
 
-            var row = $(this).parents('tr');
-            var id = row.data('id');
-            var form = $('#frm-destroy' + id);
-
-            var url = form.attr('action');
+            var id = $('#destroy_id').val();
+            var form = $('#frm-destroy');
+            var url = form.attr('action').replace(':ID', id);
             var data = form.serialize();
 
             $.post(url, data, function (result) {
-                alert(result.message);
-                row.fadeOut();
+                $('.alert-danger').text(result.message);
+                $('.alert-danger').show();
+
+                $('.modal-title-destroy').hide();
+                $('#btn-destroy').hide();
+
+                $('.btn-cancel').text('Cerrar')
             }).fail(function () {
                 alert('La categoría no pudo ser eliminada. Vuelva a intentarlo');
-                row.show();
             });
+        });
 
+        // CANCEL
+        $('.btn-cancel').click(function (e) { // botón de cancelar/cerrar comportamiento
+            e.preventDefault();
+            $('.modal').modal('hide');
+
+            if ($('.alert').is(':visible')) { // si hay una alerta visible
+                location.reload();
+
+                setTimeout(function () {
+                    $('.alert').hide();
+
+                    $('.modal-title').show(); // los títulos de los dos modals
+                    $('.btn-action').show(); // 'guardar' y 'eliminar'
+
+                    $('.btn-cancel').text('Cancelar');
+
+                    $('.update-hint').show();
+                    $('#frm-edit').show();
+                }, 1500);
+            }
         });
 
     });

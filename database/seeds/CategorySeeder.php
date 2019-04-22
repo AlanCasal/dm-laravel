@@ -11,7 +11,6 @@ class CategorySeeder extends Seeder
 		foreach ($this->categories as $category) {
 			Category::create([
 				'name'   => $category,
-				'active' => 'SI',
 			]);
 		}
 	}

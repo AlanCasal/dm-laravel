@@ -110,7 +110,7 @@
 					<br/>
 					{{--submit--}}
 					<div class="form-group">
-						<input type="submit" value="Guardar" class="btn float-right login_btn">
+						<input type="submit" value="Guardar" class="btn float-right btn-save">
 					</div>
 				</form>
 			</div>{{--card body--}}

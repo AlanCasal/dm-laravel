@@ -1,109 +1,130 @@
 @extends('layouts.auth')
 
 @section('content')
-    <br/>
-    <ul style="color: white">
-        <h3 class="text-center">CATEGORÍAS</h3>
+	<br/>
+	<h3 class="text-center text-light">CATEGORÍAS</h3>
 
-	    {{--ALERTAS--}}
-        {{--@if(isset($data['store']))
-            <div class="alert alert-success alert-dismissible text-success fade show col-md-4 offset-md-4 text-center" role="alert">
-                <h5>
-                    <i class="fas fa-check-circle"></i> CATEGORÍA AGREGADA
-                </h5>
-                <hr/>
-                <p>LA CATEGORÍA <strong>{{$data['store']}}</strong> HA SIDO AGREGADA.</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @elseif(isset($data['destroy']))
-            <div class="alert alert-danger alert-dismissible text-danger fade show col-md-4 offset-md-4 text-center" role="alert">
-                <h5>
-                    <i class="fas fa-trash-alt"></i> CATEGORÍA ELIMINADA
-                </h5>
-                <hr>
-                <p>LA CATEGORÍA <strong>{{$data['destroy']}}</strong> HA SIDO ELIMINADA.</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @elseif(isset($data['update']))
-            <div class="alert alert-primary alert-dismissible text-primary fade show col-md-4 offset-md-4 text-center" role="alert">
-                <h5>
-                    <i class="fas fa-sync-alt"></i> CATEGORÍA ACTUALIZADA
-                </h5>
-                <hr/>
-                <p>LA CATEGORÍA <strong>{{$data['update'][0]}}</strong> HA CAMBIADO SU NOMBRE A <strong>{{$data['update'][1]}}</strong>.</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif--}}
+	{{--CONTENIDO--}}
+	<hr style="border-color: #FFC312"/>
+	<div class="d-flex justify-content-center">
+		<a href="{{route('categories.create')}}">
+			<button class="btn btn-outline-warning font-weight-bold">
+				Agregar una categoría
+			</button>
+		</a>
+	</div>
+	<br/>
 
-	    {{--CONTENIDO--}}
-        <hr style="border-color: #FFC312"/>
 
-        <div class="d-flex justify-content-center">
-            <a href="{{route('categories.create')}}">
-                <button class="btn btn-outline-warning font-weight-bold">
-                    Agregar una categoría
-                </button>
-            </a>
-        </div>
-        <br/>
+	{{--MODAL UPDATE FORM POPUP--}}
+	<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog"
+	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-category modal-content">
+				<div class="modal-header border-0">
+					<h4 class="modal-title modal-title-update text-light font-weight-bold"
+					    id="exampleModalLongTitle"></h4>
+					<button type="button" class="close text-warning" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 
-        <div class="d-flex justify-content-center">
-            <table class="categories-table table table-striped table-dark table-bordered table-hover table-sm col-md-6">
-                <thead>
-                <tr class="text-center">
-                    <th scope="col">ID</th>
-                    <th scope="col">NOMBRE</th>
-                    <th scope="col">ACTIVO</th>
-                    <th scope="col">EDITAR</th>
-                    <th scope="col">ELIMINAR</th>
-                </tr>
-                </thead>
-                <tbody class="text-center">
-                @forelse($categories as $category)
-                    <tr data-id="{{$category->id}}" data-name="{{$category->name}}" data-active="{{$category->active?'SI':'NO'}}">
-                        <th scope="row">{{$category->id}}</th>
-                        <td id="categoryName{{$category->id}}">{{$category->name}}</td>
-                        <td id="categoryActive{{$category->id}}">{{$category->active}}</td>
-                        <td>
-                            @if($category->name != 'SIN CATEGORIA')
-                                <a class="btn-edit text-primary"><i class="fas fa-edit"></i></a>
-                                <a class="btn-cancel text-danger d-none" href=""><i class="fas fa-times-circle"></i>   </a>
-                                <a class="btn-update text-success d-none" href="">
-                                    <i class="fas fa-sync-alt"></i>
-                                    <form method="POST" id="frm-update{{$category->id}}" class="d-none" action="{{route('categories.update', ':CATEGORY_NAME')}}">
-                                        <input type="hidden" value="{{$category->id}}" name="category_id">
-{{--                                        <input type="hidden" value="" id="frm_active{{$category->id}}" name="category_active">--}}
-                                        @csrf @method('PUT')
-                                    </form>
-                                </a>
-                            @endif
-                        </td>
-                        <td class="text-center">
-                            @if($category->name != 'SIN CATEGORIA')
-                            <a href="" class="btn-destroy text-danger">
-                                <form id="frm-destroy{{$category->id}}" class="d-none" action="{{route('categories.destroy', $category)}}" method="POST">
-                                    @csrf @method('DELETE')
-                                </form>
-                                <i class="fas fa-trash align-self-center"></i>
-                            </a>
-                            @endif
-                        </td>
-                    </tr>
-                @empty
-                    <li>No se encontraron categorías en la base de datos.</li>
-                @endforelse
-                </tbody>
-            </table>
-        </div>
-    </ul>
+				<div class="modal-body">
+					<div class="alert alert-success" style="display: none" role="alert"></div>
+					<h6 class="text-light update-hint">Ingrese un nuevo nombre para la categoría</h6>
+					<form id="frm-edit" method="POST" action="{{route('categories.update', ':ID')}}">
+						@csrf @method('PUT')
+						<input type="hidden" name="category_id" id="edit_id">
+						<div class="input-group form-group">
+							<div class="input-group-prepend login-igp">
+								<span class="input-group-text"><i class="fas fa-edit"></i></span>
+							</div>
+							<input id="frm-name" type="text"
+							       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
+							       value="{{ old('name') }}" placeholder="{{'INGRESÁ UN NOMBRE ...'}}">
+							@if ($errors->has('name'))
+								<span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+							@endif
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer border-dark">
+					<button type="button" class="btn btn-light btn-cancel"> Cancelar</button>
+					<button type="button" id="btn-update" class="btn btn-action btn-save"><i class="fas fa-check fa-sm"></i> Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{--DESTROY MODAL--}}
+	<div class="modal fade" id="modal-destroy" tabindex="-1" role="dialog"
+	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-category modal-content">
+				<div class="modal-header border-0">
+					<h6 class="modal-title modal-title-destroy text-light font-weight-bold"
+					    id="exampleModalLongTitle"></h6>
+					<button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<form id="frm-destroy" style="display: none" action="{{route('categories.destroy', ':ID')}}"
+					      method="POST">
+						@csrf @method('DELETE')
+						<input type="hidden" name="category_id" id="destroy_id">
+					</form>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" style="display: none" role="alert"></div>
+				</div>
+				<div class="modal-footer border-dark">
+					<button type="button" class="btn btn-light btn-cancel"> Cancelar</button>
+					<button type="button" id="btn-destroy" class="btn btn-danger btn-action text-dark font-weight-bold"><i
+								class="fas fa-trash fa-sm"></i> Eliminar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{{--TABLA--}}
+	<div class="d-flex justify-content-center">
+		<table class="categories-table table table-striped table-dark table-bordered table-hover table-sm col-md-6">
+			<thead>
+			<tr class="text-center">
+				<th scope="col">ID</th>
+				<th scope="col">NOMBRE</th>
+				<th scope="col">EDITAR</th>
+				<th scope="col">ELIMINAR</th>
+			</tr>
+			</thead>
+			<tbody class="text-center">
+			@forelse($categories as $category)
+				<tr id="row{{$category->id}}" data-id="{{$category->id}}" data-name="{{$category->name}}">
+					<th scope="row">{{$category->id}}</th>
+					<td>{{$category->name}}</td>
+					<td>
+						@if($category->name != 'SIN CATEGORIA')
+							<a class="btn-modal-update text-primary"><i class="fas fa-edit"></i></a>
+						@endif
+					</td>
+					<td class="text-center">
+						@if($category->name != 'SIN CATEGORIA')
+							<a href="" class="btn-modal-destroy text-danger">
+								<i class="fas fa-trash align-self-center"></i>
+							</a>
+						@endif
+					</td>
+				</tr>
+			@empty
+				<li>No se encontraron categorías en la base de datos.</li>
+			@endforelse
+			</tbody>
+		</table>
+	</div>
 @endsection
 
 @section('scripts')
-    <script src="{{asset('js/category.index.js')}}"></script>
+	<script src="{{asset('js/category.index.js')}}"></script>
 @endsection
