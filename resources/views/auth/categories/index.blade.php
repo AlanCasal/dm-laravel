@@ -4,7 +4,6 @@
 	<br/>
 	<h3 class="text-center text-light">CATEGORÍAS</h3>
 
-	{{--CONTENIDO--}}
 	<hr style="border-color: #FFC312"/>
 	<div class="d-flex justify-content-center">
 		<a href="{{route('categories.create')}}">
@@ -24,7 +23,7 @@
 				<div class="modal-header border-0">
 					<h4 class="modal-title modal-title-update text-light font-weight-bold"
 					    id="exampleModalLongTitle"></h4>
-					<button type="button" class="close text-warning" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close text-warning btn-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -45,7 +44,7 @@
 				</div>
 				<div class="modal-footer border-dark">
 					<button type="button" class="btn btn-light btn-edit"> Editar</button>
-					<button type="button" class="btn btn-light btn-close"> Cancelar</button>
+					<button type="button" class="btn btn-light btn-close btn-close-text"> Cancelar</button>
 					<button type="button" id="btn-update" class="btn btn-action btn-save"><i
 								class="fas fa-check fa-sm"></i> Guardar
 					</button>
@@ -56,13 +55,13 @@
 
 	{{--DESTROY MODAL--}}
 	<div class="modal fade" id="modal-destroy" tabindex="-1" role="dialog"
-	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-category modal-content">
 				<div class="modal-header border-0">
-					<h6 class="modal-title modal-title-destroy text-light font-weight-bold"
+					<h6 class="modal-title modal-title-destroy text-light"
 					    id="exampleModalLongTitle"></h6>
-					<button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close text-danger btn-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<form id="frm-destroy" style="display: none" action="{{route('categories.destroy', ':ID')}}"
@@ -71,11 +70,8 @@
 						<input type="hidden" name="category_id" id="destroy_id">
 					</form>
 				</div>
-				<div class="modal-body">
-					<div class="alert alert-danger" style="display: none" role="alert"></div>
-				</div>
 				<div class="modal-footer border-dark">
-					<button type="button" class="btn btn-light btn-close"> Cancelar</button>
+					<button type="button" class="btn btn-light btn-close btn-close-text"> Cancelar</button>
 					<button type="button" id="btn-destroy" class="btn btn-danger btn-action text-dark font-weight-bold">
 						<i class="fas fa-trash fa-sm"></i> Eliminar
 					</button>

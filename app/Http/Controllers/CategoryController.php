@@ -106,7 +106,7 @@ class CategoryController extends Controller
 			return response(['success' => 'Cambios guardados correctamente.']);
 		}
 
-		return response()->json(['error' => $validator->errors()->all()], 422);
+		return response(['error' => $validator->errors()->all()], 422);
 	}
 
 	/**
@@ -117,7 +117,9 @@ class CategoryController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$sinCategoria = Category::where('name', 'SIN CATEGORIA')->first();
+		$name = Category::find($id)->name;
+		return response(['name' => $name]);
+		/*$sinCategoria = Category::where('name', 'SIN CATEGORIA')->first();
 		$products = Product::where('category_id', $id)->get();
 
 		foreach ($products as $product) // los productos pasan a estar sin categoría
@@ -127,6 +129,6 @@ class CategoryController extends Controller
 		$category->delete();
 
 		if (request()->ajax())
-			return response(['message' => 'La categoría ' . $category->name . ' ha sido eliminada.']);
+			return response(['message' => 'La categoría ' . $category->name . ' ha sido eliminada.']);*/
 	}
 }

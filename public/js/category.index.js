@@ -6,7 +6,8 @@
             e.preventDefault();
 
             remove_feedback();
-            $('.btn-edit').hide();
+            show_buttons_for_edit();
+
             $('#modal-edit').modal('show'); // frm-edit
 
             var row = $(this).parents('tr');
@@ -32,7 +33,7 @@
 
                 $('.modal-title-update').text($('#name').val().toUpperCase());
 
-                change_buttons_on_success();
+                show_buttons_on_success();
             }).fail(data => {
                 remove_feedback();
                 put_invalid_feedback(data.responseJSON.error);
@@ -50,7 +51,8 @@
             var name = row.data('name');
 
             $('#destroy_id').val(id); // le paso el id al hidden input
-            $('.modal-title-destroy').text('DESEA ELIMINAR LA CATEGORÍA ' + name + ' ?'); // el título del modal edit
+
+            $('.modal-title-destroy').html('¿ DESEA ELIMINAR LA CATEGORÍA ' + '<strong class="text-warning">' + name + '</strong>' + ' ?'); // el título del modal edit
         });
 
         // SUBMIT DESTROY
@@ -62,14 +64,12 @@
             var url = form.attr('action').replace(':ID', id);
             var data = form.serialize();
 
-            $.post(url, data, function (result) {
-                $('.alert-danger').text(result.message);
-                $('.alert-danger').show();
+            $.post(url, data, function (data) {
+                $('.modal-title-destroy').html('LA CATEGORÍA ' + '<strong>' + data.name + '</strong>' + ' HA SIDO ELIMINADA.'); // el título del modal edit
 
-                $('.modal-title-destroy').hide();
                 $('#btn-destroy').hide();
 
-                $('.btn-close').text('Cerrar')
+                $('.btn-close-text').text('Cerrar')
             }).fail(function () {
                 alert('La categoría no pudo ser eliminada. Vuelva a intentarlo');
             });
@@ -80,15 +80,8 @@
             e.preventDefault();
             $('.modal').modal('hide');
 
-            if ($('#name').hasClass('is-valid')) { // si hay una alerta visible
+            if (!$('.btn-action').is(':visible')) // si no hay botón de acción, es porque ya sé clickeó
                 location.reload(); // para que tomen efecto en el front los cambios en la db
-
-                setTimeout(function () {
-                    $('.btn-action').show(); // 'guardar' y 'eliminar'
-
-                    $('.btn-close').text('Cancelar');
-                }, 1500);
-            }
         });
 
         // EDIT MODAL (cuando el post dio success)
@@ -97,7 +90,7 @@
 
             remove_feedback();
 
-            change_buttons_for_edit();
+            show_buttons_for_edit();
         });
 
         // ENTER KEY BIND TO SUBMIT
@@ -144,15 +137,15 @@
             $('#name').after('<span class="text-success valid-feedback" role="alert"><strong>' + message + '</strong></span>');
         }
 
-        function change_buttons_on_success() {
+        function show_buttons_on_success() {
             $('#btn-update').hide();
             $('.btn-edit').show();
-            $('.btn-close').text('Cerrar')
+            $('.btn-close-text').text('Cerrar')
         }
         
-        function change_buttons_for_edit() {
+        function show_buttons_for_edit() {
             $('.btn-action').show();
-            $('.btn-close').text('Cancelar');
+            $('.btn-close-text').text('Cancelar');
             $('.btn-edit').hide();
         }
 
