@@ -18,7 +18,7 @@
 
 	{{--MODAL UPDATE FORM POPUP--}}
 	<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog"
-	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-category modal-content">
 				<div class="modal-header border-0">
@@ -30,7 +30,6 @@
 				</div>
 
 				<div class="modal-body">
-					<div class="alert alert-success" style="display: none" role="alert"></div>
 					<h6 class="text-light update-hint">Ingrese un nuevo nombre para la categoría</h6>
 					<form id="frm-edit" method="POST" action="{{route('categories.update', ':ID')}}">
 						@csrf @method('PUT')
@@ -39,20 +38,17 @@
 							<div class="input-group-prepend login-igp">
 								<span class="input-group-text"><i class="fas fa-edit"></i></span>
 							</div>
-							<input id="frm-name" type="text"
-							       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name"
-							       value="{{ old('name') }}" placeholder="{{'INGRESÁ UN NOMBRE ...'}}">
-							@if ($errors->has('name'))
-								<span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-							@endif
+							<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
+							       placeholder="{{'INGRESÁ UN NOMBRE ...'}}">
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer border-dark">
-					<button type="button" class="btn btn-light btn-cancel"> Cancelar</button>
-					<button type="button" id="btn-update" class="btn btn-action btn-save"><i class="fas fa-check fa-sm"></i> Guardar</button>
+					<button type="button" class="btn btn-light btn-edit"> Editar</button>
+					<button type="button" class="btn btn-light btn-close"> Cancelar</button>
+					<button type="button" id="btn-update" class="btn btn-action btn-save"><i
+								class="fas fa-check fa-sm"></i> Guardar
+					</button>
 				</div>
 			</div>
 		</div>
@@ -79,9 +75,9 @@
 					<div class="alert alert-danger" style="display: none" role="alert"></div>
 				</div>
 				<div class="modal-footer border-dark">
-					<button type="button" class="btn btn-light btn-cancel"> Cancelar</button>
-					<button type="button" id="btn-destroy" class="btn btn-danger btn-action text-dark font-weight-bold"><i
-								class="fas fa-trash fa-sm"></i> Eliminar
+					<button type="button" class="btn btn-light btn-close"> Cancelar</button>
+					<button type="button" id="btn-destroy" class="btn btn-danger btn-action text-dark font-weight-bold">
+						<i class="fas fa-trash fa-sm"></i> Eliminar
 					</button>
 				</div>
 			</div>
@@ -89,12 +85,12 @@
 	</div>
 
 	{{--TABLA--}}
-	<div class="d-flex justify-content-center">
-		<table class="categories-table table table-striped table-dark table-bordered table-hover table-sm col-md-6">
+	<div class="d-flex justify-content-center col-md-4 offset-md-4">
+		<table class="categories-table table table-striped table-dark table-bordered table-hover table-sm table-responsive">
 			<thead>
 			<tr class="text-center">
 				<th scope="col">ID</th>
-				<th scope="col">NOMBRE</th>
+				<th style="width: 70%" scope="col">NOMBRE</th>
 				<th scope="col">EDITAR</th>
 				<th scope="col">ELIMINAR</th>
 			</tr>

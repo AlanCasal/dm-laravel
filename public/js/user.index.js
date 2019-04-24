@@ -1,5 +1,6 @@
 (function () {
     $(document).ready(function () {
+
         $('.btn-destroy').click(function (e) {
             e.preventDefault();
 
@@ -18,5 +19,6 @@
                 row.show();
             });
         });
+
     });
 })();

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -84,32 +85,28 @@ class CategoryController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
 	 * @param $id
 	 * @return void
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//return response(['message' => $category->name]);
-
-		/*$value->validate([
-			'name' => [Rule::unique('categories')->ignore($category->id)],
+		$validator = Validator::make($request->all(), [
+			'name' => ['required', Rule::unique('categories')->ignore($id)],
 		], [
-			'name.unique' => "La categoría ya existe",
-		]);*/
-
-		/*$data['update'] = [
-			$category->name, //old
-			$newName['name'] //new
-		];*/
+			'name.required' => 'Por favor ingresá un nombre.',
+			'name.unique' => 'La categoría ya existe.'
+		]);
 
 		$category = Category::find($id);
-		$oldName = $category->name;
-		$newName = strtoupper(request()->name);
+		$newName = strtoupper($request->name);
 
-		$category->update(['name' => $newName]);
+		if ($validator->passes()) {
+			$category->update(['name' => $newName]);
+			return response(['success' => 'Cambios guardados correctamente.']);
+		}
 
-		if (request()->ajax())
-			return response(['message' => "La categoría {$oldName} ha sido modificada."]);
+		return response()->json(['error' => $validator->errors()->all()], 422);
 	}
 
 	/**
