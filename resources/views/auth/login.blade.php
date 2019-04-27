@@ -10,7 +10,6 @@
 				<form method="POST" action="{{ route('login') }}">
 					@csrf
 					<div class="input-group form-group">
-						{{--<label for="username" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>--}}
 						<div class="input-group-prepend login-igp">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
@@ -18,8 +17,8 @@
 						       name="username" value="{{ old('username') }}" placeholder="Ingresá tu usuario" autofocus>
 						@if ($errors->has('username'))
 							<span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('username') }}</strong>
+                            </span>
 						@endif
 					</div>
 
@@ -33,8 +32,8 @@
 						       placeholder="Ingresá tu contraseña">
 						@if ($errors->has('password'))
 							<span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
 						@endif
 					</div>
 
@@ -61,7 +60,7 @@
 				<div class="d-flex justify-content-center login-links">
 					@if (Route::has('password.request'))
 						Si olvidaste tu contraseña
-						<a href="{{ route('password.request') }}">
+						<a class="text-warning" href="{{ route('password.request') }}">
 							Ingresá acá
 						</a>
 					@endif

@@ -67,7 +67,7 @@
 					<form id="frm-destroy" style="display: none" action="{{route('categories.destroy', ':ID')}}"
 					      method="POST">
 						@csrf @method('DELETE')
-						<input type="hidden" name="category_id" id="destroy_id">
+						<input type="hidden" name="destroy_id" id="destroy_id">
 					</form>
 				</div>
 				<div class="modal-footer border-dark">

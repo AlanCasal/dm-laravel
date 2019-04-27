@@ -27,37 +27,25 @@
 		                    {{--<span class="navbar-brand mb-0 h1 nav-link d-inline-block d-lg-none"><i class="fas fa-user"></i>{{auth()->user()->username}}</span>--}}
 	                    </li>
 	                    @if(auth()->user()->is_admin)
-		                    <li class="nav-item dropdown activeLink">
-			                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                    <li class="nav-item activeLink">
+			                    <a class="nav-link activeLink" href="{{route('users.index')}}">
 				                    Usuarios
 			                    </a>
-				                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					                    <a class="dropdown-item" href="{{route('users.index')}}">Ver usuarios</a>
-					                        <a class="dropdown-item" href="{{route('users.create')}}">Agregar un usuario</a>
-				                    </div>
 		                    </li>
 						@endif
-	                    <li class="nav-item dropdown">
-		                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                    <li class="nav-item ">
+		                    <a class="nav-link activeLink" href="{{route('categories.index')}}">
 			                    Categorías
 		                    </a>
-		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			                    <a class="dropdown-item" href="{{route('categories.index')}}">Ver categorías</a>
-			                    <a class="dropdown-item" href="{{route('categories.create')}}">Agregar una categoría</a>
-		                    </div>
 	                    </li>
 	                    <li class="nav-item dropdown">
-		                    <a class="nav-link dropdown-toggle activeLink" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                    <a class="nav-link activeLink" href="{{route('products.index')}}">
 			                    Productos
 		                    </a>
-		                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			                    <a class="dropdown-item" href="{{route('products.index')}}">Ver productos</a>
-			                    <a class="dropdown-item" href="{{route('products.create')}}">Agregar un producto</a>
-		                    </div>
 	                    </li>
-	                    <li>
+	                    {{--<li>
 	                        <a href="{{ route('menu') }}" class="nav-link d-inline-block d-lg-none activeLink"><i class="fas fa-list"></i></a>
-	                    </li>
+	                    </li>--}}
 	                    <li>
 	                        <a href="" class="nav-link d-none d-lg-inline-block activeLink" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"><i class="fas fa-sign-out-alt"></i> Salir</a>
 	                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">

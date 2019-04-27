@@ -117,18 +117,16 @@ class CategoryController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$name = Category::find($id)->name;
-		return response(['name' => $name]);
-		/*$sinCategoria = Category::where('name', 'SIN CATEGORIA')->first();
+		$category = Category::find($id);
+		$sinCategoria = Category::where('name', 'SIN CATEGORIA')->first();
 		$products = Product::where('category_id', $id)->get();
+		$name = $category->name;
 
 		foreach ($products as $product) // los productos pasan a estar sin categoría
 			$product->update(['category_id' => $sinCategoria->id]);
 
-		$category = Category::find($id);
 		$category->delete();
 
-		if (request()->ajax())
-			return response(['message' => 'La categoría ' . $category->name . ' ha sido eliminada.']);*/
+		return response(['success' => $name]);
 	}
 }

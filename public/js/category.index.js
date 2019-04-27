@@ -55,7 +55,7 @@
             $('.modal-title-destroy').html('¿ DESEA ELIMINAR LA CATEGORÍA ' + '<strong class="text-warning">' + name + '</strong>' + ' ?'); // el título del modal edit
         });
 
-        // SUBMIT DESTROY
+        // DESTROY SUBMIT
         $('#btn-destroy').click(e => {
             e.preventDefault();
 
@@ -64,12 +64,11 @@
             var url = form.attr('action').replace(':ID', id);
             var data = form.serialize();
 
-            $.post(url, data, function (data) {
-                $('.modal-title-destroy').html('LA CATEGORÍA ' + '<strong>' + data.name + '</strong>' + ' HA SIDO ELIMINADA.'); // el título del modal edit
+            $.post(url, data, function (response) {
+                $('.modal-title-destroy').html('LA CATEGORÍA ' + '<strong class="text-danger">' + response.success + '</strong>' + ' HA SIDO ELIMINADA.'); // el título del modal edit
 
                 $('#btn-destroy').hide();
-
-                $('.btn-close-text').text('Cerrar')
+                $('.btn-close-text').text('Aceptar')
             }).fail(function () {
                 alert('La categoría no pudo ser eliminada. Vuelva a intentarlo');
             });
