@@ -92,13 +92,14 @@ class CategoryController extends Controller
 	public function update(Request $request, $id)
 	{
 		$validator = Validator::make($request->all(), [
-			'name' => ['required', Rule::unique('categories')->ignore($id)],
+			'name' => ['required', Rule::unique('categories')/*->ignore($id)*/],
 		], [
 			'name.required' => 'Por favor ingresá un nombre.',
 			'name.unique' => 'La categoría ya existe.'
 		]);
 
 		$category = Category::find($id);
+		$oldName = $category->name;
 		$newName = strtoupper($request->name);
 
 		if ($validator->passes()) {
@@ -106,7 +107,9 @@ class CategoryController extends Controller
 			return response(['success' => 'Cambios guardados correctamente.']);
 		}
 
-		return response(['error' => $validator->errors()->all()], 422);
+		return $oldName == $newName ?
+			response(['same' => 'No se registraron cambios.'], 422) :
+			response(['error' => $validator->errors()->first()], 422);
 	}
 
 	/**
