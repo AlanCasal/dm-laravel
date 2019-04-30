@@ -29,11 +29,11 @@ class CategoryController extends Controller
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return Response
+	 * @return void
 	 */
 	public function create()
 	{
-		return view('auth.categories.create');
+		//return view('auth.categories.create');
 	}
 
 	/**
@@ -44,20 +44,24 @@ class CategoryController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$request->validate([
+		$validator = Validator::make($request->all(), [
 			'name' => ['required', Rule::unique('categories')],
 		], [
-			'name.required' => 'Ingresá un nombre',
-			'name.unique'   => "La categoría {$request->name} ya existe",
+			'name.required' => 'Por favor ingresá un nombre.',
+			'name.unique' => 'La categoría ya existe.'
 		]);
 
-		Category::create([
-			'name' => strtoupper($request['name']),
-		]);
+		$name = strtoupper($request->name);
 
-		$data['store'] = strtoupper($request['name']);
+		if ($validator->passes()) {
+			$newCategory = Category::create(['name' => $name]);
+			return response([
+				'success' => 'La categoría ' . $name . ' ha sido creada.',
+				'id' => $newCategory->id
+			]);
+		}
 
-		return redirect()->route('categories.index', $data);
+		return response(['error' => $validator->errors()->first()], 422);
 	}
 
 	/**
@@ -92,7 +96,7 @@ class CategoryController extends Controller
 	public function update(Request $request, $id)
 	{
 		$validator = Validator::make($request->all(), [
-			'name' => ['required', Rule::unique('categories')/*->ignore($id)*/],
+			'name' => ['required', Rule::unique('categories')],
 		], [
 			'name.required' => 'Por favor ingresá un nombre.',
 			'name.unique' => 'La categoría ya existe.'

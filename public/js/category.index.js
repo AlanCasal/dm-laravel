@@ -1,9 +1,34 @@
 (() => {
     $(document).ready(() => {
 
-        // CREATE MODAL
+        // STORE MODAL
+        $('#btn-store-modal').click((e) => {
+            e.preventDefault();
+            remove_feedback();
+            show_edit_buttons();
 
-        // CREATE SUBMIT
+            $('#modal-store').modal('show');
+            $('.modal-title-store').text('NUEVA CATEGORÍA');
+        });
+
+        // STORE SUBMIT
+        $('#btn-store').click((e) => {
+            e.preventDefault();
+            remove_feedback();
+
+            var url = $('#frm-store').attr('action');
+            var data = $('#frm-store').serialize();
+
+            $.post(url, data, (response) => {
+                show_success_buttons();
+                show_success_feedback(response.success);
+                $('.hint').hide();
+                $('#store_name').attr('data-id', response.id);
+
+            }).fail((response) => {
+                show_error_feedback(response.responseJSON.error);
+            });
+        });
 
         // UPDATE MODAL
         $('.btn-modal-update').click(function (e) {
@@ -11,7 +36,7 @@
             remove_feedback();
             show_edit_buttons();
 
-            $('#modal-update').modal('show'); // frm-edit
+            $('#modal-update').modal('show'); // frm-update
 
             var row = $(this).parents('tr');
             var id = row.data('id'); // id de la categoría desde la tabla
@@ -28,8 +53,8 @@
             remove_feedback();
 
             var id = $('#edit_id').val();
-            var url = $('#frm-edit').attr('action').replace(':ID', id);
-            var data = $('#frm-edit').serialize();
+            var url = $('#frm-update').attr('action').replace(':ID', id);
+            var data = $('#frm-update').serialize();
 
             $.post(url, data, (response) => {
                 show_success_feedback(response.success);
@@ -89,12 +114,23 @@
             }
         });
 
-        // EDIT MODAL (cuando el post dio success)
+        // EDIT BTN (cuando el .post de store o update dio success)
         $('.btn-edit').click((e) => {
             e.preventDefault();
             remove_feedback();
             show_edit_buttons();
             $('.hint').show();
+            
+            if ($('#modal-store').is(':visible')) {
+                let newCategory = $('#store_name').val();
+                let newID = $('#store_name').data('id');
+                $('.modal').modal('hide');
+
+                $('#modal-update').modal('show');
+                $('.modal-title-update').text(newCategory); // el título del modal edit
+                $('#edit_name').val(newCategory);
+                $('#edit_id').val(newID);
+            }
         });
 
         // ENTER KEY BIND TO SUBMIT
@@ -119,17 +155,17 @@
 
             if ($('.form-control').hasClass('is-valid')) {
                 $('.form-control').removeClass('is-valid');
+                $('.form-control').prop('readonly', false);
                 $('.modal-content').removeClass('border border-success');
                 $('.valid-feedback').remove();
-                $('.form-control').prop('readonly', false);
             }
         }
 
         function show_error_feedback(message) {
             if (!$('.form-control').hasClass('is-invalid')) {
                 $('.form-control').addClass('is-invalid');
-                $('.modal-content').addClass('border border-danger');
                 $('.form-control').after('<span class="text-danger invalid-feedback" role="alert"><strong>' + message + '</strong></span>');
+                $('.modal-content').addClass('border border-danger');
             }
         }
 
@@ -145,7 +181,7 @@
             $('.btn-close').addClass('reload');
             $('.btn-close-text').text('Aceptar');
 
-            if ($('#modal-update').is(':visible')) {
+            if (!$('#modal-destroy').is(':visible')) {
                 $('.btn-close-text').removeClass('btn-light').addClass('btn-success text-dark');
                 $('.btn-edit').show();
             }
@@ -153,8 +189,8 @@
 
         function show_edit_buttons() {
             $('.btn-close-text').removeClass('btn-success text-dark').addClass('btn-light');
-            $('.btn-action').show();
             $('.btn-close-text').text('Cancelar');
+            $('.btn-action').show();
             $('.btn-edit').hide();
         }
 
