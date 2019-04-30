@@ -11,7 +11,7 @@
             remove_feedback();
             show_edit_buttons();
 
-            $('#modal-edit').modal('show'); // frm-edit
+            $('#modal-update').modal('show'); // frm-edit
 
             var row = $(this).parents('tr');
             var id = row.data('id'); // id de la categoría desde la tabla
@@ -38,8 +38,10 @@
                 $('.modal-title-update').text($('#edit_name').val().toUpperCase());
 
             }).fail((response) => {
-                response.responseJSON.same ?
-                    show_error_feedback(response.responseJSON.same) :
+                if (response.responseJSON.same) {
+                    show_error_feedback(response.responseJSON.same);
+                    $('.invalid-feedback').removeClass('text-danger').addClass('text-warning');
+                } else
                     show_error_feedback(response.responseJSON.error);
             });
         });
@@ -70,8 +72,7 @@
 
             $.post(url, data, (response) => {
                 $('.modal-title-destroy').html('LA CATEGORÍA ' + '<strong class="text-danger">' + response.success + '</strong>' + ' HA SIDO ELIMINADA.'); // el título del modal edit
-                $('#btn-destroy').hide();
-                $('.btn-close-text').text('Aceptar')
+                show_success_buttons();
 
             }).fail(() =>
                 alert('La categoría no pudo ser eliminada. Vuelva a intentarlo'));
@@ -140,11 +141,14 @@
         }
 
         function show_success_buttons() {
-            $('.btn-close-text').removeClass('btn-light').addClass('btn-success text-dark');
+            $('.btn-action').hide();
             $('.btn-close').addClass('reload');
-            $('#btn-update').hide();
-            $('.btn-edit').show();
             $('.btn-close-text').text('Aceptar');
+
+            if ($('#modal-update').is(':visible')) {
+                $('.btn-close-text').removeClass('btn-light').addClass('btn-success text-dark');
+                $('.btn-edit').show();
+            }
         }
 
         function show_edit_buttons() {

@@ -15,7 +15,7 @@
 	<br/>
 
 	{{--CREATE MODAL--}}
-	<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog"
+	{{--<div class="modal fade" id="modal-update" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-category modal-content">
@@ -49,10 +49,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>--}}
 
 	{{--UPDATE MODAL--}}
-	<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog"
+	<div class="modal fade" id="modal-update" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-category modal-content">
@@ -90,7 +90,7 @@
 	</div>
 
 	{{--UPDATE MODAL--}}
-	<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog"
+	<div class="modal fade" id="modal-update" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-category modal-content">
@@ -138,15 +138,14 @@
 					<button type="button" class="close text-danger btn-close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<form id="frm-destroy" style="display: none" action="{{route('categories.destroy', ':ID')}}"
-					      method="POST">
+					<form id="frm-destroy" style="display: none" action="{{route('categories.destroy', ':ID')}}" method="POST">
 						@csrf @method('DELETE')
 						<input type="hidden" name="destroy_id" id="destroy_id">
 					</form>
 				</div>
 				<div class="modal-footer border-dark">
 					<button type="button" class="btn btn-light btn-close btn-close-text"> Cancelar</button>
-					<button type="button" id="btn-destroy" class="btn btn-danger btn-action text-dark font-weight-bold">
+					<button type="button" id="btn-destroy" class="btn btn-danger btn-action btn-destroy text-dark font-weight-bold">
 						<i class="fas fa-trash fa-sm"></i> Eliminar
 					</button>
 				</div>

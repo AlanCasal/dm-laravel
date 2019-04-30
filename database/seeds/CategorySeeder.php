@@ -16,6 +16,7 @@ class CategorySeeder extends Seeder
 	}
 
 	protected $categories = [
+		'SIN CATEGORIA',
 		'MEMORIAS',
 		'PLACAS DE VIDEO',
 		'DISCOS RÍGIDOS',
@@ -28,6 +29,5 @@ class CategorySeeder extends Seeder
 		'PLACAS DE SONIDO',
 		'MOUSE / TECLADOS',
 		'FUENTES DE ALIMENTACIÓN',
-		'SIN CATEGORIA',
 	];
 }

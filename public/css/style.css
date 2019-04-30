@@ -168,7 +168,7 @@ input:focus {
 
 .btn-save:hover {
     color: black;
-    background-color: green;
+    background-color: #ffdd49;
 }
 
 .login-links a {

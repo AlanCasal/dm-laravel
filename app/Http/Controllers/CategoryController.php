@@ -87,7 +87,7 @@ class CategoryController extends Controller
 	 *
 	 * @param \Illuminate\Http\Request $request
 	 * @param $id
-	 * @return void
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
 	 */
 	public function update(Request $request, $id)
 	{
@@ -116,7 +116,7 @@ class CategoryController extends Controller
 	 * Remove the specified resource from storage.
 	 *
 	 * @param $id
-	 * @return void
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
 	 */
 	public function destroy($id)
 	{
