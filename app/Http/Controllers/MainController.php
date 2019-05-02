@@ -10,11 +10,18 @@ class MainController extends Controller
 	
 	public function mainPage()
 	{
-        $navbarItems = Category::where('active', '=', true)->orderBy('name')->pluck('name');
-        
+        $navbarItems = Category::orderBy('name')->pluck('name');
+
+        function up_to_four_random_pcs() {
+	        $pcsArmadas = Product ::all()->where('category_id', '=', 8);
+	        return $pcsArmadas->count() > 4 ?
+	        	$pcsArmadas->random(4):
+		        $pcsArmadas;
+        };
+
         return view('guest.home')
 				->with(['navbarItems' => $navbarItems])
-				->with(['pcs'         => Product ::all()->where('category_id', '=', 7)->random(4)])
+				->with(['pcs'         => up_to_four_random_pcs()])
 				->with(['products'    => Product ::all()->where('category_id','!=', 7)->random(6)]);
 	}
 }

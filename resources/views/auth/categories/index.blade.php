@@ -1,20 +1,6 @@
 @extends('layouts.auth')
 
 @section('content')
-	<br/>
-	<h3 class="text-center text-light">CATEGORÍAS</h3>
-
-	<hr style="border-color: #FFC312"/>
-	<div class="d-flex justify-content-center">
-		<a href="">
-			<button id="btn-store-modal" class="btn btn-outline-warning font-weight-bold">
-				<i class="fas fa-plus"></i>
-				Agregar una categoría
-			</button>
-		</a>
-	</div>
-	<br/>
-
 	{{--CREATE MODAL--}}
 	<div class="modal fade" id="modal-store" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -90,44 +76,6 @@
 		</div>
 	</div>
 
-	{{--UPDATE MODAL--}}
-	<div class="modal fade" id="modal-update" tabindex="-1" role="dialog"
-	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-category modal-content">
-				<div class="modal-header border-0">
-					<h4 class="modal-title modal-title-update text-light font-weight-bold"
-					    id="exampleModalLongTitle"></h4>
-					<button type="button" class="close text-warning btn-close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-
-				<div class="modal-body">
-					<h6 class="text-light hint">Ingrese un nuevo nombre para la categoría</h6>
-					<form id="frm-update" method="POST" action="{{route('categories.update', ':ID')}}">
-						@csrf @method('PUT')
-						<input type="hidden" name="edit_id" id="edit_id">
-						<div class="input-group form-group">
-							<div class="input-group-prepend login-igp">
-								<span class="input-group-text"><i class="fas fa-edit"></i></span>
-							</div>
-							<input id="edit_name" type="text" class="form-control" name="name" value=""
-							       placeholder="INGRESÁ UN NOMBRE ...">
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer border-dark">
-					<button type="button" class="btn btn-light btn-edit"> Editar</button>
-					<button type="button" class="btn btn-light btn-close btn-close-text"> Cancelar</button>
-					<button type="button" id="btn-update" class="btn btn-action btn-save"><i
-								class="fas fa-save fa-sm"></i> Guardar
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	{{--DESTROY MODAL--}}
 	<div class="modal fade" id="modal-destroy" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -154,6 +102,20 @@
 		</div>
 	</div>
 
+	<br/>
+	<h3 class="text-center text-light">CATEGORÍAS</h3>
+
+	<hr style="border-color: #FFC312"/>
+	<div class="d-flex justify-content-center">
+		<a href="">
+			<button id="btn-store-modal" class="btn btn-outline-warning font-weight-bold">
+				<i class="fas fa-plus"></i>
+				Agregar una categoría
+			</button>
+		</a>
+	</div>
+	<br/>
+
 	{{--TABLA--}}
 	<div class="d-flex justify-content-center col-md-4 offset-md-4">
 		<table class="categories-table table table-striped table-dark table-bordered table-hover table-sm table-responsive-md">
@@ -172,12 +134,12 @@
 					<td>{{$category->name}}</td>
 					<td>
 						@if($category->name != 'SIN CATEGORIA')
-							<a class="btn-modal-update text-primary"><i class="fas fa-edit"></i></a>
+							<a href="" class="btn-modal-update text-primary"><i class="fas fa-edit"></i></a>
 						@endif
 					</td>
 					<td class="text-center">
 						@if($category->name != 'SIN CATEGORIA')
-							<a href="" class="btn-modal-destroy text-danger">
+							<a href="" class="btn-destroy-modal text-danger">
 								<i class="fas fa-trash align-self-center"></i>
 							</a>
 						@endif

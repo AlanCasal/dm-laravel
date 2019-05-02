@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Validator;
 
 class UserController extends Controller
 {
@@ -32,32 +33,38 @@ class UserController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		$request = request()->validate([
-			'username' => ['required', Rule::unique('users'), 'min:4', 'alpha_num'],
-			'password' => ['required', 'confirmed', 'min:6', 'max:20'],
+		$validator = Validator::make($request->all(), [
+			'username'         => ['required', Rule::unique('users'), 'min:4', 'alpha_num'],
+			'password'         => ['required', 'min:6', 'max:20'],
+			'password-confirm' => ['same:password'],
 		], [
-			'username.required'  => 'Ingresá un nombre de usuario',
-			'username.unique'    => "El usuario ya existe",
-			'password.required'  => 'Ingresá una contraseña',
-			'password.confirmed' => 'La contraseña no coincide',
-			'password.min'       => 'La contraseña debe tener al menos 6 caracteres',
-			'password.max'       => 'La contraseña debe tener menos de 20 caracteres',
+			'username.required'     => 'Ingresá un nombre de usuario',
+			'username.min'          => 'El usuario debe tener al menos 4 caracteres',
+			'username.unique'       => "El usuario ya existe",
+			'password.required'     => 'Ingresá una contraseña',
+			'password.min'          => 'La contraseña debe tener al menos 6 caracteres',
+			'password.max'          => 'La contraseña debe tener menos de 20 caracteres',
+			'password-confirm.same' => 'La contraseña no coincide',
 		]);
 
 		$username = strtolower($request['username']);
-		User::create([
-			'username' => $username,
-			'email'    => "{$username}@dragonmarket.com.ar",
-			'password' => bcrypt($request['password']),
-		]);
 
-		$data['store'] = $username;
+		if ($validator->passes()) {
+			User::create([
+				'username' => $username,
+				'email'    => "{$username}@dragonmarket.com.ar",
+				'password' => bcrypt($request['password']),
+			]);
 
-		return redirect()->route('users.index', $data);
+			return response(['success' => "El usuario {$username} ha sido creado."]);
+		}
+
+		return response()->json(['error' => $validator->errors()], 422);
 	}
 
 	/**
@@ -94,26 +101,7 @@ class UserController extends Controller
 	 */
 	public function update(User $user)
 	{
-		//if ($data['password'] != null) {
-		//	if (strlen($data['password']) < 6
-		//    || strlen($data['password']) > 20)
-		//	    return back()->withErrors(['password' => 'La contraseña debe tener entre 6 y 20 caracteres']);
-		//
-		//	else $data['password'] = bcrypt($data['password']);
-		//}
-		//
-		//else unset($data['password']);
-		//
-		//$data = request()->validate([
-		//    'username' => ['required', 'min:4', Rule::unique('users')->ignore($user->id)],
-		//    'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
-		//    'password' => 'confirmed'
-		//    ] // , ['first_name.required' => 'ingresá tu nombre']
-		//);
-		//
-		//$user->update($data);
-		//
-		//return redirect()->route('users.show', ['user' => $user]);
+		// ...
 	}
 
 	/**
@@ -126,11 +114,6 @@ class UserController extends Controller
 	public function destroy(User $user)
 	{
 		$user->delete();
-
-		if (request()->ajax())
-			return response()->json(['message' => 'El usuario '.$user->username.' ha sido eliminado']);
-
-		//return $data['destroy'] = User::find($id)->username;
-		//return redirect()->route('users.index', $data);
+		return response(['success' => $user->username]);
 	}
 }

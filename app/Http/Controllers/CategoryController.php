@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
@@ -16,7 +15,7 @@ class CategoryController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return Factory|View
+	 * @return View
 	 */
 	public function index()
 	{
@@ -56,7 +55,7 @@ class CategoryController extends Controller
 		if ($validator->passes()) {
 			$newCategory = Category::create(['name' => $name]);
 			return response([
-				'success' => 'La categoría ' . $name . ' ha sido creada.',
+				'success' => "La categoría {$name} ha sido creada.",
 				'id' => $newCategory->id
 			]);
 		}
@@ -90,10 +89,10 @@ class CategoryController extends Controller
 	 * Update the specified resource in storage.
 	 *
 	 * @param \Illuminate\Http\Request $request
-	 * @param $id
+	 * @param \App\Models\Category $category
 	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(Request $request, Category $category)
 	{
 		$validator = Validator::make($request->all(), [
 			'name' => ['required', Rule::unique('categories')],
@@ -102,7 +101,6 @@ class CategoryController extends Controller
 			'name.unique' => 'La categoría ya existe.'
 		]);
 
-		$category = Category::find($id);
 		$oldName = $category->name;
 		$newName = strtoupper($request->name);
 
@@ -119,14 +117,14 @@ class CategoryController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param $id
+	 * @param \App\Models\Category $category
 	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+	 * @throws \Exception
 	 */
-	public function destroy($id)
+	public function destroy(Category $category)
 	{
-		$category = Category::find($id);
 		$sinCategoria = Category::where('name', 'SIN CATEGORIA')->first();
-		$products = Product::where('category_id', $id)->get();
+		$products = Product::where('category_id', $category->id)->get();
 		$name = $category->name;
 
 		foreach ($products as $product) // los productos pasan a estar sin categoría

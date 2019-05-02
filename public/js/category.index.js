@@ -16,8 +16,8 @@
             e.preventDefault();
             remove_feedback();
 
-            var url = $('#frm-store').attr('action');
-            var data = $('#frm-store').serialize();
+            let url = $('#frm-store').attr('action');
+            let data = $('#frm-store').serialize();
 
             $.post(url, data, (response) => {
                 show_success_buttons();
@@ -25,9 +25,8 @@
                 $('.hint').hide();
                 $('#store_name').attr('data-id', response.id);
 
-            }).fail((response) => {
-                show_error_feedback(response.responseJSON.error);
-            });
+            }).fail((response) =>
+                show_error_feedback(response.responseJSON.error));
         });
 
         // UPDATE MODAL
@@ -38,9 +37,9 @@
 
             $('#modal-update').modal('show'); // frm-update
 
-            var row = $(this).parents('tr');
-            var id = row.data('id'); // id de la categoría desde la tabla
-            var name = row.data('name'); // nombre de la categoría desde la tabla
+            let row = $(this).parents('tr');
+            let id = row.data('id'); // id de la categoría desde la tabla
+            let name = row.data('name'); // nombre de la categoría desde la tabla
 
             $('#edit_id').val(id); // le paso el id al hidden input
             $('#edit_name').val(name); // al input name le pongo el nombre de la categoría
@@ -52,9 +51,9 @@
             e.preventDefault();
             remove_feedback();
 
-            var id = $('#edit_id').val();
-            var url = $('#frm-update').attr('action').replace(':ID', id);
-            var data = $('#frm-update').serialize();
+            let id = $('#edit_id').val();
+            let url = $('#frm-update').attr('action').replace(':ID', id);
+            let data = $('#frm-update').serialize();
 
             $.post(url, data, (response) => {
                 show_success_feedback(response.success);
@@ -72,31 +71,30 @@
         });
 
         // DESTROY MODAL
-        $('.btn-modal-destroy').click(function (e) {
+        $('.btn-destroy-modal').click(function (e) {
             e.preventDefault();
 
             $('#modal-destroy').modal('show'); // frm-destroy
 
-            var row = $(this).parents('tr');
-            var id = row.data('id');
-            var name = row.data('name');
+            let row = $(this).parents('tr');
+            let id = row.data('id');
+            let name = row.data('name');
 
             $('#destroy_id').val(id); // le paso el id al hidden input
 
-            $('.modal-title-destroy').html('¿ DESEA ELIMINAR LA CATEGORÍA ' + '<strong class="text-warning">' + name + '</strong>' + ' ?'); // el título del modal edit
+            $('.modal-title-destroy').html(`¿ DESEA ELIMINAR LA CATEGORÍA <strong class="text-warning">${name}</strong> ?`); // el título del modal edit
         });
 
         // DESTROY SUBMIT
         $('#btn-destroy').click((e) => {
             e.preventDefault();
 
-            var id = $('#destroy_id').val();
-            var form = $('#frm-destroy');
-            var url = form.attr('action').replace(':ID', id);
-            var data = form.serialize();
+            let id = $('#destroy_id').val();
+            let url = $('#frm-destroy').attr('action').replace(':ID', id);
+            let data = $('#frm-destroy').serialize();
 
             $.post(url, data, (response) => {
-                $('.modal-title-destroy').html('LA CATEGORÍA ' + '<strong class="text-danger">' + response.success + '</strong>' + ' HA SIDO ELIMINADA.'); // el título del modal edit
+                $('.modal-title-destroy').html(`LA CATEGORÍA <strong class="text-danger">${response.success} </strong> HA SIDO ELIMINADA.`); // el título del modal edit
                 show_success_buttons();
 
             }).fail(() =>
@@ -163,8 +161,8 @@
 
         function show_error_feedback(message) {
             if (!$('.form-control').hasClass('is-invalid')) {
-                $('.form-control').addClass('is-invalid');
-                $('.form-control').after('<span class="text-danger invalid-feedback" role="alert"><strong>' + message + '</strong></span>');
+                $('.form-control').addClass('is-invalid').focus();
+                $('.form-control').after(`<span class="text-danger invalid-feedback" role="alert"><strong>${message}</strong></span>`);
                 $('.modal-content').addClass('border border-danger');
             }
         }
@@ -173,7 +171,7 @@
             $('.modal-content').addClass('border border-success');
             $('.form-control').prop('readonly', true);
             $('.form-control').addClass('is-valid');
-            $('.form-control').after('<span class="text-success valid-feedback" role="alert"><strong>' + message + '</strong></span>');
+            $('.form-control').after(`<span class="text-success valid-feedback" role="alert"><strong>${message}</strong></span>`);
         }
 
         function show_success_buttons() {
