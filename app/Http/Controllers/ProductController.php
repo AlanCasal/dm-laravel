@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Exception;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -19,28 +19,9 @@ class ProductController extends Controller
 	 */
 	public function index()
 	{
-		$category_id = request('category_id');
-
-		if ($category_id != null) {
-			return view('auth.products.index')
-				->with(['categories'     => Category::all()])
-				->with(['products'       => Product::
-					where(['category_id' => $category_id])
-					->paginate(30)
-			]);
-		}
-
-		else {
-			return view('auth.products.index')
-				->with(['data'       => request()->query()])
-				->with(['categories' => Category::all()])
-				->with(['products'   => Product::
-					orderBy('category_id')
-					->orderBy('id', 'asc')
-					->where('active', 'SI')
-					->paginate(30)
-			]);
-		}
+		return view('auth.products.index')
+			->with(['categories' => Category::all()])
+			->with(['products' => Product::paginate(30)]);
 	}
 
 	/**
@@ -50,8 +31,8 @@ class ProductController extends Controller
 	 */
 	public function create()
 	{
-		return view('auth.products.create')
-			->with(['categories' => Category::all()]);
+		/*return view('auth.products.create')
+			->with(['categories' => Category::all()]);*/
 	}
 
 	/**
@@ -109,71 +90,55 @@ class ProductController extends Controller
 	 */
 	public function edit(Product $product)
 	{
-		return view('auth.products.edit')
+		/*return view('auth.products.edit')
 			->with(['product' => $product])
 			->with(['products' => Product::all()])
-			->with(['categories' => Category::all()]);
+			->with(['categories' => Category::all()]);*/
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
 	 * @param Product $product
 	 * @return Response
 	 */
-	public function update(Product $product)
+	public function update(Request $request, Product $product)
 	{
-		$updates = request()->validate([
-			'name'        => [Rule::unique('products')->ignore($product->id)],
-			'price'       => ['required', 'numeric', 'regex:/\b\d{1,3}(?:,?\d{3})*(?:\.\d{2})?\b/'],
+		$validator = Validator::make($request->all(), [
+			'name'        => ['required', Rule::unique('products')->ignore($product->id)],
+			'price'       => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
 			'category_id' => ['required'],
-			'stock'       => ['required'],
-			'active'      => ['required'],
+			'stock'       => ['required', 'numeric', 'regex:/^[1-9][0-9]{0,2}$/'],
 		], [
+			'name.required'        => 'Por favor ingresá un nombre',
 			'name.unique'          => 'El producto ya existe',
+			'price.required'       => 'Por favor ingresá un precio',
 			'price.numeric'        => 'El precio solo puede contener números',
-			'category_id.required' => 'Seleccioná una categoría',
-			'stock.required'       => 'Ingresá la cantidad',
-			'active.required'      => 'Indicá si el producto está activo',
+			'regex'                => 'El valor ingresado no es un formato válido',
+			'category_id.required' => 'Por favor seleccioná una categoría',
+			'stock.required'       => 'Por favor ingresá la cantidad',
+			'stock.numeric'        => 'La cantidad solo puede contener números',
 		]);
 
-		$updates['name'] = strtoupper($updates['name']);
+		if ($validator->passes()) {
+			$product->update($request->all());
+			return response(['success' => 'Los cambios han sido guardados.']);
+		}
 
-		$data['update'] = [
-			$product->name, //old
-			$updates['name'], //new
-
-			$product->price,
-			$updates['price'],
-
-			$product->category->name,
-			Category::where('id', $updates['category_id'])->first()->name,
-
-			$product->stock,
-			$updates['stock'],
-
-			$product->active,
-			$updates['active'],
-		];
-		//dd($data['update'][9]);
-
-		$product->update($updates);
-
-		return redirect()->route('products.index', $data);
+		return response(['error' => $validator->errors()], 422);
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param Product $product
-	 * @return RedirectResponse
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
 	 * @throws Exception
 	 */
 	public function destroy(Product $product)
 	{
-		$data['destroy'] = $product->name;
 		$product->delete();
-
-		return redirect()->route('products.index', $data);
+		return response(['success' => $product->name]);
 	}
 }

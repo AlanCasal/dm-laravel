@@ -1,31 +1,38 @@
 (() => {
     $(document).ready(() => {
-
-        // STORE MODAL
-        $('#btn-store-modal').click((e) => {
+        // UPDATE MODAL
+        $('.btn-modal-update').click(function (e) {
             e.preventDefault();
             remove_feedback();
-            // show_edit_buttons();
+            show_edit_buttons();
 
-            $('#modal-store').modal('show');
-            $('.modal-title-store').text('NUEVO USUARIO');
+            $('#modal-update').modal('show'); // frm-update
+
+            let row = $(this).parents('tr');
+
+            $('#edit_id').val(row.data('id'));
+            $('#name').val(row.data('name')); // al input name le pongo el nombre del producto
+            $('#price').val(row.data('price'));
+            $('#category' + row.data('category')).attr('selected', 'selected');
+            $('#stock').val(row.data('stock'));
+
+            $('.modal-title-update').text(row.data('name')); // el título del modal edit
         });
 
-        // EMAIL INPUT TOMA EL VALOR DEL NOMBRE
-        $('#username').change(() =>
-            $('#email').val($('#username').val()));
-
-        // STORE SUBMIT
-        $('#btn-store').click((e) => {
+        // UPDATE SUBMIT
+        $('#btn-update').click((e) => {
             e.preventDefault();
             remove_feedback();
 
-            let url = $('#frm-store').attr('action');
-            let data = $('#frm-store').serialize();
+            let id = $('#edit_id').val();
+            let url = $('#frm-update').attr('action').replace(':ID', id);
+            let data = $('#frm-update').serialize();
 
             $.post(url, data, (response) => {
-                show_success_buttons();
                 show_success_feedback(response.success);
+                show_success_buttons();
+                $('.hint').hide();
+                $('.modal-title-update').text($('#name').val().toUpperCase());
 
             }).fail((response) =>
                 show_error_feedback(response.responseJSON.error));
@@ -34,14 +41,16 @@
         // DESTROY MODAL
         $('.btn-destroy-modal').click(function (e) {
             e.preventDefault();
-            $('#modal-destroy').modal('show');
+
+            $('#modal-destroy').modal('show'); // frm-destroy
 
             let row = $(this).parents('tr');
             let id = row.data('id');
-            let name = row.data('username');
+            let name = row.data('name');
 
-            $('.modal-title-destroy').html(`DESEA ELIMINAR AL USUARIO <strong class="text-warning">${name}</strong> ?`);
-            $('#destroy_id').val(id);
+            $('#destroy_id').val(id); // le paso el id al hidden input
+
+            $('.modal-title-destroy').html(`¿ DESEA ELIMINAR EL PRODUCTO <strong class="text-warning">${name}</strong> ?`);
         });
 
         // DESTROY SUBMIT
@@ -53,11 +62,11 @@
             let data = $('#frm-destroy').serialize();
 
             $.post(url, data, (response) => {
-                $('.modal-title-destroy').html(`EL USUARIO <strong class="text-danger">${response.success}</strong> HA SIDO ELIMINADO.`);
+                $('.modal-title-destroy').html(`EL PRODUCTO <strong class="text-danger">${response.success} </strong> HA SIDO ELIMINADO.`); // el título del modal edit
                 show_success_buttons();
 
             }).fail(() =>
-                alert('EL USUARIO NO PUDO SER ELIMINADO. POR FAVOR VUELVA A INTENTARLO.'));
+                alert('EL PRODUCTO NO PUDO SER ELIMINADO. POR FAVOR VUELVA A INTENTARLO.'));
         });
 
         // CANCEL/CLOSE
@@ -72,7 +81,7 @@
         });
 
         // ENTER KEY BIND TO SUBMIT
-        $('.form-control').keypress(function (e) {
+        $('.modal-input').keypress(function (e) {
             if (e.which === 13) {
                 $(this).blur();
                 $('#btn-update').focus().click(); // ENTER simula clic
@@ -80,20 +89,38 @@
             }
         });
 
+        $('.btn-edit').click((e) => {
+            e.preventDefault();
+            remove_feedback();
+            show_edit_buttons();
+            $('.hint').show();
+
+            /*if ($('#modal-store').is(':visible')) {
+                let newCategory = $('#store_name').val();
+                let newID = $('#store_name').data('id');
+                $('.modal').modal('hide');
+
+                $('#modal-update').modal('show');
+                $('.modal-title-update').text(newCategory); // el título del modal edit
+                $('#edit_name').val(newCategory);
+                $('#edit_id').val(newID);
+            }*/
+        });
+
         //////////////////////////////////////////
         //////////////////////////////////////////
 
         // FEEDBACK
         function remove_feedback() {
-            if ($('.form-control').hasClass('is-invalid')) {
-                $('.form-control').removeClass('is-invalid');
+            if ($('.modal-input').hasClass('is-invalid')) {
+                $('.modal-input').removeClass('is-invalid');
                 $('.modal-content').removeClass('border border-danger');
                 $('.invalid-feedback').remove();
             }
 
-            if ($('.form-control').hasClass('is-valid')) {
-                $('.form-control').removeClass('is-valid');
-                $('.form-control').prop('readonly', false);
+            if ($('.modal-input').hasClass('is-valid')) {
+                $('.modal-input').removeClass('is-valid');
+                $('.modal-input').prop('readonly', false);
                 $('.modal-content').removeClass('border border-success');
                 $('.valid-feedback').remove();
             }
@@ -104,7 +131,7 @@
             let firstItemDOM = $(`#${firstItem}`);
             let firstItemMessage = errors[firstItem][0];
 
-            if (!$('.form-control').hasClass('is-invalid')) {
+            if (!$('.modal-input').hasClass('is-invalid')) {
                 firstItemDOM.addClass('is-invalid').focus();
                 firstItemDOM.after(`<span class="invalid-feedback text-danger"><strong>${firstItemMessage}</strong></span>`);
                 $('.modal-content').addClass('border border-danger');
@@ -113,9 +140,9 @@
 
         function show_success_feedback(message) {
             $('.modal-content').addClass('border border-success');
-            $('.form-control').prop('readonly', true);
-            $('.form-control').addClass('is-valid');
-            $('#password-confirm').after(`<span class="text-success valid-feedback" role="alert"><strong>${message}</strong></span>`);
+            $('.modal-input').prop('readonly', true);
+            $('.modal-input').addClass('is-valid');
+            $('#stock').after(`<span class="text-success valid-feedback" role="alert"><strong>${message}</strong></span>`);
         }
 
         function show_success_buttons() {
@@ -125,16 +152,16 @@
 
             if (!$('#modal-destroy').is(':visible')) {
                 $('.btn-close-text').removeClass('btn-light').addClass('btn-success text-dark');
-                // $('.btn-edit').show();
+                $('.btn-edit').show();
             }
         }
 
-        /*function show_edit_buttons() {
+        function show_edit_buttons() {
             $('.btn-close-text').removeClass('btn-success text-dark').addClass('btn-light');
             $('.btn-close-text').text('Cancelar');
             $('.btn-action').show();
             $('.btn-edit').hide();
-        }*/
+        }
 
-    });
+    })
 })();

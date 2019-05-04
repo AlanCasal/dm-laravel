@@ -5,7 +5,7 @@
 	<div class="modal fade" id="modal-store" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-category modal-content">
+			<div class=" modal-content">
 				<div class="modal-header border-0">
 					<h4 class="modal-title modal-title-store text-light font-weight-bold"
 					    id="exampleModalLongTitle"></h4>
@@ -42,7 +42,7 @@
 	<div class="modal fade" id="modal-update" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-category modal-content">
+			<div class=" modal-content">
 				<div class="modal-header border-0">
 					<h4 class="modal-title modal-title-update text-light font-weight-bold"
 					    id="exampleModalLongTitle"></h4>
@@ -80,7 +80,7 @@
 	<div class="modal fade" id="modal-destroy" tabindex="-1" role="dialog"
 	     aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-category modal-content">
+			<div class=" modal-content">
 				<div class="modal-header border-0">
 					<h6 class="modal-title modal-title-destroy text-light"
 					    id="exampleModalLongTitle"></h6>

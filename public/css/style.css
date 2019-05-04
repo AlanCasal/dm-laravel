@@ -175,6 +175,9 @@ input:focus {
     margin-left: 4px;
 }
 
+table {
+    background-color: rgba(0,0,0,.8) !important;
+}
 .products-table thead, .categories-table thead, .users-table thead {
     color: #FFC312;
 }
@@ -187,6 +190,38 @@ input:focus {
     color: white;
 }
 
-.modal-category {
+.modal-content {
     background-color: rgba(0, 0, 0, 0.8) !important;
+    border-color: #2E2E2E;
+}
+
+.pagination > li > a
+{
+    background-color: #2E2E2E;
+    color: #FFC312;
+    border-color: #2E2E2E;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #FFC312;
+    background-color: #212121;
+    border-color: #2E2E2E;
+}
+
+.pagination > .active > span
+{
+    color: #FFC312 !important;
+    background-color: #212121 !important;
+    border-color: #212121 !important;
+}
+
+.pagination > .disabled > span /*a:hover*/
+{
+    background-color: #2E2E2E !important;
+    border-color: #2E2E2E !important;
+
 }

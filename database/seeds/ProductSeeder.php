@@ -23,8 +23,9 @@ class ProductSeeder extends Seeder
 				'name'        => strtoupper($column['name']),
 				'category_id' => strtoupper($column['category_id']),
 				'price'       => strtoupper($column['price']),
-				'active'      => 'SI',
-            ]);
+				'stock'       => rand(0, 99)
+				//'active'      => 'SI',
+			]);
 		}
 	}
 }

@@ -17,17 +17,18 @@ class UserController extends Controller
 
 	public function index()
 	{
-		return view('auth.users.index')->with(['data' => request()->query()])->with(['users' => User::paginate(30)]);
+		return view('auth.users.index')
+			->with(['data' => request()->query()])
+			->with(['users' => User::paginate(30)]);
 	}
 
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return \Illuminate\Http\Response
 	 */
 	public function create()
 	{
-		return view('auth.users.create');
+		//return view('auth.users.create');
 	}
 
 	/**
@@ -60,7 +61,6 @@ class UserController extends Controller
 				'email'    => "{$username}@dragonmarket.com.ar",
 				'password' => bcrypt($request['password']),
 			]);
-
 			return response(['success' => "El usuario {$username} ha sido creado."]);
 		}
 

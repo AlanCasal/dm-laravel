@@ -27,10 +27,11 @@ Route::middleware('auth')->group(function () {
 		->name('menu');
 
 	Route::resource('users', 'UserController')
-		->only('index', 'create', 'store', 'destroy');
+		->only('index', 'store', 'destroy');
 
 	Route::resource('categories', 'CategoryController')
 		->only('index', 'store', 'update', 'destroy');
 
-	Route::resource('products', 'ProductController');
+	Route::resource('products', 'ProductController')
+		->only('index', 'store', 'update', 'destroy');
 });
