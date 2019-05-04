@@ -197,9 +197,9 @@ table {
 
 .pagination > li > a
 {
-    background-color: #2E2E2E;
+    background-color: rgba(46,46,46,0.29);
     color: #FFC312;
-    border-color: #2E2E2E;
+    border-color: rgba(46,46,46,0.29);
 }
 
 .pagination > li > a:focus,
@@ -209,7 +209,7 @@ table {
 {
     color: #FFC312;
     background-color: #212121;
-    border-color: #2E2E2E;
+    border-color: rgba(46,46,46,0.29);
 }
 
 .pagination > .active > span
@@ -221,7 +221,7 @@ table {
 
 .pagination > .disabled > span /*a:hover*/
 {
-    background-color: #2E2E2E !important;
-    border-color: #2E2E2E !important;
+    background-color: rgba(46,46,46,0.29) !important;
+    border-color: rgba(46,46,46,0.29) !important;
 
 }
