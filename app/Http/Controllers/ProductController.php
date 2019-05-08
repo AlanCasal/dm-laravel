@@ -21,7 +21,7 @@ class ProductController extends Controller
 	{
 		return view('auth.products.index')
 			->with(['categories' => Category::all()])
-			->with(['products' => Product::paginate(30)]);
+			->with(['products' => Product::all()]);
 	}
 
 	/**

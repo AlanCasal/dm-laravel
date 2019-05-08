@@ -88,7 +88,7 @@
 	</div>
 
 	<br>
-	<h3 class="d-flex justify-content-center">USUARIOS</h3>
+	<h3 class="d-flex justify-content-center text-light">USUARIOS</h3>
 	<hr style="border-color: #FFC312"/>
 
 	<div class="d-flex justify-content-center">

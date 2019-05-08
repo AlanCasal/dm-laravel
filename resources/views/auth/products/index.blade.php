@@ -121,7 +121,7 @@
 	{{--CONTENIDO--}}
 	<hr style="border-color: #FFC312"/>
 
-	<div class="row d-flex justify-content-center">
+	<div class="row d-flex justify-content-center col-6 offset-3">
 		<a href="">
 			<button class="btn btn-outline-warning font-weight-bold">
 				Agregar un producto
@@ -129,31 +129,27 @@
 		</a>
 
 		{{--filtro de categorías--}}
-		<form action="{{route('products.index')}}" method="GET">
+		<form action="" method="GET">
 			@csrf
-			<div class="input-group form-group offset-1">
+			<div class="input-group form-group ml-2 col-12">
 				<div class="input-group-prepend login-igp">
 					<span class="input-group-text"><i class="fas fa-tag"></i></span>
 				</div>
-				<select class="form-control" name="category_id" onchange="this.form.submit();">
+				<select id="filter-category" class="form-control" {{--name="category_id" onchange="this.form.submit();"--}}>
 					<option value="">Filtrar por categoría...</option>
-					<option value="">TODAS LAS CATEGORÍAS</option>
+					<option value="all">TODAS LAS CATEGORÍAS</option>
 					@foreach($categories as $category)
-						<option value="{{$category->id}}">{{$category->name}}</option>
+						<option {{--id="select_{{$category->id}}"--}} class="select_category" value="{{$category->id}}">{{$category->name}}</option>
 					@endforeach
 				</select>
-				@if ($errors->has('category_id'))
-					<span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('category_id') }}</strong>
-                        </span>
-				@endif
 			</div>
 		</form>
 	</div>
 
+
 	{{--tabla de productos--}}
 	<div class="d-flex justify-content-center">
-		<table class="products-table table table-striped table-dark table-bordered table-hover table-sm col-md-10">
+		<table id="products-table" class="table table-dark table-bordered table-hover table-sm col-md-10">
 			<thead>
 			<tr class="text-center">
 				<th scope="col">ID</th>
@@ -161,7 +157,6 @@
 				<th scope="col">NOMBRE</th>
 				<th scope="col">PRECIO</th>
 				<th scope="col">STOCK</th>
-				{{--<th scope="col">ACTIVO</th>--}}
 				<th scope="col">EDITAR</th>
 				<th scope="col">ELIMINAR</th>
 			</tr>
@@ -173,15 +168,14 @@
 				data-name="{{$product->name}}"
 				data-price="{{$product->price}}"
 				data-stock="{{$product->stock}}"
-				{{--data-active="{{$product->active}}"--}}
 				data-category="{{$product->category_id}}"
+				class="category_item item_{{$product->category_id}}"
 				>
 					<th scope="row">{{$product->id}}</th>
 					<td>{{$product->category->name}}</td>
 					<td>{{$product->name}}</td>
 					<td>${{$product->price}}</td>
 					<td>{{$product->stock}}</td>
-					{{--<td>{{$product->active}}</td>--}}
 					<td>
 						<a class="text-primary btn-modal-update" href="">
 							<i class="fas fa-edit"></i>
@@ -199,7 +193,6 @@
 	</div>
 
 	<hr class="border-warning">
-	<div class="d-flex justify-content-center">{{$products->links()}}</div>
 @endsection
 
 @section('scripts')

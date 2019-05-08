@@ -1,5 +1,17 @@
 (() => {
     $(document).ready(() => {
+        // FILTRO DE CATEGORÍAS
+        $('#filter-category').change(function () {
+            let category_id = $(this).val();
+
+            if (category_id == 'all')
+                $('.category_item').show();
+            else {
+                $('.category_item').hide();
+                $('.item_' + category_id).show();
+            }
+        });
+
         // UPDATE MODAL
         $('.btn-modal-update').click(function (e) {
             e.preventDefault();
