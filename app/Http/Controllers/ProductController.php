@@ -16,12 +16,27 @@ class ProductController extends Controller
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
+	 * @throws \Throwable
 	 */
 	public function index()
 	{
 		return view('auth.products.index')
 			->with(['categories' => Category::all()])
-			->with(['products' => Product::all()]);
+			->with(['products' => Product::paginate(20)]);
+	}
+
+	/**
+	 * @param \Illuminate\Http\Request $request
+	 * @return string
+	 * @throws \Throwable
+	 */
+	public function get_products(Request $request) {
+		if ($request->ajax()) {
+			return view('auth.products.table')
+				->with(['products' => Product::paginate(20)])
+				->with(['categories' => Category::all()])
+				->render();
+		}
 	}
 
 	/**

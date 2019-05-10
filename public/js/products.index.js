@@ -12,6 +12,21 @@
             }
         });
 
+        // PAGINATION BUTTONS
+        $('.pagination a').click(function (e) {
+            e.preventDefault();
+
+            let page = $(this).attr('href').split('page=')[1];
+            get_products(page);
+        });
+
+        function get_products(page) {
+            $.get("/products/get_products?page="+page, (data) => {
+                $('#table_data').html(data);
+                location.hash = page;
+            });
+        }
+
         // UPDATE MODAL
         $('.btn-modal-update').click(function (e) {
             e.preventDefault();
