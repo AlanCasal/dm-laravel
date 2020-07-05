@@ -60,7 +60,7 @@ Dentro de la solapa de **Databases**, crear una base de datos con nombre **larav
 ![](/screenshots/phpmyadmin.jpg)
 
 
-Iniciar la migración y los seeders con el siguiente comando:
+Insertar el contenido prearmado a la base de datos ejecutando migración y seeders con el siguiente comando:
 ```
 php artisan migrate:fresh --seed
 ```
@@ -73,8 +73,8 @@ php artisan serve
 ```
 Se puede ver el proyecto ingresado a ``localhost:8000`` desde cualquier browser
 
-* #### ¡Aviso!
-_¡Como se mencionó al inicio, la palicación no está terminada!_
+* ### ¡Aviso!
+_¡Como se mencionó al inicio, la aplicación no está terminada!_
 
 
 ## Hecho con 🛠️
