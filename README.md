@@ -33,7 +33,7 @@ git clone https://github.com/AlanCasal/dm-laravel.git
 ```
 ``cd dm-laravel`` para entrar al directorio del proyecto.
 
-Instalar los paquetes necsarios con:
+Instalar los paquetes necesarios con:
 ```
 composer install
 ```
