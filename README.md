@@ -1,9 +1,8 @@
 ![](/public/img/DMLogo.png)
 
 # Dragon Market
-_Proyecto Integrador para **Digital House** (2018)_ 🎓
 
-### Resumen 📃
+_2018 - Proyecto Integrador para **Digital House**_ 🎓
 
 _Aplicación web que simula un e-commerce de productos de computación.
 Tiene base de datos con **MySQL**, un carrito de compras, un **usuario Admin** y peticiones **Ajax**._
