@@ -41,6 +41,7 @@ composer install
 npm install
 ```
 Copiar el archivo ``.env.example`` y borrarle el ``.example``
+
 ![](/screenshots/env.jpg)
 
 Generar una key para el archivo ``.env`` con el siguiente comando:
